@@ -3,8 +3,7 @@
 
 1.NeonTile
 2.NEON
-3.NeonTileRace(NTR)
-4.NeonRace
+3.NeonRace
 
 
 1. 움직이는 다양한 장애물 피해서 도착지점까지 도달해야하는 
