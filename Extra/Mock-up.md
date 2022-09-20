@@ -73,8 +73,9 @@ Players will use Arrow keys to move the character, and they will avoid it by jum
 
 In addition to playing the pattern tiles applied to the stages we have created, users decide the size of the stage themselves, and random pattern generators or users themselves create pattern tiles to share various stages with each other to expand the diversity of user's gameplay.
 
-9. 레벨디자인, ai 알고리즘 개발
-플레이어에게 너무 어렵지도 너무 쉽지도 않은 적절한 스테이지를 나누는 레벨 디자인 작업, 단순히 점프만 요구하는 패턴타일이 아닌 플레이어에게 다양한 재미를 느낄 수 있게 해주는 장애물 디자인.
+9. 레벨디자인
+플레이어에게 너무 어렵지도 너무 쉽지도 않은 적절한 스테이지를 나누는 레벨 디자인 작업.
+ 단순히 점프만 요구하는 패턴타일이 아닌 플레이어에게 다양한 재미를 느낄 수 있게 해주는 장애물 디자인.
 
 Level design tasks that divide the appropriate stages that are neither too difficult nor too easy for the player.
 Obstacle design that allows the player to have a variety of fun, not just a pattern style that requires jumping. 
