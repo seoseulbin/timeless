@@ -5,6 +5,7 @@
 #include<doodle/input.hpp>
 
 
+
 MainMenu::MainMenu() : exit(InputKey::Keyboard::Escape) {}
 
 void MainMenu::Load()
