@@ -8,7 +8,7 @@ Splash::Splash()
 
 void Splash::Load()
 {
-	string texturePath = "Assets/DigiPen_BLACK_750px.png";
+	string texturePath = "assets/DigiPen_BLACK_750px.png";
 	texture.Load(texturePath);
 	T = chrono::system_clock::now();
 }

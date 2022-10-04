@@ -1,6 +1,5 @@
 #pragma once
 #include<doodle/image.hpp>
-
 #include"Vec2.h"
 #include"Matrix.h"
 

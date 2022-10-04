@@ -8,6 +8,7 @@
 
 
 
+
 MainMenu::MainMenu() : exit(InputKey::Keyboard::Escape) {}
 
 void MainMenu::Load()
