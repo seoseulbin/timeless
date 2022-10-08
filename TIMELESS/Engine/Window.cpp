@@ -6,6 +6,7 @@ using namespace doodle;
 
 void Timeless::Window::Init(string windowTitle)
 {
+	//window.create(sf::VideoMode(windowSize.x, windowSize.y), windowTitle);
 	create_window(windowTitle, windowSize.x,windowSize.y);
 	//set_image_mode(RectMode::Center);
 	set_image_mode(RectMode::Corner);
