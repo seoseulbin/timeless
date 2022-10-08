@@ -4,4 +4,5 @@ enum class Screens
 {
 	Splash,
 	MainMenu,
+	Prototype1
 };

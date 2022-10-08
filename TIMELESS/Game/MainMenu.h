@@ -1,6 +1,8 @@
 #pragma once
 #include"..\Engine\GameState.h"
+#include"..\Engine\Texture.h"
 #include"..\Engine\Input.h"
+#include<string>
 
 class MainMenu : public Timeless::GameState
 {
@@ -17,5 +19,7 @@ public:
 	}
 
 private:
+	Timeless::Texture title_background;
 	InputKey exit;
+
 };

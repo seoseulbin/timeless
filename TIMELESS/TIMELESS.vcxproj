@@ -86,6 +86,7 @@
     <ClCompile Include="Engine\Texture.cpp" />
     <ClCompile Include="Engine\Window.cpp" />
     <ClCompile Include="Game\MainMenu.cpp" />
+    <ClCompile Include="Game\proto1.cpp" />
     <ClCompile Include="Game\Splash.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
@@ -100,6 +101,7 @@
     <ClInclude Include="Engine\Vec2.h" />
     <ClInclude Include="Engine\Window.h" />
     <ClInclude Include="Game\MainMenu.h" />
+    <ClInclude Include="Game\proto1.h" />
     <ClInclude Include="Game\Screens.h" />
     <ClInclude Include="Game\Splash.h" />
   </ItemGroup>
