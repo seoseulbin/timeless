@@ -1,13 +1,8 @@
 #include"MainMenu.h"
 #include"Screens.h"
 #include"..\Engine\Engine.h"
-#include<doodle/drawing.hpp>
-#include<doodle/input.hpp>
 
-
-
-
-
+#include <SFML/Graphics.hpp>
 
 MainMenu::MainMenu() : exit(InputKey::Keyboard::Escape) {}
 
@@ -24,14 +19,10 @@ void MainMenu::Update()
 	{
 		Engine::GetGameStateManager().Shutdown();
 	}
-	if (doodle::KeyIsPressed && doodle::Key == doodle::KeyboardButtons::Space) {
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Space)) {
 		Engine::GetLogger().LogDebug("to the prototype1");
 		Engine::GetGameStateManager().SetNextState(static_cast<int>(Screens::Prototype1));
-		
 	}
-
-
-
 }
 
 

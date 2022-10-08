@@ -1,4 +1,3 @@
-#include <doodle/input.hpp>	
 #include <SFML/Graphics.hpp>
 #include "Input.h"
 #include "Engine.h"			// GetLogger, GetInput
@@ -28,7 +27,7 @@ InputKey::Keyboard DoodleKeyToCS230Key(sf::Keyboard::Key button)
 		return InputKey::Keyboard::Down;
 	}
 	else if (button >= sf::Keyboard::A && button <= sf::Keyboard::Z) {
-		int offset = static_cast<int>(button) - static_cast<int>(doodle::KeyboardButtons::A);
+		int offset = static_cast<int>(button) - static_cast<int>(sf::Keyboard::A);
 		return static_cast<InputKey::Keyboard>(static_cast<int>(InputKey::Keyboard::A) + offset);
 	}
 	return InputKey::Keyboard::None;
