@@ -2,7 +2,7 @@
 #include"Screens.h"
 #include"..\Engine\Engine.h"
 #include<doodle/drawing.hpp>
-#include<doodle/input.hpp>
+#include <SFML/Graphics.hpp>
 
 
 const int Prototype1::x_pos = 50;			//50
@@ -34,32 +34,32 @@ void Prototype1::Update()
 	{
 		Engine::GetGameStateManager().Shutdown();
 	}
-//	-	-	-	-	-	-	-	-	-	-	-	-
+	//	-	-	-	-	-	-	-	-	-	-	-	-
 	double player_speed = 5.0;
 
 	if (player.isMoving == false) {
 		player.direction = { 0,0 };
 	}
 
-	if (doodle::KeyIsPressed && doodle::Key == doodle::KeyboardButtons::Left && player.isMoving == false) {
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) && player.isMoving == false) {
 		player.direction += { -1, 0 };
 		player.next_position = player.position + DataType::vec2{ -grid_width, 0 };
 		player.previous_position = player.position;
 		player.isMoving = true;
 	}
-	else if (doodle::KeyIsPressed && doodle::Key == doodle::KeyboardButtons::Right && player.isMoving == false) {
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) && player.isMoving == false) {
 		player.direction += { 1, 0 };
-		player.next_position = player.position + DataType::vec2{grid_width, 0};
+		player.next_position = player.position + DataType::vec2{ grid_width, 0 };
 		player.previous_position = player.position;
 		player.isMoving = true;
 	}
-	else if (doodle::KeyIsPressed && doodle::Key == doodle::KeyboardButtons::Up && player.isMoving == false) {
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && player.isMoving == false) {
 		player.direction += { 0, 1 };
 		player.next_position = player.position + DataType::vec2{ 0,grid_height };
 		player.previous_position = player.position;
 		player.isMoving = true;
 	}
-	else if (doodle::KeyIsPressed && doodle::Key == doodle::KeyboardButtons::Down && player.isMoving == false) {
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) && player.isMoving == false) {
 		player.direction += { 0, -1 };
 		player.next_position = player.position + DataType::vec2{ 0, -grid_height };
 		player.previous_position = player.position;
@@ -104,7 +104,7 @@ void Prototype1::Draw()
 	doodle::draw_rectangle(x_pos, y_pos, outline_width, outline_height);				//tile outline 그리기
 
 	for (int x = 0; x < row_size; x++) {			//전체 격자 드로우
-		for (int y = 0; y < column_size;  y++) {
+		for (int y = 0; y < column_size; y++) {
 			int grid_x = x * grid_width + x_pos;
 			int grid_y = y * grid_height + y_pos;
 			doodle::set_outline_color(255, 255, 0, 255);
@@ -117,7 +117,7 @@ void Prototype1::Draw()
 	//	-	플레이어 드로우-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
 	doodle::set_outline_color(255, 255, 255, 255);
 	doodle::set_outline_width(2.0);
-	doodle::set_fill_color(255, 255, 255, 255);			
+	doodle::set_fill_color(255, 255, 255, 255);
 	doodle::draw_ellipse(player.position.x, player.position.y, player.width, player.height);
 
 
