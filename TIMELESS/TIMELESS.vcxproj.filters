@@ -88,9 +88,15 @@
     <ClInclude Include="Game\proto1.h">
       <Filter>Game</Filter>
     </ClInclude>
+    <ClInclude Include="Engine\Vec3.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Engine\Vec2.inl">
+      <Filter>Engine</Filter>
+    </None>
+    <None Include="Engine\Vec3.inl">
       <Filter>Engine</Filter>
     </None>
   </ItemGroup>

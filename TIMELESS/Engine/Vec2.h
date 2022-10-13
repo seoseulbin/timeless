@@ -27,8 +27,11 @@ namespace DataType
     struct vec2
     {
     public:
+
         double x = 0;
         double y = 0;
+
+        double width, height;
 
         [[nodiscard]] constexpr vec2() noexcept = default;
         [[nodiscard]] explicit constexpr vec2(double value) noexcept : vec2(value, value) {}

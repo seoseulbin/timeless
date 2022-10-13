@@ -1,4 +1,5 @@
-#include<doodle/drawing.hpp>
+//#include<doodle/drawing.hpp>
+#include <SFML/Graphics.hpp>
 #include"Texture.h"
 
 using namespace Timeless;
@@ -26,13 +27,14 @@ void Texture::Draw(vec2 location)
 	draw_image(image, location.x, location.y);
 }
 
-void Texture::Draw(Matrix displayMatrix)
+void Texture::Draw(Matrix )   //param -> displayMatrix
 {
-	doodle::push_settings();
+
+	/*doodle::push_settings();
 	doodle::apply_matrix(displayMatrix[0][0],displayMatrix[1][0], displayMatrix[0][1],
 		displayMatrix[1][1], displayMatrix[0][2], displayMatrix[1][2]);
 	doodle::draw_image(image, 0, 0);
-	doodle::pop_settings();
+	doodle::pop_settings();*/
 }
 
 ivec2 Texture::GetSize()
