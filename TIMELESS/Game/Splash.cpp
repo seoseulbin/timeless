@@ -1,4 +1,4 @@
-#include"..\Engine\Engine.h"
+#include"../Engine/Engine.h"
 #include"Screens.h"
 #include"Splash.h"
 
@@ -13,7 +13,7 @@ void Splash::Load()
 	T = chrono::system_clock::now();
 }
 
-void Splash::Update()
+void Splash::Update(double)
 {
 	chrono::system_clock::time_point now = chrono::system_clock::now();
 	double dt = chrono::duration<double>(now - T).count();
@@ -25,8 +25,9 @@ void Splash::Update()
 
 void Splash::Draw()
 {
-	Engine::GetWindow().Clear(0xFFFFFFFF);
-	texture.Draw((Engine::GetWindow().GetSize() - texture.GetSize()) / 2);
+	Engine::GetWindow().Clear();
+	//texture.Draw({ 0,0 });
+	texture.Draw();
 }
 
 void Splash::Unload()

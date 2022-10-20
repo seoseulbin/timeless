@@ -1,5 +1,6 @@
 #pragma once
 #include<vector>
+#include<SFML/Window.hpp>
 
 class InputKey {
 public:
@@ -12,16 +13,19 @@ public:
 	};
 
 	InputKey(Keyboard button);
+	InputKey(sf::Keyboard::Key button);
 	bool IsKeyDown() const;
 	bool IsKeyReleased() const;
 private:
 	Keyboard button;
+	sf::Keyboard::Key button_2;
 };
 
 class Input {
 public:
 	Input();
 	bool IsKeyDown(InputKey::Keyboard key) const;
+	bool IsKeyDown(sf::Keyboard::Key key) const;
 	bool IsKeyReleased(InputKey::Keyboard key) const;
 	void SetKeyDown(InputKey::Keyboard key, bool value);
 	void Update();

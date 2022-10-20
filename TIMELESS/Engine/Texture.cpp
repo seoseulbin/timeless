@@ -1,41 +1,57 @@
-#include<doodle/drawing.hpp>
-#include"Texture.h"
+#include "Texture.h"
+#include"Engine.h"
 
-using namespace Timeless;
-using namespace std;
-using namespace doodle;
-using namespace DataType;
 
 Texture::Texture()
-{}
-
-void Texture::Load(const filesystem::path& filePath)
 {
-	image = Image{ filePath };
+
 }
 
-void Texture::Load(const filesystem::path& filePath, vec2 location)
+Texture::Texture(std::string filePath)
 {
-	image = Image{ filePath };
-	position = location;
+	texture.loadFromFile(filePath);
 }
 
-
-void Texture::Draw(vec2 location)
+void Texture::Load(std::string filePath)
 {
-	draw_image(image, location.x, location.y);
+	texture.loadFromFile(filePath);
 }
 
-void Texture::Draw(Matrix displayMatrix)
+void Texture::Draw([[maybe_unused]]DataType::ivec2 position)
 {
-	doodle::push_settings();
-	doodle::apply_matrix(displayMatrix[0][0],displayMatrix[1][0], displayMatrix[0][1],
-		displayMatrix[1][1], displayMatrix[0][2], displayMatrix[1][2]);
-	doodle::draw_image(image, 0, 0);
-	doodle::pop_settings();
+	sf::Sprite sprite(texture);
+	/*auto TextureSize = texture.getSize();
+	auto windowSize = Engine::GetWindow().GetSize();
+
+	float ScaleX = (float)windowSize.x / TextureSize.x;
+	float ScaleY = (float)windowSize.y / TextureSize.y;
+
+	
+	sprite.setScale(ScaleX, ScaleY);*/
+	sprite.setPosition((float)Engine::GetWindow().GetSize().x / 2, (float)Engine::GetWindow().GetSize().y / 2);
+	sprite.setOrigin((float)texture.getSize().x / 2, (float)texture.getSize().y / 2);
+	Engine::GetWindow().Draw(sf::Color::White,sprite);
 }
 
-ivec2 Texture::GetSize()
+void Texture::Draw([[maybe_unused]] DataType::fvec2 position)
 {
-	return { image.GetWidth(), image.GetHeight() };
+	sf::Sprite sprite(texture);
+
+	sprite.setPosition((float)Engine::GetWindow().GetSize().x / 2, (float)Engine::GetWindow().GetSize().y / 2);
+	sprite.setOrigin((float)texture.getSize().x / 2, (float)texture.getSize().y / 2);
+	Engine::GetWindow().Draw(sf::Color::White, sprite);
+}
+
+void Texture::Draw()
+{
+	sf::Sprite sprite(texture);
+
+	sprite.setPosition((float)Engine::GetWindow().GetSize().x / 2, (float)Engine::GetWindow().GetSize().y / 2);
+	sprite.setOrigin((float)texture.getSize().x / 2, (float)texture.getSize().y / 2);
+	Engine::GetWindow().Draw(sf::Color::White, sprite);
+}
+
+DataType::fvec2 Texture::GetSize()
+{
+	return { (float)texture.getSize().x, (float)texture.getSize().y };
 }

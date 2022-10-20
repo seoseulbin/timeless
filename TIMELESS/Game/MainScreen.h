@@ -1,13 +1,15 @@
 #pragma once
+
 #include"../Engine/GameState.h"
+#include<SFML/Graphics.hpp>
+#include"../Engine/Input.h"
 #include"../Engine/Texture.h"
-#include<string>
-#include<chrono>
-
-
-class Splash : public GameState {
+class MainScreen : public GameState
+{
 public:
-	Splash();
+	
+
+	MainScreen();
 	void Load() override;
 	void Update(double) override;
 	void Unload() override;
@@ -15,10 +17,12 @@ public:
 
 	string GetName() override
 	{
-		return "Splash Screen";
+		return "MainScreen";
 	}
 private:
+	sf::CircleShape shape;
+	InputKey esckey;
+	InputKey NextStage;
 	Texture texture;
-	
-	std::chrono::system_clock::time_point T;
 };
+

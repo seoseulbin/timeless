@@ -2,7 +2,7 @@
 #include"Logger.h"
 
 
-Timeless::Logger::Logger(Severity severity, bool useConsole) : minLevel(severity),outStream("Log.log")
+ Logger::Logger(Severity severity, bool useConsole) : minLevel(severity), outStream("Log.log")
 {
 	if (useConsole == true)
 	{
@@ -10,13 +10,13 @@ Timeless::Logger::Logger(Severity severity, bool useConsole) : minLevel(severity
 	}
 }
 
-Timeless::Logger::~Logger()
+ Logger::~Logger()
 {
-    outStream.flush();
-    outStream.close();
+	outStream.flush();
+	outStream.close();
 }
 
-void Timeless:: Logger::Log(Logger::Severity severity, string message)
+void  Logger::Log(Logger::Severity severity, string message)
 {
 	int max = static_cast<int>(severity);
 	int min = static_cast<int>(minLevel);

@@ -47,28 +47,28 @@
     <ClCompile>
       <WarningLevel>Level4</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>SFML_STATIC</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)\external\doodle\include;$(SolutionDir)\external\sfml\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\external\sfml\include</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <TreatWarningAsError>true</TreatWarningAsError>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>Opengl32.lib;Gdi32.lib;User32.lib;doodle.lib;sfml-main-d.lib;sfml-graphics-d.lib;sfml-window-d.lib;sfml-system-d.lib;sfml-audio-d.lib;sfml-network-d.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(SolutionDir)external\sfml\lib;$(SolutionDir)external\doodle\lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Opengl32.lib;Gdi32.lib;User32.lib;sfml-main-d.lib;sfml-graphics-d.lib;sfml-window-d.lib;sfml-system-d.lib;sfml-audio-d.lib;sfml-network-d.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)external\sfml\lib</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>Level4</WarningLevel>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>SFML_STATIC</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_MBCS;NDEBUG;_CONSOLE</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)\external\doodle\include;$(SolutionDir)\external\sfml\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)external\sfml\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -76,37 +76,49 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(SolutionDir)external\sfml\lib;$(SolutionDir)external\doodle\lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>Opengl32.lib;Gdi32.lib;User32.lib;doodle.lib;sfml-main-d.lib;sfml-graphics-d.lib;sfml-window-d.lib;sfml-system-d.lib;sfml-audio-d.lib;sfml-network-d.lib</AdditionalDependencies>
+      <AdditionalDependencies>Opengl32.lib;Gdi32.lib;User32.lib;doodle.lib;sfml-main.lib;sfml-graphics.lib;sfml-window.lib;sfml-system.lib;sfml-audio.lib;sfml-network.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Engine\BloomNeon.cpp" />
     <ClCompile Include="Engine\Engine.cpp" />
     <ClCompile Include="Engine\GameStateManager.cpp" />
+    <ClCompile Include="Engine\HandleSFML.cpp" />
     <ClCompile Include="Engine\Input.cpp" />
-    <ClCompile Include="Engine\Input_doodle.cpp" />
+    <ClCompile Include="Engine\Input_SFML.cpp" />
     <ClCompile Include="Engine\Logger.cpp" />
     <ClCompile Include="Engine\Matrix.cpp" />
     <ClCompile Include="Engine\Texture.cpp" />
     <ClCompile Include="Engine\Window.cpp" />
-    <ClCompile Include="Game\MainMenu.cpp" />
-    <ClCompile Include="Game\proto1.cpp" />
+    <ClCompile Include="Game\DrawMap.cpp" />
+    <ClCompile Include="Game\MainScreen.cpp" />
+    <ClCompile Include="Game\Neon.cpp" />
+    <ClCompile Include="Game\Player.cpp" />
     <ClCompile Include="Game\Splash.cpp" />
+    <ClCompile Include="Game\Stage1.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Engine\angles.h" />
+    <ClInclude Include="Engine\BloomNeon.h" />
     <ClInclude Include="Engine\Engine.h" />
     <ClInclude Include="Engine\GameState.h" />
     <ClInclude Include="Engine\GameStateManager.h" />
+    <ClInclude Include="Engine\HandleSFML.h" />
     <ClInclude Include="Engine\Input.h" />
     <ClInclude Include="Engine\Logger.h" />
     <ClInclude Include="Engine\Matrix.h" />
     <ClInclude Include="Engine\Texture.h" />
     <ClInclude Include="Engine\Vec2.h" />
+    <ClInclude Include="Engine\Vec3.h" />
     <ClInclude Include="Engine\Window.h" />
-    <ClInclude Include="Game\MainMenu.h" />
-    <ClInclude Include="Game\proto1.h" />
+    <ClInclude Include="Game\DrawMap.h" />
+    <ClInclude Include="Game\MainScreen.h" />
+    <ClInclude Include="Game\Neon.h" />
+    <ClInclude Include="Game\Player.h" />
     <ClInclude Include="Game\Screens.h" />
     <ClInclude Include="Game\Splash.h" />
+    <ClInclude Include="Game\Stage1.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Engine\Vec2.inl" />

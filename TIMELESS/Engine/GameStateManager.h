@@ -4,38 +4,36 @@
 
 using namespace std;
 
-namespace Timeless
+class GameState;
+
+class GameStateManager
 {
-	class GameState;
+public:
+	GameStateManager();
 
-	class GameStateManager
+	void AddGameState(GameState& gameState);
+	void Update(double dt);
+	void SetNextState(int initState);
+	void Shutdown();
+	void ReloadState();
+	void SetGameHasEnded();
+	bool HasGameEnded()
 	{
-	public:
-		GameStateManager();
+		return state == State::Exit;
+	}
 
-		void AddGameState(GameState& gameState);
-		void Update();
-		void SetNextState(int initState);
-		void Shutdown();
-		void ReloadState();
-		bool HasGameEnded()
-		{
-			return state == State::Exit;
-		}
-
-	private:
-		enum class State {
-			Start,
-			Load,
-			Update,
-			Unload,
-			Shutdown,
-			Exit,
-		};
-		vector<GameState*> gameStates;
-		State state;
-		GameState* currGameState;
-		GameState* nextGameState;
-
+private:
+	enum class State {
+		Start,
+		Load,
+		Update,
+		Unload,
+		Shutdown,
+		Exit,
 	};
-}
+	vector<GameState*> gameStates;
+	State state;
+	GameState* currGameState;
+	GameState* nextGameState;
+
+};

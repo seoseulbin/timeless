@@ -1,25 +1,27 @@
-#include<iostream>
+#include<SFML/Window.hpp>
+#include<SFML/Graphics.hpp>
 #include"Engine/Engine.h"
-#include"Game/Screens.h"
 #include"Game/Splash.h"
-#include"Game/MainMenu.h"
-#include"Game/proto1.h"
-int main(void)
+#include "Game/Stage1.h"
+#include"Game/MainScreen.h"
+#include"Game/Screens.h"
+#include<iostream>
+int main()
 {
-	std::cout << "Hello TIMELESS" << std::endl;
-
 	try {
+		sf::Event e;
 		Engine& engine = Engine::Instance();
-		engine.Init("Timeless");
+		engine.Init("TimeLess-NEON",e);
+
 		Splash splash;
-		MainMenu mainmenu;
-		Prototype1 prototype1;
+		MainScreen mainScreen;
+		Stage1 stage1;
 
 		engine.GetGameStateManager().AddGameState(splash);
-		engine.GetGameStateManager().AddGameState(mainmenu);
-		engine.GetGameStateManager().AddGameState(prototype1);
+		engine.GetGameStateManager().AddGameState(mainScreen);
+		engine.GetGameStateManager().AddGameState(stage1);
 
-		while (engine.HasGameEnded() == false)
+		while(engine.HasGameEnded() == false)
 		{
 			engine.Update();
 		}
@@ -31,4 +33,19 @@ int main(void)
 		std::cerr << e.what() << "\n";
 		return -1;
 	}
+	//sf::Window window(sf::VideoMode(1300, 800), "Test TIMELESS");
+	//sf::RenderWindow window(sf::VideoMode(1300, 800), "Test TIMELESS");
+
+	//while (window.isOpen())
+	//{
+	//	window.clear(sf::Color(0xFFFFFFFF));
+	//	window.display();
+	//	sf::Event event;
+
+	//	while (window.pollEvent(event))
+	//	{
+	//		if (event.type == sf::Event::Closed)
+	//			window.close();
+	//	}
+	//}
 }

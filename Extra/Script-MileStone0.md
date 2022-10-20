@@ -1,4 +1,15 @@
 안녕하십니까? 네온의 제작을 맡은 팀 타임리스의 마일스톤 0 시작하겠습니다.
+Hello, let's start Teamless's MileStone 0 presentation.
+Our game name is NEON
+
+
+Our Team member has
+Producer minseok kim,
+Technical Leader sungwon baek,
+Design Leader seulbin seo,
+Test leader hyojoon kim,
+Level designer junseong park
+
 
 팀 타임리스는
 프로듀서인 민석김
@@ -13,6 +24,29 @@
 Only rely on the neon sign marked on the tile to escape
 으로 정하게 되었고, 이제부터 그 게임 컨셉에 어울리는 기본 컨셉을 보여드리려고 합니다.
 
+We think our team's best elevator pitch is
+"Only rely on the neon sign marked on the tile to escape"
+
+
+Now we show our game concept.
+Let's see a brief video.
+
+As you can see video,
+The starting point of the player has been placed in the center for easily explain. This will be revised later.
+If you look video carefully, you can see a some notification at the edge of the screen that the player is viewing.
+This alarm tells to player, that the pattern tiles of that color will come from that direction.
+After this alarm, the pattern tile is passed, and that pattern tiles leaving a afterimage where the pattern tile was passed.
+And the player can avoid this pattern tile by jumping by using space bar.
+There is not in video, but using this pattern tile's afterimage, the player can figure out which tile we can move or not.
+And than the player can move to goal point using the arrow keys.
+When the player is moving, the camera will move together, so that player can see our whole map.
+This will be easily used at more huge stage.
+And there is some kind of coin, the player can collect this coin.
+This coin is used for score in the final stage.
+However, later players can also use this coin to purchase some ability to help the stage.
+If player use this coin for ability, the final score is low.
+
+
 잠시 짧은 영상을 보고 가도록 하겠습니다.
 플레이어의 시작지점은 직관적인 설명을 위해 중앙으로 위치를 했는데, 후 실 게임 개발 시에는 플레이어는 다른 지점에서 시작하게 될 것입니다.
 영상을 자세히 보시면 플레이어가 보는 화면 끝 가장자리 부분에 잠시 후 이쪽 방향에서 이 색깔의 패턴타일이 올 것임을 알려주는 알림이 나타납니다.
@@ -22,6 +56,14 @@ Only rely on the neon sign marked on the tile to escape
 그 후 플레이어는 방향키를 이용하여 골인지점까지 이동하게 되며, 플레이어가 이동함에 따라 카메라가 일정하게 움직이며 맵 전체를 보여주게 될 것입니다.
 이는 더 넓어진 스테이지를 플레이어가 더 직관적으로 보기위해 이용될 것이다.
 그리고 맵 곳곳에 배치된 코인은 유저가 수집할 수 있는 오브젝트인데, 수집한 갯수를 기반으로 최종적인 스코어를 계산해 낼 것이며, 혹은 이를 이용하여 추후 개발될 상점기능에 추가될 스테이지에 도움이 될 능력이나 아이템을 살 수 있는 용도로 쓰일 수 있도록 개발할 예정이다.
+
+
+We chose 3 features of this game.
+
+First, Through Sprite rotation or sprite scaling, it can inform to player more intuitively of pattern tiles situation.
+Second, Through Multiple levels or environments, it can give sense of tension and speed to player with more complex and faster pattern tiles.
+Last, Through file parsing for game content, it can give us to more easily use memory, and also later player can easily make their own stage. 
+
 
 
 
@@ -35,12 +77,15 @@ Only rely on the neon sign marked on the tile to escape
 마지막으로 스테이지가 증가함에 따라 커지는 맵 규모와 많아지는 패턴타일들의 모든 것들을 코드 내부에 담게 되면 용량이 비약적으로 커지기 때문에 모든 스테이지들을 외부에서 불러와 게임 내부에서 읽음으로써 더 많은 메모리를 확보하여 추후에 플레이어들이 스테이지를 제작함에 있어서도 편리하다고 판단했다.
 
 
+The most important risk of our game is 'level design' and 'algorithm for moving pattern tiles'.
+At first, as we develop 'level design', we will try to find some kind of formula or rules that can easily and automatically make stage.
+Also, as we develop pattern tiles movement, we will try to find some formula or try to use some kind of best algorithm to easily manage our game's pattern tiles.
 
 
 가장 중요하게 생각되는 리스크들은 레벨 디자인과 보다 빠른 패턴타일의 진행 연산으로 생각되는데,
 
 
-
+As we develop 'level design', we will try to find some kind of formula or rules that can easy and automatically to make stage.
 레벨 디자인은 일단 개발을 하면서 하나하나 맞추는 과정 속에서, 정해진 수식을 계산하고 도출해 내 자동적으로 레벨이 어렵지 않게 증가하도록 할 것이며, 패턴의 진행방향 역시 처음엔 일일히 변수값을 증가시키는 것에서, 여러 탐색 알고리즘들 중 가장 적합하고 가장 빠르다고 판단되는 알고리즘을 찾아 적용시켜 패턴들이 자동적으로 이동하게 만들예정이다.
 
 

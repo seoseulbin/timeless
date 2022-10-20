@@ -1,28 +1,21 @@
 #pragma once
-#include<doodle/image.hpp>
+#include<SFML/Graphics.hpp>
+#include<fstream>
 #include"Vec2.h"
-#include"Matrix.h"
-
-using namespace std;
-using namespace DataType;
-using namespace doodle;
-
-
-namespace Timeless
+#include<string>
+class Texture
 {
-	class Texture
-	{
-	public:
-		Texture();
-		void Load(const filesystem::path& filePath);
-		void Load(const filesystem::path& filePath, vec2 location);
-		void Draw(vec2 location);
-		void Draw(Matrix displayMatrix);
-		//void Update(Camera camera);
-		ivec2 GetSize();
+public:
+	Texture();
+	Texture(std::string filePath);
+	void Load(std::string filePath);
+	void Draw(DataType::ivec2 position);
+	void Draw(DataType::fvec2 position);
+	void Draw();
 
-	private:
-		Image image;
-		vec2 position;
-	};
-}
+	DataType::fvec2 GetSize();
+
+private:
+	sf::Texture texture;
+};
+

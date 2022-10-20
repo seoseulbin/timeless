@@ -10,7 +10,7 @@ void GameStateManager::AddGameState(GameState& gamestate)
 	gameStates.push_back(&gamestate);
 }
 
-void GameStateManager::Update()
+void GameStateManager::Update(double dt)
 {
 	switch (state)
 	{
@@ -32,7 +32,7 @@ void GameStateManager::Update()
 		Engine::GetLogger().LogEvent("Load " + currGameState->GetName());
 		currGameState->Load();
 		Engine::GetLogger().LogEvent("Load Complete");
-		currGameState->Update();
+		currGameState->Update(dt);
 		state = State::Update;
 		break;
 	case State::Update:
@@ -44,7 +44,7 @@ void GameStateManager::Update()
 		else
 		{
 			Engine::GetLogger().LogVerbose("Update" + currGameState->GetName());
-			currGameState->Update();
+			currGameState->Update(dt);
 			currGameState->Draw();
 		}
 		break;
@@ -84,4 +84,9 @@ void GameStateManager::Shutdown()
 void GameStateManager::ReloadState()
 {
 	state = State::Unload;
+}
+
+void GameStateManager::SetGameHasEnded()
+{
+	state = State::Exit;
 }

@@ -144,4 +144,83 @@ namespace DataType
 	{
 		return vec2(vec.x / value, vec.y / value);
 	}
+
+
+
+
+	// float type
+
+	constexpr fvec2& DataType::fvec2::operator+=(fvec2 fvec) noexcept
+	{
+		x += fvec.x;
+		y += fvec.y;
+		return *this;
+		// TODO: 여기에 return 문을 삽입합니다.
+	}
+	constexpr fvec2 DataType::operator+(fvec2 vec, fvec2 vec_2) noexcept
+	{
+		return fvec2(vec.x + vec_2.x , vec.y + vec_2.y);
+	}
+	constexpr fvec2& DataType::fvec2::operator-=(fvec2 vec) noexcept
+	{
+		x -= vec.x;
+		y -= vec.y;
+		return *this;
+		// TODO: 여기에 return 문을 삽입합니다.
+	}
+	constexpr fvec2 DataType::operator-(fvec2 vec, fvec2 vec_2) noexcept
+	{
+		return fvec2(vec.x - vec_2.x, vec.y - vec_2.y);
+	}
+	constexpr fvec2 DataType::operator-(fvec2 vec) noexcept
+	{
+		return fvec2(-vec.x, -vec.y);
+	}
+	constexpr fvec2& DataType::fvec2::operator*=(int v) noexcept
+	{
+		x *= v;
+		y *= v;
+		return *this;
+		// TODO: 여기에 return 문을 삽입합니다.
+	}
+	constexpr fvec2 DataType::operator*(fvec2 vec, int value) noexcept
+	{
+		return fvec2(vec.x * value, vec.y * value);
+	}
+	constexpr fvec2 DataType::operator*(int value, fvec2 vec) noexcept
+	{
+		return fvec2(value * vec.x, value * vec.y);
+	}
+	constexpr fvec2& DataType::fvec2::operator/=(int value) noexcept
+	{
+		x /= value;
+		y /= value;
+		return *this;
+		// TODO: 여기에 return 문을 삽입합니다.
+	}
+	constexpr fvec2 DataType::operator/(fvec2 vec, int value) noexcept
+	{
+		return fvec2(vec.x / value, vec.y / value);
+	}
+
+	constexpr fvec2 DataType::operator*(double value, fvec2 vec) noexcept
+	{
+		return fvec2(static_cast<float>(value) * vec.x, static_cast<float>(value) * vec.y);
+	}
+	constexpr fvec2 DataType::operator*(fvec2 vec, double value) noexcept
+	{
+		return fvec2(vec.x * static_cast<float>(value), vec.y * static_cast<float>(value));
+	}
+	constexpr fvec2 DataType::operator/(fvec2 vec, double value) noexcept
+	{
+		return fvec2(vec.x / static_cast<float>(value), vec.y / static_cast<float>(value));
+	}
+	constexpr bool DataType::operator==(fvec2 vec, fvec2 vec_2) noexcept
+	{
+		return is_equal(vec.x, vec_2.x) == is_equal(vec.y, vec_2.y);
+	}
+	constexpr bool DataType::operator!=(fvec2 vec, fvec2 vec_2) noexcept
+	{
+		return (!is_equal(vec.x, vec_2.x) || !is_equal(vec.y, vec_2.y));
+	}
 }

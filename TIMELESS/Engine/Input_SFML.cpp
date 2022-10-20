@@ -1,9 +1,16 @@
-#include <SFML/Graphics.hpp>
+//#include <SFML/Graphics.hpp>
+#include<SFML/Window.hpp>
+
+
 #include "Input.h"
 #include "Engine.h"			// GetLogger, GetInput
 
-InputKey::Keyboard DoodleKeyToCS230Key(sf::Keyboard::Key button)
+InputKey::Keyboard SFMLkeyToEngine([[maybe_unused]]sf::Keyboard::Key button)
 {
+	//if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter))
+	//{
+	//	return InputKey::Keyboard::Enter;
+	//}
 	if (button == sf::Keyboard::Enter)
 	{
 		return InputKey::Keyboard::Enter;
@@ -25,6 +32,7 @@ InputKey::Keyboard DoodleKeyToCS230Key(sf::Keyboard::Key button)
 	}
 	else if (button == sf::Keyboard::Down) {
 		return InputKey::Keyboard::Down;
+		
 	}
 	else if (button >= sf::Keyboard::A && button <= sf::Keyboard::Z) {
 		int offset = static_cast<int>(button) - static_cast<int>(sf::Keyboard::A);
@@ -33,16 +41,36 @@ InputKey::Keyboard DoodleKeyToCS230Key(sf::Keyboard::Key button)
 	return InputKey::Keyboard::None;
 }
 
-void on_key_pressed(sf::Keyboard::Key sfmlButton) {
-	InputKey::Keyboard button = DoodleKeyToCS230Key(sfmlButton);
-	if (button != InputKey::Keyboard::None) {
-		Engine::GetLogger().LogDebug("on_key_pressed");
+//bool sf::Keyboard::isKeyPressed(Key key)
+//{
+//	InputKey::Keyboard button = SFMLkeyToEngine(key);
+//	if (button != InputKey::Keyboard::None) {
+//		Engine::GetLogger().LogDebug("on_key_pressed");
+//		Engine::GetInput().SetKeyDown(button, true);
+//	}
+//	return true;
+//}
+	//InputKey::Keyboard button = SFMLkeyToEngine(sfmlButton);
+	//if (button != InputKey::Keyboard::None) {
+	//	Engine::GetLogger().LogDebug("on_key_pressed");
+	//	Engine::GetInput().SetKeyDown(button, true);
+	//}
+	//return true;
+
+bool isKeyPressed(sf::Keyboard::Key key)
+{
+	InputKey::Keyboard button = SFMLkeyToEngine(key);
+	if (button != InputKey::Keyboard::None)
+	{
+		Engine::GetLogger().LogDebug("KeyPressed");
 		Engine::GetInput().SetKeyDown(button, true);
+		return true;
 	}
+	return false;
 }
 
 void on_key_released(sf::Keyboard::Key sfmlButton) {
-	InputKey::Keyboard button = DoodleKeyToCS230Key(sfmlButton);
+	InputKey::Keyboard button = SFMLkeyToEngine(sfmlButton);
 	if (button != InputKey::Keyboard::None) {
 		Engine::GetLogger().LogDebug("on_key_released");
 		Engine::GetInput().SetKeyDown(button, false);

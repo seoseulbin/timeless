@@ -6,8 +6,7 @@
 
 using namespace std;
 
-namespace Timeless {
-	class Logger {
+class Logger {
 	public:
 		enum class Severity {
 			Verbose,
@@ -30,6 +29,4 @@ namespace Timeless {
 		ofstream outStream;
 		Severity minLevel;
 
-	};
-}
-
+};
