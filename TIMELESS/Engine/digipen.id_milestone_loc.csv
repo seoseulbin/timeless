@@ -1,0 +1,27 @@
+language,filename,blank,comment,code,"github.com/AlDanial/cloc v 1.90  T=0.10 s (241.9 files/s, 21919.0 lines/s)"
+C++,Texture.cpp,44,46,210
+C++,GameObjectManager.cpp,21,34,127
+C++,GameObject.cpp,26,12,113
+C++,Window.cpp,29,9,112
+C++,GameStateManager.cpp,12,13,82
+C++,Sprite.cpp,15,0,82
+C++,Matrix.cpp,17,12,76
+C++,FIleIO.cpp,36,23,74
+C++,SpriteFont.cpp,13,3,71
+C++,Collision.cpp,20,0,70
+C++,SFXManager.cpp,10,0,68
+C++,Engine.cpp,21,6,59
+C++,Input_OpenGL.cpp,4,0,55
+C++,HandleSFML.cpp,6,6,52
+C++,Input_SFML.cpp,7,20,51
+C++,Camera.cpp,10,18,50
+C++,BloomNeon.cpp,18,10,46
+C++,TextureManager.cpp,7,1,46
+C++,NeonObjectManager.cpp,7,7,36
+C++,Font.cpp,8,9,35
+C++,Logger.cpp,6,0,35
+C++,HandleOpenGL.cpp,6,38,34
+C++,Input.cpp,11,1,32
+C++,ShowCollision.cpp,3,0,16
+C++,Font_Opengl.cpp,1,0,7
+SUM,,358,268,1639

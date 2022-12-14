@@ -1,0 +1,19 @@
+language,filename,blank,comment,code,"github.com/AlDanial/cloc v 1.90  T=0.06 s (281.0 files/s, 33642.5 lines/s)"
+C++,Player.cpp,61,13,269
+C++,Neon.cpp,89,40,244
+C++,DrawMap.cpp,24,2,196
+C++,MainMenu.cpp,15,3,102
+C++,Light.cpp,19,5,99
+C++,Stage1.cpp,41,4,81
+C++,Particle.cpp,17,9,78
+C++,Tutorial.cpp,19,7,77
+C++,TestPage2.cpp,14,2,57
+C++,Coin.cpp,14,6,53
+C++,Splash_TeamName.cpp,12,4,46
+C++,Splash.cpp,13,2,44
+C++,LoadingScreen.cpp,8,0,30
+C++,Option.cpp,5,0,23
+C++,Special.cpp,5,0,23
+C++,MainScreen.cpp,0,120,0
+C++,Score.cpp,0,40,0
+SUM,,356,257,1422

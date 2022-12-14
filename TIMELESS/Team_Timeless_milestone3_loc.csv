@@ -1,0 +1,45 @@
+Index,Language / Latest Used,Main Contributor(Main %) / Second Contributor,FileName,Blank,Comment,Code
+1,C++/OpenGL Engine,JunSeong.Park (100%),main.cpp,8,42,49
+2,C++/OpenGL Engine,MinSeok.Kim (100%),Texture.cpp,44,46,210
+3,C++/OpenGL Engine,MinSeok.Kim (100%),GameObjectManager.cpp,21,34,127
+4,C++/OpenGL Engine,MinSeok.Kim (100%),GameObject.cpp,26,12,113
+5,C++/OpenGL Engine,MinSeok.Kim (100%),Window.cpp,29,9,112
+6,C++/OpenGL Engine,MinSeok.Kim (100%),GameStateManager.cpp,12,13,82
+7,C++/OpenGL Engine,SeulBin.Seo (100%),Sprite.cpp,15,0,82
+8,C++/OpenGL Engine,SeulBin.Seo (100%),Matrix.cpp,17,12,76
+9,C++/OpenGL Engine,HyoJoon.Kim (100%),FIleIO.cpp,36,23,74
+10,C++/SFML Engine,SeulBin.Seo (55%) / MinSeok.Kim,SpriteFont.cpp,13,3,71
+11,C++/OpenGL Engine,MinSeok.Kim (100%),Collision.cpp,20,0,70
+12,C++/OpenGL Engine,SeulBin.Seo (100%),SFXManager.cpp,10,0,68
+13,C++/OpenGL Engine,MinSeok.Kim (100%),Engine.cpp,21,6,59
+14,C++/OpenGL Engine,JunSeong.Park (100%),Input_OpenGL.cpp,4,0,55
+15,C++/SFML Engine,MinSeok.Kim (70%) / JunSeong.Park,HandleSFML.cpp,6,6,52
+16,C++/SFML Engine,MinSeok.Kim (70%) / JunSeong.Park,Input_SFML.cpp,7,20,51
+17,C++/OpenGL Engine,MinSeok.Kim (100%),Camera.cpp,10,18,50
+18,C++/SFML Engine,JunSeong.Park (100%),BloomNeon.cpp,18,10,46
+19,C++/OpenGL Engine,MinSeok.Kim (100%),TextureManager.cpp,7,1,46
+20,C++/SFML Engine,JunSeong.Park (75%) / MinSeok.Kim,NeonObjectManager.cpp,7,7,36
+21,C++/SFML Engine,SeulBin.Seo (88%) / JunSeong.Park,Font.cpp,8,9,35
+22,C++/OpenGL Engine,CS230 (100%),Logger.cpp,6,0,35
+23,C++/OpenGL Engine,JunSeong.Park (100%),HandleOpenGL.cpp,6,38,34
+24,C++/OpenGL Engine,JunSeong.Park (100%),Input.cpp,11,1,32
+25,C++/OpenGL Engine,JunSeong.Park (100%),ShowCollision.cpp,3,0,16
+26,C++/OpenGL Engine,JunSeong.Park (100%),Font_Opengl.cpp,1,0,7
+27,C++/OpenGL Engine,HyoJoon.Kim (90%) / MinSeok.Kim,Player.cpp,61,13,269
+28,C++/OpenGL Engine,HyoJoon.Kim (100%),Neon.cpp,89,40,244
+29,C++/OpenGL Engine,HyoJoon.Kim (50%) / MinSeok.Kim,DrawMap.cpp,24,2,196
+30,C++/OpenGL Engine,SeulBin.Seo (100%),MainMenu.cpp,15,3,102
+31,C++/OpenGL Engine,HyoJoon.Kim (100%),Light.cpp,19,5,99
+32,C++/OpenGL Engine,MinSeok.Kim (80%) / HyoJoon.Kim,Stage1.cpp,41,4,81
+33,C++/OpenGL Engine,HyoJoon.Kim (100%),Particle.cpp,17,9,78
+34,C++/OpenGL Engine,SeulBin.Seo (100%),Tutorial.cpp,19,7,77
+35,C++/OpenGL Engine,"MinSeok.Kim, HyoJoon.Kim, SeulBin.Seo, JunSeong.Park(Each 25%) -> Because this file was a testing file for swapping sfml to OpenGL at first",TestPage2.cpp,14,2,57
+36,C++/OpenGL Engine,SeulBin.Seo (100%),Coin.cpp,14,6,53
+37,C++/OpenGL Engine,JunSeong.Park (100%),Splash_TeamName.cpp,12,4,46
+38,C++/OpenGL Engine,JunSeong.Park (100%),Splash.cpp,13,2,44
+39,C++/OpenGL Engine,JunSeong.Park (100%),LoadingScreen.cpp,8,0,30
+40,C++/OpenGL Engine,JunSeong.Park (100%),Option.cpp,5,0,23
+41,C++/SFML Engine,JunSeong.Park (100%),Special.cpp,5,0,23
+42,C++/SFML Engine,MinSeok.Kim (100%),MainScreen.cpp,0,120,0
+43,C++/SFML Engine,JunSeong.Park (100%),Score.cpp,0,40,0
+SUM,,"We are trying SFML->OpenGL Engine, and that's why we have a lot source file, As a producer tried to remove the contents related to SFML, but our hard work in this SFML could not be ignored because it was also our effort after all",43,722,567,3110
