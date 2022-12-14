@@ -25,8 +25,12 @@ class Logger {
 
 	private:
 		void Log(Severity, string displayText);
+		double GetSecondsSinceStart()
+		{
+			return std::chrono::duration<double>(std::chrono::system_clock::now() - startTime).count();
+		}
 
 		ofstream outStream;
 		Severity minLevel;
-
+		std::chrono::system_clock::time_point startTime;
 };

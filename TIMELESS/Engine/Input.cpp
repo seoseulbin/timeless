@@ -4,14 +4,11 @@
 
 InputKey::InputKey(Keyboard _button) : button(_button) {}
 
-InputKey::InputKey(sf::Keyboard::Key button) : button_2(button)
-{
-}
 
 bool InputKey::IsKeyDown() const
 {
-	//return Engine::GetInput().IsKeyDown(InputKey::button);
-	return Engine::GetInput().IsKeyDown(InputKey::button_2);
+	return Engine::GetInput().IsKeyDown(InputKey::button);
+	//return Engine::GetInput().IsKeyDown(InputKey::button_2);
 }
 
 bool InputKey::IsKeyReleased() const
@@ -35,10 +32,6 @@ bool Input::IsKeyDown(InputKey::Keyboard key) const
 	return keyDown[static_cast<int>(key)];
 }
 
-bool Input::IsKeyDown(sf::Keyboard::Key key) const
-{
-	return sf::Keyboard::isKeyPressed(key);
-}
 
 bool Input::IsKeyReleased(InputKey::Keyboard key) const
 {

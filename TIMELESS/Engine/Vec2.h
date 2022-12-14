@@ -101,6 +101,8 @@ namespace DataType
 
         constexpr friend fvec2 operator+ (fvec2 vec, fvec2 vec_2) noexcept;
 
+        constexpr fvec2& operator+(float value) noexcept;
+
         constexpr fvec2& operator-= (fvec2 vec) noexcept;
 
         constexpr friend fvec2 operator- (fvec2 vec, fvec2 vec_2) noexcept;

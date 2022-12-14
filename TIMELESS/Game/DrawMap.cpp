@@ -1,50 +1,222 @@
 #include "DrawMap.h"
 #include"../Engine/Engine.h"
+#include "Stage1.h"
+#include"GameObjectTypes.h"
+#include "Coin.h"
 
 DrawMap::DrawMap()
-{}
-
-void DrawMap::InitMap(int width, int height)
 {
-	map_size.x = (float)width;
-	map_size.y = (float)height;
-	//view.setCenter((float)(Engine::GetWindow().GetSize().x - map_size.x), (float)(Engine::GetWindow().GetSize().y - map_size.y));
-	//view.setCenter(0, 0);
-	//view.setSize((float)map_size.x,(float)map_size.y);
-	//view.setViewport(sf::FloatRect(0, 0, 1, 1));
-	//view.setCenter(0, 0);
-	
+	map_data = Engine::GetFileInput().GetMapData(Stage1::stage_level);
+	std::string filePath = "assets/black_outline.png";
+	normal_grid_sprite.Load_noObject("assets/data/black_outline.spt");
+	int x_index = 0;
+	int y_index = 0;
+	float grid_x;
+	float grid_y;
+	DataType::fvec2 pos;
+	grid_x = Stage1::x_pos + (Stage1::grid_width * (x_index - 1)) + Stage1::grid_width / 2;
+	grid_y = Stage1::y_pos + (Stage1::grid_height * (y_index)) + Stage1::grid_height / 2;
+	pos = { grid_x, grid_y };
+	Engine::GetGSComponent<GameObjectManager>()->Add(new WallGrid(pos));
+
+	for (auto data : map_data) {
+
+		switch (data)
+		{
+		case '0':
+			x_index++;
+			break;
+		case '1':
+			grid_x = Stage1::x_pos + (Stage1::grid_width * x_index) + Stage1::grid_width / 2;
+			grid_y = Stage1::y_pos + (Stage1::grid_height * y_index) + Stage1::grid_height / 2;
+			pos = { grid_x,grid_y };
+			Engine::GetGSComponent<GameObjectManager>()->Add(new WallGrid(pos));
+			x_index++;
+			break;
+		case '\n':
+			grid_x = Stage1::x_pos + (Stage1::grid_width * x_index) + Stage1::grid_width / 2;
+			grid_y = Stage1::y_pos + (Stage1::grid_height * y_index) + Stage1::grid_height / 2;
+			pos = { grid_x,grid_y };
+			Engine::GetGSComponent<GameObjectManager>()->Add(new WallGrid(pos));
+			y_index++;
+			x_index = 0;
+
+			grid_x = Stage1::x_pos + (Stage1::grid_width * (x_index - 1)) + Stage1::grid_width / 2;
+			grid_y = Stage1::y_pos + (Stage1::grid_height * (y_index)) + Stage1::grid_height / 2;
+			pos = { grid_x,grid_y };
+			Engine::GetGSComponent<GameObjectManager>()->Add(new WallGrid(pos));
+
+			break;
+		case '#':
+			grid_x = Stage1::x_pos + (Stage1::grid_width * x_index) + Stage1::grid_width / 2;
+			grid_y = Stage1::y_pos + (Stage1::grid_height * y_index) + Stage1::grid_height / 2;
+			pos = { grid_x,grid_y };
+
+			Engine::GetGSComponent<GameObjectManager>()->Add(new PortalGrid(pos));
+			
+			x_index++;
+			break;
+		case 'A':
+			grid_x = Stage1::x_pos + (Stage1::grid_width * x_index) + Stage1::grid_width / 2;
+			grid_y = Stage1::y_pos + (Stage1::grid_height * y_index) + Stage1::grid_height / 2;
+			pos = { grid_x,grid_y };
+			Engine::GetGSComponent<GameObjectManager>()->Add(new Coin(pos, 1));
+			x_index++;
+			break;
+		case 'B':
+			grid_x = Stage1::x_pos + (Stage1::grid_width * x_index) + Stage1::grid_width / 2;
+			grid_y = Stage1::y_pos + (Stage1::grid_height * y_index) + Stage1::grid_height / 2;
+			pos = { grid_x,grid_y };
+			Engine::GetGSComponent<GameObjectManager>()->Add(new Coin(pos, 2));
+			x_index++;
+			break;
+		case 'C':
+			grid_x = Stage1::x_pos + (Stage1::grid_width * x_index) + Stage1::grid_width / 2;
+			grid_y = Stage1::y_pos + (Stage1::grid_height * y_index) + Stage1::grid_height / 2;
+			pos = { grid_x,grid_y };
+			Engine::GetGSComponent<GameObjectManager>()->Add(new Coin(pos, 3));
+			x_index++;
+			break;
+		default:
+			break;
+		}
+	}
+	grid_x = Stage1::x_pos + (Stage1::grid_width * (x_index)) + Stage1::grid_width / 2;
+	grid_y = Stage1::y_pos + (Stage1::grid_height * (y_index)) + Stage1::grid_height / 2;
+	pos = { grid_x,grid_y };
+	Engine::GetGSComponent<GameObjectManager>()->Add(new WallGrid(pos));
+	for (int top_bottom_x = -1; top_bottom_x <= x_index; top_bottom_x++) {
+		grid_x = Stage1::x_pos + (Stage1::grid_width * (top_bottom_x)) + Stage1::grid_width / 2;
+		grid_y = Stage1::y_pos + (Stage1::grid_height * (y_index + 1)) + Stage1::grid_height / 2;
+		pos = { grid_x,grid_y };
+		Engine::GetGSComponent<GameObjectManager>()->Add(new WallGrid(pos));
+	}
+	for (int top_bottom_x = -1; top_bottom_x <= x_index; top_bottom_x++) {
+		grid_x = Stage1::x_pos + (Stage1::grid_width * (top_bottom_x)) + Stage1::grid_width / 2;
+		grid_y = Stage1::y_pos + (Stage1::grid_height * (-1)) + Stage1::grid_height / 2;
+		pos = { grid_x,grid_y };
+		Engine::GetGSComponent<GameObjectManager>()->Add(new WallGrid(pos));
+	}
+
 }
 
-void DrawMap::InitGrid( int rows, int cols, float y_pos, float x_pos)
-{
-	int numLines = rows + cols;
-	sf::VertexArray grid(sf::Lines, 2 * (numLines));
-	//win.setView(win.getDefaultView());
-	//auto map_size = Engine::GetWindow().GetSize();
-	float rowH = (float)(map_size.y / rows);
-	float colw = (float)(map_size.x / cols);
 
-	for (int i = 0; i < rows - 1; i++)
+void DrawMap::Update([[maybe_unused]] double dt)
+{
+
+}
+
+
+void DrawMap::Draw(mat3 cameraMatrix)
+{
+	int x_index = 0;
+	int y_index = 0;
+	float grid_x;
+	float grid_y;
+	DataType::fvec2 pos;
+
+	for (auto data : map_data)
 	{
-		int r = i + 1;
-		float rowY = rowH * r;
-		grid[i * 2].position = { y_pos,rowY+ y_pos };
-		grid[i * 2].color = sf::Color::Yellow;
-		grid[i * 2 + 1].position = { (float)map_size.x+ y_pos,rowY+ y_pos };
-		grid[i * 2 + 1].color = sf::Color::Yellow;
+		grid_x = Stage1::x_pos + (Stage1::grid_width * x_index) + Stage1::grid_width / 2;
+		grid_y = Stage1::y_pos + (Stage1::grid_height * y_index) + Stage1::grid_height / 2;
+		switch (data)
+		{
+
+		case '1':
+			x_index++;
+			pos = { grid_x,grid_y };
+			normal_grid_sprite.Draw(cameraMatrix * mat3::build_translation(pos.x, pos.y));
+			break;
+		case '\n':
+			y_index++; 
+			pos = { grid_x,grid_y };
+			normal_grid_sprite.Draw(cameraMatrix * mat3::build_translation(pos.x, pos.y));
+			x_index = 0;
+			pos = { grid_x,grid_y };
+			normal_grid_sprite.Draw(cameraMatrix * mat3::build_translation(pos.x, pos.y));
+			break;
+		case '#':
+			pos = { grid_x,grid_y };
+			normal_grid_sprite.Draw(cameraMatrix * mat3::build_translation(pos.x, pos.y));
+			x_index++;
+			break;
+		case 'A':
+			pos = { grid_x,grid_y };
+			grid_x = Stage1::x_pos + (Stage1::grid_width * (x_index - 1)) + Stage1::grid_width / 2;
+			grid_y = Stage1::y_pos + (Stage1::grid_height * (y_index)) + Stage1::grid_height / 2;
+			normal_grid_sprite.Draw(cameraMatrix * mat3::build_translation(pos.x, pos.y));
+			x_index++;
+			break;
+		case 'B':
+			pos = { grid_x,grid_y };
+			grid_x = Stage1::x_pos + (Stage1::grid_width * (x_index - 1)) + Stage1::grid_width / 2;
+			grid_y = Stage1::y_pos + (Stage1::grid_height * (y_index)) + Stage1::grid_height / 2;
+			normal_grid_sprite.Draw(cameraMatrix * mat3::build_translation(pos.x, pos.y));
+			x_index++;
+			break;
+		case 'C':
+			pos = { grid_x,grid_y };
+			grid_x = Stage1::x_pos + (Stage1::grid_width * (x_index - 1)) + Stage1::grid_width / 2;
+			grid_y = Stage1::y_pos + (Stage1::grid_height * (y_index)) + Stage1::grid_height / 2;
+			normal_grid_sprite.Draw(cameraMatrix * mat3::build_translation(pos.x, pos.y));
+
+			x_index++;
+			break;
+		case '0':
+			pos = { grid_x,grid_y };
+			normal_grid_sprite.Draw(cameraMatrix * mat3::build_translation(pos.x, pos.y));
+			x_index++;
+			break;
+		}
 	}
-	for (int i = rows - 1; i < numLines; i++)
-	{
-		int c = i - rows + 2;
-		float colX = colw * c;
-		
-		grid[i * 2].position={ colX+ x_pos,x_pos };
-		grid[i * 2].color = sf::Color::Yellow;
-		grid[i * 2 + 1].position = { colX+ x_pos,(float)map_size.y+ x_pos };
-		grid[i * 2 + 1].color = sf::Color::Yellow;
-	}
-	//Engine::GetWindow().SetView(view);
-	
-	Engine::GetWindow().Draw(grid);
+}
+
+
+// 벽 그리드
+DrawMap::WallGrid::WallGrid(DataType::fvec2 startPos) : GameObject(startPos)
+{
+	AddGOComponent(new Sprite("assets/data/Black_wall.spt", this));
+	SetPosition(startPos);
+}
+
+GameObjectType DrawMap::WallGrid::GetObjectType()
+{
+	return GameObjectType::WallGrid;
+}
+
+std::string DrawMap::WallGrid::GetObjectTypeName()
+{
+	return "WallGrid";
+}
+void DrawMap::WallGrid::Update([[maybe_unused]] double dt)
+{
+}
+
+bool DrawMap::WallGrid::CanCollideWith([[maybe_unused]] GameObjectType objectB)
+{
+	return false;
+}
+// 포탈 그리드
+DrawMap::PortalGrid::PortalGrid(DataType::fvec2 startPos) : GameObject(startPos)
+{
+	AddGOComponent(new Sprite("assets/data/black_portal.spt", this));
+	SetPosition(startPos);
+}
+
+GameObjectType DrawMap::PortalGrid::GetObjectType()
+{
+	return GameObjectType::PortalGrid;
+}
+
+std::string DrawMap::PortalGrid::GetObjectTypeName()
+{
+	return "PortalGrid";
+}
+void DrawMap::PortalGrid::Update([[maybe_unused]] double dt)
+{
+
+}
+bool DrawMap::PortalGrid::CanCollideWith([[maybe_unused]] GameObjectType objectB)
+{
+	return false;
 }

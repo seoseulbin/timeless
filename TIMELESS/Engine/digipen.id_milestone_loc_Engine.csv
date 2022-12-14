@@ -1,0 +1,12 @@
+language,filename,blank,comment,code,"github.com/AlDanial/cloc v 1.90  T=0.29 s (34.1 files/s, 2665.8 lines/s)"
+C++,Matrix.cpp,17,82,91
+C++,GameStateManager.cpp,13,0,79
+C++,Window.cpp,9,7,56
+C++,HandleSFML.cpp,6,6,52
+C++,Input_SFML.cpp,7,20,51
+C++,Engine.cpp,13,3,47
+C++,BloomNeon.cpp,18,10,46
+C++,Input.cpp,11,1,39
+C++,Texture.cpp,14,5,38
+C++,Logger.cpp,6,2,33
+SUM,,114,136,532

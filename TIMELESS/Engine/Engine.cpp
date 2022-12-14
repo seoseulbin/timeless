@@ -1,21 +1,38 @@
 #include"Engine.h"
-
+//#include"GLApp.h"//add
 
 Engine::Engine() : logger(Logger::Severity::Debug, true)
 {}
 
 Engine::~Engine() {}
 
-void Engine::Init(string windowTitle, const sf::Event& e)
-{
-	Engine::GetLogger().LogEvent(windowTitle + " Init");
-	Engine::GetWindow().Init(windowTitle, e);
-	Engine::GetHandle().Init(e);
-}
 
-void Engine::Draw(const sf::Color& color, const sf::Drawable& drawble)
+void Engine::Init(const char* windowTitle, int width, int height, const SDL_Event& e)
 {
-	Engine::GetWindow().Draw(color, drawble);
+	//GLApp OpenGlApplication(windowTitle, width, height);
+	Engine::GetWindow().Init(windowTitle, width, height,e);
+	Engine::GetHandle().Init(e);
+	Engine::GetTextureManager().Add("RedCollisionRect");
+	Engine::GetSFXManager().PrePareSFX("assets/sounds/sounds.sdat");
+	Engine::GetFileInput().Read("assets/StageData.txt");	//stage 개수
+
+	Engine::GetFileInput().Read("assets/stage1_pattern.txt");	//1스테이지 패턴
+	Engine::GetFileInput().Read("assets/stage1_map.txt");	//1스테이지 맵
+
+
+	Engine::GetFileInput().Read("assets/stage2_pattern.txt");	//2스테이지 패턴
+	Engine::GetFileInput().Read("assets/stage2_map.txt");	//2스테이지 맵
+
+
+	Engine::GetFileInput().Read("assets/stage3_pattern.txt");	//3스테이지 패턴
+	Engine::GetFileInput().Read("assets/stage3_map.txt");	//3스테이지 맵
+
+	Engine::GetFileInput().Read("assets/stage4_pattern.txt");	//4스테이지 패턴
+	Engine::GetFileInput().Read("assets/stage4_map.txt");	//4스테이지 맵
+
+	Audio* audioPtr = Engine::GetSFXManager().Load("assets/sounds/Timeless_3_2.wav");
+	audioPtr->Play();
+
 }
 
 void Engine::Shutdown()
@@ -47,6 +64,7 @@ void Engine::Update()
 			Engine::GetGameStateManager().Update(dt);
 			Engine::GetInput().Update();
 			Engine::GetWindow().Update();
+			//Engine::GetWindow().Update();
 		}
 
 }
@@ -60,4 +78,9 @@ bool Engine::HasGameEnded()
 	else
 		return false;
 
+}
+
+void Engine::AddSpriteFont(const std::string fileName)
+{
+	fonts.push_back(fileName);
 }

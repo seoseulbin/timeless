@@ -161,6 +161,15 @@ namespace DataType
 	{
 		return fvec2(vec.x + vec_2.x , vec.y + vec_2.y);
 	}
+
+	constexpr fvec2& DataType::fvec2::operator+(float value) noexcept
+	{
+		x += value;
+		y += value;
+
+		return *this;
+	}
+
 	constexpr fvec2& DataType::fvec2::operator-=(fvec2 vec) noexcept
 	{
 		x -= vec.x;

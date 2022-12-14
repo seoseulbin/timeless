@@ -2,7 +2,7 @@
 #include"Logger.h"
 
 
- Logger::Logger(Severity severity, bool useConsole) : minLevel(severity), outStream("Log.log")
+ Logger::Logger(Severity severity, bool useConsole) : minLevel(severity), outStream("Log.log"), startTime(std::chrono::system_clock::now())
 {
 	if (useConsole == true)
 	{
@@ -23,8 +23,8 @@ void  Logger::Log(Logger::Severity severity, string message)
 	if (max >= min)
 	{
 
-		//outStream.precision(4);
-		//outStream << '[' << std::fixed << GetSecondsSinceStart() << "]\t";
+		outStream.precision(4);
+		outStream << '[' << std::fixed << GetSecondsSinceStart() << "]\t";
 
 		switch (severity)
 		{

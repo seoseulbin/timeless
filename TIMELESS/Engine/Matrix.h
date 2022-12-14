@@ -1,12 +1,3 @@
-/*--------------------------------------------------------------
-Copyright (C) 2021 DigiPen Institute of Technology.
-Reproduction or disclosure of this file or its contents without the prior
-written consent of DigiPen Institute of Technology is prohibited.
-File Name: TransformMatrix.h
-Project: CS230
-Author: Seulbin Seo
-Creation date: 04/15/2022
------------------------------------------------------------------*/
 #pragma once
 #include "Vec2.h"
 
@@ -15,15 +6,20 @@ namespace DataType
 	class TransformMatrix
 	{
 	public:
-		TransformMatrix();
-		DataType::vec2 operator * (DataType::vec2 rhs) const;
-		const double* operator[](int index) const { return matrix[index]; }
+		TransformMatrix() noexcept;
+		TransformMatrix(
+			float x, float y, float z,
+			float x1, float y1, float z1,
+			float x2, float y2, float z2
+		) noexcept;
+		DataType::fvec2 operator * (DataType::fvec2 rhs) const;
+		const float* operator[](int index) const { return matrix[index]; }
 		TransformMatrix operator * (TransformMatrix rhs) const;
 		TransformMatrix& operator *= (TransformMatrix rhs);
 		void Reset();
 
 	protected:
-		double matrix[3][3];
+		float matrix[3][3];
 	};
 
 	class TranslateMatrix : public TransformMatrix
@@ -31,20 +27,24 @@ namespace DataType
 	public:
 		TranslateMatrix(DataType::ivec2 translate);
 		TranslateMatrix(DataType::vec2 translate);
+		TranslateMatrix(DataType::fvec2 translate);
 	};
 
 	class RotateMatrix : public TransformMatrix
 	{
 	public:
 		RotateMatrix(double radians);
+		RotateMatrix(float radians);
 	};
 
 	class ScaleMatrix : public TransformMatrix
 	{
 	public:
 		ScaleMatrix(DataType::vec2 scale);
+		ScaleMatrix(DataType::fvec2 scale);
 	};
 }
+
 
 
 

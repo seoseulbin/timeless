@@ -3,52 +3,65 @@
 #include<SFML/Graphics.hpp>
 #include"../Engine/Input.h"
 #include"../Engine/Vec2.h"
+#include"../Engine/Matrix.h"
 #include"Player.h"
+#include"../Engine/Texture.h"
+#include"../Engine/Collision.h"
+#include"../Engine/GameObject.h"
+#include"../Engine/Sprite.h"
 
 
 
-
-class NeonCreator
+class NeonCreator : public Component
 {
 public:
-	//NeonCreator(int totalSize);
-	//NeonCreator() {};
-	NeonCreator();
-	void Load(int totalSize);
-	void Creat(int toCreate, DataType::vec2 createPosition, DataType::vec2 createDirection, DataType::vec2 setGoalPosition);
-	void Clear();
-	void Update(double dt);
-	void Draw();
+	NeonCreator(int totalSize);
+	void Creat(int speed, DataType::fvec2 dir, int dist, DataType::fvec2 first_coord, DataType::fvec2 last_coord);
+	std::vector<DataType::fvec2> Rasterize(DataType::fvec2 first_coord, DataType::fvec2 last_coord);
 
-	void SetNeonLights(DataType::vec2 neonPosition, int alphaDecrease);
+	void Clear();
+	void Update(double dt) override;
+	void Draw(mat3 cameraMatrix);
+
+	void Unload();
+
+	void SetNeonLights(DataType::fvec2 neonPosition, int alphaDecrease);
+
 
 private:
-	class NeonCore
+	class NeonCore : public GameObject
 	{
 	public:
-		//NeonCore() {}
-		void Revive(DataType::vec2 neonPosition, DataType::vec2 neonDirection, DataType::vec2 goalPosition);
-		void Update(double dt);
-		void Draw();
-		
-		DataType::vec2 GetHitboxPosition() { neon_moved = false; return hitbox_position; }
+		NeonCore();
+		void Revive(DataType::fvec2 neonPosition, DataType::fvec2 neonDirection, int set_speed, DataType::fvec2 goalPosition);
+
+		void Update(double dt) override;
+		void Draw(mat3 cameraMatrix) override;
+		GameObjectType GetObjectType() override;
+		std::string GetObjectTypeName() override;
+		bool CanCollideWith(GameObjectType objectB) override;
+		void ResolveCollision(GameObject* objectB) override;
+
+
+
+
+		DataType::fvec2 GetHitboxPosition() { neon_moved = false; return hitbox_position; }
 		bool IsNeonMoved() { return neon_moved; }
 
-		//bool IsAlive() { return life > 0; }
-		bool IsAlive() { return sqrt(pow(position.x - goal_position.x, 2) + pow(position.y - goal_position.y, 2)) > 15; }
+		bool IsAlive() { return is_alived; }
 
 
 	private:
-		bool neon_moved=false;
+		bool is_alived= false;
+		bool neon_moved = false;
 		float delta_pos;
-		DataType::vec2 direction{ 0,0 };
-		DataType::vec2 previous_position{ 0,0 };
-		DataType::vec2 position{ 0, 0 };
-		DataType::vec2 hitbox_position{ 0,0 };
-		DataType::vec2 goal_position{ 0,0 };
-
-		sf::RectangleShape neon;
-		sf::CircleShape test_neon;
+		int speed;
+		DataType::fvec2 direction{ 0,0 };
+		DataType::fvec2 previous_position{ 0,0 };
+		DataType::fvec2 position{ 0, 0 };
+		DataType::fvec2 hitbox_position{ 0,0 };
+		DataType::fvec2 goal_position{ 0,0 };
+		Texture neon_texture_opengl;
 	};
 
 
@@ -56,21 +69,25 @@ private:
 	class NeonLight
 	{
 	public:
-		void Revive(DataType::vec2 neonPosition, int alphaDecrease);
+		void Revive(DataType::fvec2 neonPosition, int alphaDecrease);
 		void Update(double dt);			// 투명도 줄이기
 		void Draw();
-		bool IsAlive() { return alpha> 0; }
-
+		bool IsAlive() { return alpha > 0; }
+		DataType::fvec2 GetPosition() { return position; }
+		vec2 GetPositionF() { return { static_cast<float>(position.x), static_cast<float>(position.y) }; }
+		int GetAlpha() { return alpha; }
+		float GetAlphaF() { return static_cast<float>(alpha / 255); }
 
 	private:
-		DataType::vec2 position{ 0, 0 };
+		DataType::fvec2 position{ 0, 0 };
 		int alpha = 0;
 		int decrease;
-
-		sf::RectangleShape neon;
-		//Texture texture;
 	};
 
+
+	double timer;
+	double delta_time;
+	int data_index;
 
 
 	int numNeonCores;
@@ -81,10 +98,9 @@ private:
 	std::vector<NeonLight*> NeonLights;
 	int lightToUse;
 
-	InputKey zKey;
-	InputKey sKey;
-	InputKey wKey;
-	InputKey aKey;
-	InputKey dKey;
+
+
+	Texture neon_image_opengl;
+	//Sprite neon_sprite;
 
 };

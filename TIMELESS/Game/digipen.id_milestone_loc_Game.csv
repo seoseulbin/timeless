@@ -1,0 +1,8 @@
+language,filename,blank,comment,code,"github.com/AlDanial/cloc v 1.90  T=0.14 s (43.4 files/s, 3922.2 lines/s)"
+C++,Neon.cpp,48,19,195
+C++,Player.cpp,14,7,67
+C++,Stage1.cpp,13,1,42
+C++,DrawMap.cpp,7,8,35
+C++,MainScreen.cpp,9,9,32
+C++,Splash.cpp,7,1,28
+SUM,,98,45,399
