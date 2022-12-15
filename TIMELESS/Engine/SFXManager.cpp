@@ -67,7 +67,7 @@ Audio* SFXManager::Load(const std::string filePath)
 {
 	if (pathToSFX_BGM.find(filePath) != pathToSFX_BGM.end())
 	{
-		pathToSFX_BGM[filePath]->Settings(15, true);
+		pathToSFX_BGM[filePath]->Settings(20, true);
 		return pathToSFX_BGM[filePath];
 	}
 	else

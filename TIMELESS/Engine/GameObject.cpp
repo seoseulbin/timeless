@@ -29,7 +29,7 @@ void GameObject::Update( /* [[maybe_unused]]*/ double dt)
 void GameObject::Draw(mat3 cameraMatrix)
 {
 	Sprite* spritePtr = GetGOComponent<Sprite>();
-	//Collision* collision = GetGOComponent<Collision>();
+	
 	if (spritePtr != nullptr)
 	{
 		if (GetObjectType() == GameObjectType::PlayerLight)
@@ -50,10 +50,14 @@ void GameObject::Draw(mat3 cameraMatrix)
 		else
 			spritePtr->Draw(cameraMatrix * GetMatrix_mat3());
 	}
-	//if (collision != nullptr && Engine::GetGSComponent<ShowCollision>()->IsEnabled())
-	//{
-	//	components.GetComponent<Collision>()->Draw(cameraMatrix * GetMatrix_mat3());
-	//}
+
+#ifdef _DEBUG
+	Collision* collision = GetGOComponent<Collision>();
+	if (collision != nullptr && Engine::GetGSComponent<ShowCollision>()->IsEnabled())
+	{
+	components.GetComponent<Collision>()->Draw(cameraMatrix * GetMatrix_mat3());
+	}
+#endif // 
 
 }
 void GameObject::Draw(mat3 cameraMatrix, float alpha) {

@@ -63,9 +63,12 @@ void Stage1::Load()
 
 void Stage1::Update(double dt)
 {
+#ifdef _DEBUG
+	GetGSComponent<ShowCollision>()->Update(dt);
+#endif
 	Engine::GetWindow().Clear();
 	Engine::GetGSComponent<GameObjectManager>()->Update(dt);
-	//GetGSComponent<ShowCollision>()->Update(dt);
+	
 	if (esc_key.IsKeyReleased())
 	{
 		//Engine::GetGameStateManager().Shutdown();
