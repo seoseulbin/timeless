@@ -29,7 +29,7 @@ ItemBox::ItemBox(DataType::fvec2 startPos, ItemType type) : cost(0)		//change it
 		}
 		else if (FileInput::CheatMode)
 		{
-			cost = 0;
+			cost = 60;
 		}
 		AddGOComponent(new Sprite("assets/data/Coin3.spt", this));
 		break;
@@ -41,7 +41,7 @@ ItemBox::ItemBox(DataType::fvec2 startPos, ItemType type) : cost(0)		//change it
 		}
 		else if (FileInput::CheatMode)
 		{
-			cost = 0;
+			cost = 140;
 		}
 		
 		AddGOComponent(new Sprite("assets/data/Coin2.spt", this));
@@ -54,7 +54,7 @@ ItemBox::ItemBox(DataType::fvec2 startPos, ItemType type) : cost(0)		//change it
 		}
 		else if (FileInput::CheatMode)
 		{
-			cost = 0;
+			cost = 200;
 		}
 		
 		AddGOComponent(new Sprite("assets/data/Coin1.spt", this));
@@ -68,7 +68,7 @@ ItemBox::ItemBox(DataType::fvec2 startPos, ItemType type) : cost(0)		//change it
 		}
 		else if (FileInput::CheatMode)
 		{
-			cost = 0;
+			cost = -1300;
 		}
 		
 		AddGOComponent(new Sprite("assets/data/Item_Bomb.spt", this));
@@ -81,7 +81,7 @@ ItemBox::ItemBox(DataType::fvec2 startPos, ItemType type) : cost(0)		//change it
 		}
 		else if (FileInput::CheatMode)
 		{
-			cost = 0;
+			cost = -1500;
 		}
 		
 		AddGOComponent(new Sprite("assets/data/Item_Invincible.spt", this));
@@ -94,7 +94,7 @@ ItemBox::ItemBox(DataType::fvec2 startPos, ItemType type) : cost(0)		//change it
 		}
 		else if (FileInput::CheatMode)
 		{
-			cost = 0;
+			cost = -700;
 		}
 		
 		AddGOComponent(new Sprite("assets/data/Item_speedUp.spt", this));
@@ -107,7 +107,7 @@ ItemBox::ItemBox(DataType::fvec2 startPos, ItemType type) : cost(0)		//change it
 		}
 		else if (FileInput::CheatMode)
 		{
-			cost = 0;
+			cost = -1700;
 		}
 		
 		AddGOComponent(new Sprite("assets/data/box_resurrection.spt", this));
@@ -120,7 +120,7 @@ ItemBox::ItemBox(DataType::fvec2 startPos, ItemType type) : cost(0)		//change it
 		}
 		else if (FileInput::CheatMode)
 		{
-			cost = 0;
+			cost = -800;
 		}
 		
 		AddGOComponent(new Sprite("assets/data/box_portalrader.spt", this));
@@ -133,7 +133,7 @@ ItemBox::ItemBox(DataType::fvec2 startPos, ItemType type) : cost(0)		//change it
 		}
 		else if (FileInput::CheatMode)
 		{
-			cost = 0;
+			cost = -400;
 		}
 		
 		AddGOComponent(new Sprite("assets/data/box_neonBarricade.spt", this));
@@ -146,7 +146,7 @@ ItemBox::ItemBox(DataType::fvec2 startPos, ItemType type) : cost(0)		//change it
 		}
 		else if (FileInput::CheatMode)
 		{
-			cost = 0;
+			cost = -1000;
 		}
 		
 		AddGOComponent(new Sprite("assets/data/box_neonslow.spt", this));
@@ -159,7 +159,7 @@ ItemBox::ItemBox(DataType::fvec2 startPos, ItemType type) : cost(0)		//change it
 		}
 		else if (FileInput::CheatMode)
 		{
-			cost = 0;
+			cost = -1200;
 		}
 		
 		AddGOComponent(new Sprite("assets/data/box_viewExpand.spt", this));
@@ -172,7 +172,7 @@ ItemBox::ItemBox(DataType::fvec2 startPos, ItemType type) : cost(0)		//change it
 		}
 		else if (FileInput::CheatMode)
 		{
-			cost = 0;
+			cost = -900;
 		}
 		
 		AddGOComponent(new Sprite("assets/data/Item_atk.spt", this));
