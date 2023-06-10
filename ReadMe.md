@@ -38,19 +38,5 @@
 
 
 
-- PlayTest FeedBack
-
-	- We hope you guys enjoyed our game.
-	  Thank you for playing our game!
-
-	- Here is our Team PlayTest questionnaire you can enjoy KOR.ver also!
-
-	  - KOR : https://forms.gle/5gfcSvyQaJXXDnrb7
-
-	  - ENG : https://forms.gle/asuP3nEoPJYNdyWq7
-
-
-
-
 
 *All Assets are created by Timeless
