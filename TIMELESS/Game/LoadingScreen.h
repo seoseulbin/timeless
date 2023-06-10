@@ -30,7 +30,12 @@ public:
 
 private:
 
-	Texture background;
+	Texture background_up;
+	Texture background_down;
+
+	bool Blinking = true;
+	std::chrono::system_clock::time_point T;
+	float alphaVal;
 
 	InputKey next_stage_key;
 	InputKey esc_key;

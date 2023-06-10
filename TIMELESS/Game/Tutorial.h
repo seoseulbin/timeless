@@ -8,6 +8,7 @@
 #include"../Engine/Camera.h"
 #include"CameraView.h"
 #include"../Engine/ShowCollision.h"
+#include"../Engine/DebugMode.h"
 
 class Player;
 
@@ -31,6 +32,8 @@ private:
 	Texture story2;
 	Texture story3;
 	Texture story4;
+	Texture story5;
+
 
 	//Texture story1;
 

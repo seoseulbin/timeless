@@ -3,6 +3,8 @@
 #include<GL/glew.h>
 //#include <GLApp.h>
 #include"Vec2.h"
+
+#include"vec2.h"
 #include<SDL2/SDL_events.h>
 #include<SDL2/SDL_video.h>
 
@@ -18,8 +20,11 @@ public:
 	void ClearBackground(float r, float g, float b, float a);
 	void pollEvent(SDL_Event& e);
 	void checkForClose(const SDL_Event& e);
+	DataType::fvec2 GetMousePosition();
+	void SetMousePosition(Sint32 x, Sint32 y);
 	DataType::ivec2 GetWindowSize();
 	util::owner<SDL_Window*> GetWindowPtr();
+
 private:
 	int windowWidth{ 0 };
 	int windowHeight{ 0 };
@@ -27,4 +32,8 @@ private:
 	util::owner<SDL_Window*> Window_ptr = nullptr;
 	util::owner<SDL_GLContext> glContext = nullptr;
 	SDL_Event window_e{ 0 };
+
+	float mouse_x{ 0 };
+	float mouse_y{ 0 };
+
 };

@@ -31,13 +31,46 @@ InputKey::Keyboard OpenGLkeyToEngine(SDL_Keysym button)
 	else if (button.scancode == SDL_SCANCODE_F5) {
 		return InputKey::Keyboard::F5;
 	}
+	else if (button.scancode == SDL_SCANCODE_F1)
+	{
+		return InputKey::Keyboard::F1;
+	}
+	else if (button.scancode == SDL_SCANCODE_F2)
+	{
+		return InputKey::Keyboard::F2;
+	}
+	else if (button.scancode == SDL_SCANCODE_F3)
+	{
+		return InputKey::Keyboard::F3;
+	}
 	else if (button.scancode >= SDL_SCANCODE_A && button.scancode <= SDL_SCANCODE_Z) {
 		int offset = static_cast<int>(button.scancode) - static_cast<int>(SDL_SCANCODE_A);
 		return static_cast<InputKey::Keyboard>(static_cast<int>(InputKey::Keyboard::A) + offset);
 	}
 	return InputKey::Keyboard::None;
 }
-void KeyPressed([[maybe_unused]]SDL_Keysym key)
+
+InputMouse::Mouse OpenGLButtonToEngine(Uint8 button)
+{
+	if (button == SDL_BUTTON_LEFT)
+	{
+		return InputMouse::Mouse::Left;
+	}
+	else if (button == SDL_BUTTON_RIGHT)
+	{
+		return InputMouse::Mouse::Right;
+	}
+
+	else if (button == SDL_BUTTON_MIDDLE)
+	{
+		return InputMouse::Mouse::Middle;
+	}
+
+	return InputMouse::Mouse::None;
+}
+
+
+void KeyPressed([[maybe_unused]] SDL_Keysym key)
 {
 	InputKey::Keyboard button = OpenGLkeyToEngine(key);
 	if (button != InputKey::Keyboard::None)
@@ -57,3 +90,22 @@ void KeyReleased(SDL_Keysym key)
 	}
 }
 
+void MousePressed(Uint8 button)
+{
+	InputMouse::Mouse sdlbutton = OpenGLButtonToEngine(button);
+	if (sdlbutton != InputMouse::Mouse::None)
+	{
+		Engine::GetLogger().LogDebug("on_mouse_pressed");
+		Engine::GetInput().SetButtonDown(sdlbutton, true);
+	}
+}
+
+void MouseReleased(Uint8 button)
+{
+	InputMouse::Mouse sdlbutton = OpenGLButtonToEngine(button);
+	if (sdlbutton != InputMouse::Mouse::None)
+	{
+		Engine::GetLogger().LogDebug("on_mouse_released");
+		Engine::GetInput().SetButtonDown(sdlbutton, false);
+	}
+}

@@ -1,0 +1,12 @@
+assets/images/Bomb_explosion_1.png
+FrameSize 480 480
+Frame 0 0
+Frame 480 0
+Frame 960 0 
+Frame 1440 0
+Frame 1920 0
+Frame 2400 0
+Frame 2880 0
+Frame 3360 0
+Frame 3840 0
+Anim assets/data/bombExplosion.anm

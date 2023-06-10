@@ -1,5 +1,4 @@
-#include<SFML/Window.hpp>
-#include<SFML/Graphics.hpp>
+
 #include"Engine/Engine.h"
 #include"Game/Splash.h"
 #include"Game/LoadingScreen.h"
@@ -13,9 +12,17 @@
 #include "Game/Special.h"
 #include "Game/Tutorial.h"
 #include "Game/Option.h"
+#include "Game/EndingScreen.h"
+#include "Game/ScoreScene.h"
+#include "Game/EndingStory.h"
 #include<SDL2/SDL_events.h>
 
-int main()
+#ifdef __cplusplus
+extern "C"
+#endif // __cplusplus
+
+
+int main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
 {
 	try
 	{
@@ -29,6 +36,11 @@ int main()
 		Tutorial tutorial;
 		Stage1 stage1;
 		Option option;
+		TestPage2 testPage2;
+		EndingCredit endingCredit;
+		EndingStory endingStory;
+		
+		ScoreScene scoreScene;
 
 		engine.GetGameStateManager().AddGameState(tutorial);
 		engine.GetGameStateManager().AddGameState(option);
@@ -37,10 +49,15 @@ int main()
 		engine.GetGameStateManager().AddGameState(splash_teamName);
 		engine.GetGameStateManager().AddGameState(loadingScreen);
 		engine.GetGameStateManager().AddGameState(menu);
-		
-		
-		
-		
+		engine.GetGameStateManager().AddGameState(endingCredit);
+		engine.GetGameStateManager().AddGameState(endingStory);
+		engine.GetGameStateManager().AddGameState(scoreScene);
+
+		engine.GetGameStateManager().AddGameState(testPage2);
+
+
+
+
 		while (engine.HasGameEnded() == false)
 		{
 			engine.Update();
@@ -52,7 +69,11 @@ int main()
 		std::cerr << e.what() << "\n";
 		return -1;
 	}
+	return -1;
 }
+
+
+
 
 
 //int main()

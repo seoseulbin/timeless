@@ -159,7 +159,7 @@ namespace DataType
 	}
 	constexpr fvec2 DataType::operator+(fvec2 vec, fvec2 vec_2) noexcept
 	{
-		return fvec2(vec.x + vec_2.x , vec.y + vec_2.y);
+		return fvec2(vec.x + vec_2.x, vec.y + vec_2.y);
 	}
 
 	constexpr fvec2& DataType::fvec2::operator+(float value) noexcept

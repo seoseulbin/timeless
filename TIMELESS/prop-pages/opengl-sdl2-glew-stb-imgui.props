@@ -5,7 +5,7 @@
   <PropertyGroup />
   <ItemDefinitionGroup>
     <ClCompile>
-      <AdditionalIncludeDirectories>$(SolutionDir)external\opengl\include\backends;$(SolutionDir)external\opengl\include;$(SolutionDir)common_gl\include;$(ProjectDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)external\opengl\include\backends;$(SolutionDir)external\opengl\include;$(SolutionDir)common_gl\include;$(ProjectDir)include;$(SolutionDir)external\freetype\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup>
@@ -21,11 +21,13 @@
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>$(SolutionDir)external\opengl\lib;</AdditionalLibraryDirectories>
-      <AdditionalDependencies>Opengl32.lib;glew32.lib;imgui.lib;SDL2.lib;</AdditionalDependencies>
+      <AdditionalDependencies>Opengl32.lib;glew32.lib;imgui.lib;SDL2.lib;SDL2_ttf.lib;SDL2main.lib;Shell32.lib</AdditionalDependencies>
+      <SubSystem>Windows</SubSystem>
     </Link>
     <PostBuildEvent>
       <Command>xcopy /y /d "$(SolutionDir)external\opengl\bin\*.dll" "$(TargetDir)"
 xcopy /y /d "$(SolutionDir)external\sfml\bin\*.dll" "$(TargetDir)"
+xcopy /y /d "$(SolutionDir)external\freetype\bin\*.dll" "$(TargetDir)"
 xcopy /y /d /e /i "$(SolutionDir)assets\" "$(TargetDir)assets\"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>

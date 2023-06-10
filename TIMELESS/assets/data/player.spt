@@ -1,2 +1,52 @@
-assets/images/new_player.png
+assets/images/playerSS.png
+FrameSize 70 70
+Frame 0 0
+Frame 70 0
+Frame 140 0 
+Frame 210 0
+Frame 280 0
+Frame 350 0
+Frame 420 0
+Frame 490 0
+Frame 560 0
+Frame 630 0
+Frame 700 0
+Frame 770 0
+Frame 840 0
+Frame 910 0
+Frame 980 0
+Frame 1050 0
+Frame 1120 0
+Frame 1190 0
+Frame 1260 0
+Frame 1330 0
+Frame 1400 0
+Frame 1470 0
+Frame 1540 0
+Frame 1610 0
+Frame 1680 0
+Frame 1750 0
+Frame 1820 0
+Frame 1890 0
+Frame 1960 0
+Frame 2030 0
+Frame 2100 0
+Frame 2170 0
+Frame 2240 0
+Frame 2310 0
+Frame 2380 0
+Frame 2450 0
+Frame 2520 0
+Frame 2590 0
+Frame 2660 0
+Frame 2730 0
+Frame 2800 0
+Anim assets/data/playerIdle.anm
+Anim assets/data/playerUP.anm
+Anim assets/data/playerDOWN.anm
+Anim assets/data/playerJump.anm
+Anim assets/data/playerLeft.anm
+Anim assets/data/playerRight.anm
+Anim assets/data/playerDie.anm
+Anim assets/data/playerSpin.anm
 CollisionRect -35 -35 35 35

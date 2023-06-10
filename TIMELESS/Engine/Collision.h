@@ -25,8 +25,8 @@ public:
 class RectCollision : public Collision
 {
 public:
-	RectCollision(DataType::frect2 rect_) : rect(rect_), objectPtr(nullptr), test_rect(nullptr) {}
-	RectCollision(DataType::frect2 rect_, GameObject* objectPtr) : rect(rect_), objectPtr(objectPtr), test_rect(nullptr) {}
+	RectCollision(DataType::frect2 rect_) : rect(rect_), objectPtr(nullptr), collision_box(nullptr) {}
+	RectCollision(DataType::frect2 rect_, GameObject* objectPtr) : rect(rect_), objectPtr(objectPtr), collision_box(nullptr) {}
 	void Load();
 	void Draw(mat3 objectMatrix) override;
 	//DataType::frect2 GetWorldCoorRect(DataType::TransformMatrix objectMatrix);
@@ -38,7 +38,7 @@ public:
 private:
 	DataType::frect2 rect;
 	GameObject* objectPtr;
-	Texture* test_rect;
+	Texture* collision_box;
 };
 
 

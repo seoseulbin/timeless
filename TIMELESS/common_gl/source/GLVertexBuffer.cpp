@@ -11,7 +11,8 @@ GLVertexBuffer::GLVertexBuffer(GLsizei size_in_bytes)
 
 GLVertexBuffer::~GLVertexBuffer()
 {
-	glCheck(glDeleteBuffers(size, &buffer_handle));
+	//glDeleteBuffers(size, &buffer_handle);
+	glCheck(glDeleteBuffers(1, &buffer_handle));
 }
 
 GLVertexBuffer::GLVertexBuffer(GLVertexBuffer&& temp) noexcept

@@ -182,7 +182,11 @@ bool GLShader::IsValidWithVertexArrayObject(unsigned int vertex_array_object_han
         std::string error;
         error.resize(static_cast<unsigned>(log_length) + 1);
         glCheck(glGetProgramInfoLog(program_handle, log_length, nullptr, error.data()));
+#ifdef _DEBUG
         std::cerr << error << '\n';
+#endif // _DEBUG
+
+        
         return false;
     }
     return true;
@@ -277,7 +281,11 @@ int GLShader::get_uniform_location(std::string_view uniform_name) const noexcept
         glCheck(GLint location = glGetUniformLocation(program_handle, uniform_name.data()));
         if (location < 0)
         {
+#ifdef _DEBUG
             std::cerr << "Uniform variable(" << uniform_name << ") does not exist" << std::endl;
+#endif // _DEBUG
+
+            
             location = -1;
         }
         uniforms[std::string(uniform_name)] = location;
@@ -290,7 +298,7 @@ void GLShader::delete_program() noexcept
 {
     if (program_handle > 0)
     {
-        glCheck(glDeleteProgram(program_handle));
+       glDeleteProgram(program_handle);
         program_handle = 0;
     }
 }

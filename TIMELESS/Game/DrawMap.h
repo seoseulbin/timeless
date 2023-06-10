@@ -9,7 +9,7 @@
 class DrawMap : public Component
 {
 public:
-	DrawMap();
+	DrawMap(int level);
 	void Update(double dt) override;
 	void Draw(mat3 cameraMatrix);
 	

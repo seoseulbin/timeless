@@ -30,7 +30,7 @@ GLIndexBuffer::GLIndexBuffer(std::span<const unsigned char> indices)
 
 GLIndexBuffer::~GLIndexBuffer()
 {
-	glCheck(glDeleteBuffers(count, &indices_handle));
+	glDeleteBuffers(count, &indices_handle);
 }
 
 GLIndexBuffer::GLIndexBuffer(GLIndexBuffer&& temp) noexcept

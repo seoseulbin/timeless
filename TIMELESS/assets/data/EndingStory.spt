@@ -1,0 +1,12 @@
+assets/images/Ending_Credit.png
+FrameSize 1300 800
+Frame 0 0
+Frame 1300 0
+Frame 2600 0
+Frame 3900 0
+Frame 5200 0
+Frame 6500 0
+Frame 7800 0
+Frame 9100 0
+Frame 10400 0
+Anim assets/data/EndingStory.anm

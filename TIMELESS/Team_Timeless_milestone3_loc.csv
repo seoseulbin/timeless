@@ -21,7 +21,7 @@ Index,Language / Latest Used,Main Contributor(Main %) / Second Contributor,FileN
 20,C++/SFML Engine,JunSeong.Park (75%) / MinSeok.Kim,NeonObjectManager.cpp,7,7,36
 21,C++/SFML Engine,SeulBin.Seo (88%) / JunSeong.Park,Font.cpp,8,9,35
 22,C++/OpenGL Engine,CS230 (100%),Logger.cpp,6,0,35
-23,C++/OpenGL Engine,JunSeong.Park (100%),HandleOpenGL.cpp,6,38,34
+23,C++/OpenGL Engine,MinSeok.Kim (100%),HandleOpenGL.cpp,6,38,34
 24,C++/OpenGL Engine,JunSeong.Park (100%),Input.cpp,11,1,32
 25,C++/OpenGL Engine,JunSeong.Park (100%),ShowCollision.cpp,3,0,16
 26,C++/OpenGL Engine,JunSeong.Park (100%),Font_Opengl.cpp,1,0,7

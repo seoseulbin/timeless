@@ -15,7 +15,7 @@ public:
 	void CreateCircle();
 	void CreateQuad();
 	void Draw(mat3 displayMatrix);
-	void Draw2(mat3 displayMatrix);
+	void Draw2(mat3 displayMatrix, float viewDistance);
 	//void DrawOther(mat3 displayMatrix);
 
 private:
@@ -23,4 +23,6 @@ private:
 	GLShader shader2;
 	GLVertexArray vao;
 	GLVertexArray vao2;
+
+	float player_viewdistance = 0.0f;
 };

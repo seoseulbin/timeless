@@ -1,39 +1,56 @@
 - Team Name : Timeless
 
 
-- Game Name : Neon
+
+- Game Name : NEON
+
 
 
 - Team member List + Roles
-  - Producer - Minseok Kim
-  - Technical Lead - HyoJoon Kim
-  - Design Lead - SeulBin Seo
-  - Level Designer - Junseong Park
+	- Producer 			: MinSeok Kim
+	- Technical Lead 	: HyoJoon Kim
+	- Art Lead 			: SeulBin Seok
+	- Level Designer 	: JunSeong Park
+
 
 
 - Compilation Instructions
-Open .sln file -> Ctrl + f5
+	- Run NEON_Timeless.exe
 
 
 
-How to play the prototype:
 
-You can move player with keyboard's arrow key.
-You can jump player with keyboard's space-bar.
+- How To Play
 
-Now you can find the portal with NEON.
-You can find path with NEON.
+	- Interaction with all game UI : Enter key(Ok / Yes), ESC key(Cancel / Go back / No), Arrow key(Up, Down, Left, Right)
 
+	- Interaction with player : Arrow key(Up, Down, Left, Right), Space bar(Jump), 'Z' key(Use item)
 
 
-ReadMe:
+	- The Game's main goal is to explore the map using the light left by NEON then collect coins and escape the map.
 
-There is no collide yet. So you do not need to use the jump key.
-But imagine collide and play it please XD
+	- You can also buy some useful items using coins
 
-Any FeedBack is Welcome! Please give a lot of feedback!
+	- Also, if you don't use coins, your score will go higher.
 
-Thank you Play!
+	- There is ending credit, If you clear all stage.
 
 
-*All Assets(Image + Music) are created by Timeless.
+
+
+- PlayTest FeedBack
+
+	- We hope you guys enjoyed our game.
+	  Thank you for playing our game!
+
+	- Here is our Team PlayTest questionnaire you can enjoy KOR.ver also!
+
+	  - KOR : https://forms.gle/5gfcSvyQaJXXDnrb7
+
+	  - ENG : https://forms.gle/asuP3nEoPJYNdyWq7
+
+
+
+
+
+*All Assets are created by Timeless

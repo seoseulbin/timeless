@@ -44,19 +44,21 @@ public:
 	//}
 
 	PatternData* GetPatternData(int stage, int index) {
-		return pattern_data[stage - 1][index];
+		return pattern_data[stage][index];
 	}
 	int GetDataSize(int stage) {
-		return  static_cast<int>(pattern_data[stage - 1].size());
+		return  static_cast<int>(pattern_data[stage].size());
 	}
 
 	std::vector<char> GetMapData(int stage) {
-		return map_data[stage - 1];
+		return map_data[stage];
 	}
 	void ClearWallGrid() {
 		wall_grid_data.clear();
 		std::vector<std::vector<DataType::fvec2>>().swap(wall_grid_data);
 	}
+
+	static bool CheatMode;
 
 private:
 

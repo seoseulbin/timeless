@@ -7,8 +7,11 @@ enum class GameObjectType
 	WallGrid,
 	PortalGrid,
 	Neon,
-	Coin,
+	Box,
+	Item,
 	Count,
 	Particle,
 	UnderParticle,
+	UI,
+	EndingStory
 };

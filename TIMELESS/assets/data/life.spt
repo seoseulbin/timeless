@@ -1,0 +1,10 @@
+assets/images/life_sheet.png
+FrameSize 123 65
+Frame 0 0
+Frame 123 0
+Frame 246 0 
+Frame 369 0
+Anim assets/data/life0.anm
+Anim assets/data/life1.anm
+Anim assets/data/life2.anm
+Anim assets/data/life3.anm

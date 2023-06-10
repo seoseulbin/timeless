@@ -1,6 +1,7 @@
 #include"GameObject.h"
 #include"Collision.h"
 #include"ShowCollision.h"
+#include"DebugMode.h"
 #include "../Game/GameObjectTypes.h"
 
 GameObject::GameObject()
@@ -10,7 +11,7 @@ GameObject::GameObject(DataType::fvec2 position) : GameObject(position, 0.f, { 1
 {}
 
 GameObject::GameObject(DataType::fvec2 position, float rotation, DataType::fvec2 scale_) :
-	position(position), rotation(rotation), scale(scale_), updateMatrix(false)
+	position(position), rotation(rotation), scale(scale_), updateMatrix(false), currState(&state_nothing)
 {
 
 }
@@ -18,23 +19,38 @@ GameObject::GameObject(DataType::fvec2 position, float rotation, DataType::fvec2
 
 void GameObject::Update( /* [[maybe_unused]]*/ double dt)
 {
-	UpdateGOComponent(dt);
+	if (currState != nullptr)
+		currState->Update(this, dt);
+
 	if (GetObjectType() == GameObjectType::Particle) {
 		if (velocity.x != 0 || velocity.y != 0) {
 			UpdatePosition(velocity * dt);
 		}
 	}
+	UpdateGOComponent(dt);
+
+	if (currState != nullptr)
+		currState->TestForExit(this);
 }
 
 void GameObject::Draw(mat3 cameraMatrix)
 {
 	Sprite* spritePtr = GetGOComponent<Sprite>();
-	
+
 	if (spritePtr != nullptr)
 	{
 		if (GetObjectType() == GameObjectType::PlayerLight)
 		{
+#ifdef _DEBUG
+			if (Engine::GetGSComponent<DebugModeTakeAllVision>()->IsEnabled())
+			{
+				spritePtr->Draw(cameraMatrix * GetMatrix_mat3());
+			}
+#else
 			spritePtr->Draw(cameraMatrix * GetMatrix_mat3());
+#endif // _DEBUG
+
+			
 		}
 		else if (GetObjectType() == GameObjectType::Neon)
 		{
@@ -42,33 +58,71 @@ void GameObject::Draw(mat3 cameraMatrix)
 		}
 		else if (GetObjectType() == GameObjectType::Player)
 		{
-			spritePtr->Draw_player(cameraMatrix * GetMatrix_mat3(), vec2(scale.x,scale.y));
+			spritePtr->Draw_Animation_object(cameraMatrix * GetMatrix_mat3(), vec2(scale.x, scale.y), rotation, opacity);
 		}
 		else if (GetObjectType() == GameObjectType::Particle) {
 			//spritePtr->Draw(cameraMatrix * GetMatrix_mat3(), alpha );
 		}
+		else if (GetObjectType() == GameObjectType::Item)
+		{
+#ifdef _DEBUG
+			if (Engine::GetGSComponent<DebugModeTakeAllVision>()->IsEnabled())
+			{
+				spritePtr->Draw_Animation_object(cameraMatrix * GetMatrix_mat3(), vec2(scale.x, scale.y), rotation, 1.0);
+			}
+			else
+				spritePtr->Draw_Animation_object(cameraMatrix * GetMatrix_mat3(), vec2(scale.x, scale.y), rotation, opacity);
+#else
+			spritePtr->Draw_Animation_object(cameraMatrix * GetMatrix_mat3(), vec2(scale.x, scale.y),rotation, opacity);
+#endif // _DEBUG
+
+			
+		}
 		else
-			spritePtr->Draw(cameraMatrix * GetMatrix_mat3());
+		{
+			//spritePtr->Draw(cameraMatrix * GetMatrix_mat3());
+			//spritePtr->Draw_None_Animation_object(cameraMatrix * GetMatrix_mat3(), opacity);
+#ifdef _DEBUG
+			if (Engine::GetGSComponent<DebugModeTakeAllVision>()->IsEnabled())
+			{
+				spritePtr->Draw_Animation_object(cameraMatrix * GetMatrix_mat3(), vec2(scale.x, scale.y), rotation, 1.0);
+			}
+			else
+			{
+				spritePtr->Draw_Animation_object(cameraMatrix * GetMatrix_mat3(), vec2(scale.x, scale.y), rotation, opacity);
+			}
+
+#else
+			spritePtr->Draw_Animation_object(cameraMatrix * GetMatrix_mat3(), vec2(scale.x, scale.y),rotation, opacity);
+#endif // _DEBUG
+
+			
+		}
 	}
 
 #ifdef _DEBUG
 	Collision* collision = GetGOComponent<Collision>();
 	if (collision != nullptr && Engine::GetGSComponent<ShowCollision>()->IsEnabled())
 	{
-	components.GetComponent<Collision>()->Draw(cameraMatrix * GetMatrix_mat3());
+		components.GetComponent<Collision>()->Draw(cameraMatrix * GetMatrix_mat3());
 	}
 #endif // 
 
 }
-void GameObject::Draw(mat3 cameraMatrix, float alpha) {
+void GameObject::Particle_effect(mat3 cameraMatrix, float alpha) {
 	Sprite* spritePtr = GetGOComponent<Sprite>();
 	//Collision* collision = GetGOComponent<Collision>();
 	if (spritePtr != nullptr)
 	{
 
-		spritePtr->Draw(cameraMatrix * GetMatrix_mat3(), alpha );
-
+		//spritePtr->Draw_particle_effect(cameraMatrix * GetMatrix_mat3(), alpha);
+		spritePtr->Draw_Animation_object(cameraMatrix * GetMatrix_mat3(), vec2(scale.x, scale.y),rotation, alpha);
 	}
+}
+
+void GameObject::Draw([[maybe_unused]]float scroll)
+{
+
 }
 
 
@@ -94,13 +148,18 @@ void GameObject::ResolveCollision(GameObject*)
 	Engine::GetLogger().LogDebug("Base class collision resolution should not be called");
 }
 
+void GameObject::OnCollisionExit(GameObjectType)
+{
+	Engine::GetLogger().LogDebug("Collision Exit");
+}
+
 
 const DataType::TransformMatrix& GameObject::GetMatrix()
 {
 	if (updateMatrix)
 	{
 		objectMatrix = DataType::TranslateMatrix(position);
-		
+
 		updateMatrix = false;
 	}
 	return objectMatrix;
@@ -110,6 +169,12 @@ const mat3& GameObject::GetMatrix_mat3()
 {
 	objectMatrix_mat3 = mat3::build_translation(position.x, position.y) * mat3::build_rotation(rotation) * mat3::build_scale(1, 1);
 	return objectMatrix_mat3;
+}
+
+void GameObject::ChangeState(State* newState)
+{
+	currState = newState;
+	currState->Enter(this);
 }
 
 void GameObject::SetPosition(DataType::fvec2 newPosition)
@@ -153,3 +218,30 @@ void GameObject::UpdateRotation(float newRotation)
 const DataType::fvec2& GameObject::GetPosition() const { return position; }
 const DataType::fvec2& GameObject::GetScale() const { return scale; }
 float GameObject::GetRotation() const { return rotation; }
+
+
+void GameObject::SetPlayerFOV_and_PlayerViewDistance(float fov, float viewdistance)
+{
+	PlayerFOV = fov;
+	PlayerViewDistance = viewdistance;
+}
+
+const float GameObject::GetPlayerFOV()
+{
+	return PlayerFOV;
+}
+
+const float GameObject::GetPlayerViewDistance()
+{
+	return PlayerViewDistance;
+}
+
+void GameObject::SetOpacity(float newOpacity)
+{
+	opacity = newOpacity;
+}
+
+void GameObject::UpdateOpacity(float newOpacity)
+{
+	opacity += newOpacity;
+}

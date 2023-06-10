@@ -1,0 +1,23 @@
+assets/images/shield1.png
+FrameSize 240 240
+Frame 0 0
+Frame 240 0
+Frame 480 0
+Frame 720 0 
+Frame 960 0
+Frame 1200 0
+Frame 1680 0
+Frame 1920 0
+Frame 2160 0
+Frame 2400 0
+Frame 2640 0
+Frame 2880 0
+Frame 3120 0
+Frame 3360 0 
+Frame 3600 0
+Frame 3840 0
+Frame 4080 0
+Frame 4320 0
+Frame 4560 0
+Frame 4800 0
+Anim assets/data/Invincible_animation.anm

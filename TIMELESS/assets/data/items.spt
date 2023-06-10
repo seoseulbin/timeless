@@ -1,0 +1,24 @@
+assets/images/ItemsInItembox.png
+FrameSize 100 100
+Frame 0 0
+Frame 100 0
+Frame 200 0
+Frame 300 0
+Frame 400 0
+Frame 500 0
+Frame 600 0
+Frame 700 0
+Frame 800 0
+Frame 900 0
+Anim assets/data/itemsnothing.anm
+Anim assets/data/itemsBomb.anm
+Anim assets/data/itemsDefen.anm
+Anim assets/data/itemsEnergy.anm
+Anim assets/data/itemsExpan.anm
+Anim assets/data/itemsinv.anm
+Anim assets/data/itemsPotal.anm
+Anim assets/data/itemsResurr.anm
+Anim assets/data/itemsSpeedDown.anm
+Anim assets/data/itemsSpeedUp.anm
+Anim assets/data/itemsRandom.anm
+CollisionRect -50 -50 50 50

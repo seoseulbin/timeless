@@ -9,7 +9,9 @@ class ComponentManager
 public:
 	~ComponentManager()
 	{
-		Clear();
+		\
+
+			Clear();
 	}
 
 	void UpdateAll(double dt)
@@ -42,6 +44,7 @@ public:
 	template<typename T>
 	T* RemoveComponent()
 	{
+
 		Clear();
 		//auto it = std::find_if_not(components.begin(), components.end(), [](Component* element)
 		//	{

@@ -19,25 +19,52 @@ void TextureManager::PrePareTexture(const std::filesystem::path& filePath)
 	{
 		throw std::runtime_error("Failed to Load data file!");
 	}
-
+	std::string text;
 	while (!inFile.eof())
 	{
-		std::string real_filePath;
-		getline(inFile, real_filePath);
-		//Load(real_filePath);
-		if (pathToTexture.find(real_filePath) == pathToTexture.end())
+		inFile >> text;
+		if (text == "texel")
+		{
+			std::string real_filePath;
+			inFile >> real_filePath;
+			if (pathToTexture.find(real_filePath) == pathToTexture.end())
+			{
+				pathToTexture[real_filePath] = new Texture(real_filePath, true);
+			}
+		}
+		else
+		{
+			std::string real_filePath;
+			inFile >> real_filePath;
+			if (pathToTexture.find(real_filePath) == pathToTexture.end())
+			{
+				pathToTexture[real_filePath] = new Texture(real_filePath, false);
+			}
+		}
+		//std::string real_filePath;
+		//getline(inFile, real_filePath);
+		/*if (pathToTexture.find(real_filePath) == pathToTexture.end())
 		{
 			pathToTexture[real_filePath] = new Texture(real_filePath);
-		}
+		}*/
 	}
 	inFile.close();
 }
 
-Texture* TextureManager::Load(const std::string filePath)
+Texture* TextureManager::Load_collision_texture(const std::string filePath)
 {
 	if (pathToTexture.find(filePath) == pathToTexture.end())
 	{
-		pathToTexture[filePath] = new Texture(filePath);
+		pathToTexture[filePath] = new Texture(true);
+	}
+	return pathToTexture[filePath];
+}
+
+Texture* TextureManager::Load(const std::string filePath, [[maybe_unused]] bool test )
+{
+	if (pathToTexture.find(filePath) == pathToTexture.end())
+	{
+		pathToTexture[filePath] = new Texture(filePath, test);
 	}
 	return pathToTexture[filePath];
 }

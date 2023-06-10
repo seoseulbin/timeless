@@ -46,6 +46,7 @@ void GameStateManager::Update(double dt)
 		Engine::GetLogger().LogEvent("Load Complete");
 		currGameState->Update(dt);
 		state = State::Update;
+		//Engine::GetLogger().LogEvent("Load Complete");
 		break;
 	case State::Update:
 
@@ -58,6 +59,7 @@ void GameStateManager::Update(double dt)
 			Engine::GetLogger().LogVerbose("Update" + currGameState->GetName());
 			currGameState->Update(dt);
 			Engine::GetGameStateManager().GetGSComponent<GameObjectManager>()->CollideTest();
+			//Engine::GetGameStateManager().GetGSComponent<GameObjectManager>()->IsInNenoView();
 			currGameState->Draw();
 		}
 		break;

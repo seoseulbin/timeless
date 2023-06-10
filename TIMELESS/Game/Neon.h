@@ -15,12 +15,14 @@
 class NeonCreator : public Component
 {
 public:
-	NeonCreator(int totalSize);
+	NeonCreator(int totalSize, int stageLevel);
 	void Creat(int speed, DataType::fvec2 dir, int dist, DataType::fvec2 first_coord, DataType::fvec2 last_coord);
+	void Create_ending(int speed, DataType::fvec2 dir, int dist, DataType::fvec2 first_coord, DataType::fvec2 last_coord);
 	std::vector<DataType::fvec2> Rasterize(DataType::fvec2 first_coord, DataType::fvec2 last_coord);
 
 	void Clear();
 	void Update(double dt) override;
+	void Update_ending(double dt);
 	void Draw(mat3 cameraMatrix);
 
 	void Unload();
@@ -43,7 +45,7 @@ private:
 		void ResolveCollision(GameObject* objectB) override;
 
 
-
+		
 
 		DataType::fvec2 GetHitboxPosition() { neon_moved = false; return hitbox_position; }
 		bool IsNeonMoved() { return neon_moved; }
@@ -55,7 +57,8 @@ private:
 		bool is_alived= false;
 		bool neon_moved = false;
 		float delta_pos;
-		int speed;
+		float original_speed;
+		float slow_speed;
 		DataType::fvec2 direction{ 0,0 };
 		DataType::fvec2 previous_position{ 0,0 };
 		DataType::fvec2 position{ 0, 0 };
@@ -88,6 +91,7 @@ private:
 	double timer;
 	double delta_time;
 	int data_index;
+	double warning_delay;
 
 
 	int numNeonCores;
@@ -102,5 +106,5 @@ private:
 
 	Texture neon_image_opengl;
 	//Sprite neon_sprite;
-
+	int level;
 };

@@ -2,7 +2,7 @@
 #include"Logger.h"
 
 
- Logger::Logger(Severity severity, bool useConsole) : minLevel(severity), outStream("Log.log"), startTime(std::chrono::system_clock::now())
+Logger::Logger(Severity severity, bool useConsole) : minLevel(severity), outStream("Log.log"), startTime(std::chrono::system_clock::now())
 {
 	if (useConsole == true)
 	{
@@ -10,7 +10,7 @@
 	}
 }
 
- Logger::~Logger()
+Logger::~Logger()
 {
 	outStream.flush();
 	outStream.close();

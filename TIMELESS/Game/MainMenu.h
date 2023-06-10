@@ -8,6 +8,7 @@
 #include"../Engine/GameObjectManager.h"
 #include"Player.h"
 #include"CameraView.h"
+#include"../Engine/Font.h"
 
 
 //class Player;
@@ -36,6 +37,8 @@ public:
 
 
 private:
+	Texture test_font;
+	Texture test_font2;
 
 	Texture background;
 
@@ -52,5 +55,9 @@ private:
 	InputKey reload_key;
 	InputKey upKey;
 	InputKey downKey;
+	InputKey rightKey;
+	InputKey leftKey;
 	InputKey selectKey;
+
+	InputMouse left_button;
 };

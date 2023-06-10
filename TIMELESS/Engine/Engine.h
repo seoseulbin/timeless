@@ -4,9 +4,9 @@
 #include"Logger.h"
 #include"Input.h"
 #include"HandleOpenGL.h"
-#include"SpriteFont.h"
 #include"GameStateManager.h"
 #include"FileIO.h"
+#include"Font.h"
 #include"Window.h"//add
 //#include"GLApp.h"//add
 #include"TextureManager.h" // add
@@ -20,18 +20,21 @@ public:
 	static Window& GetWindow() { return Instance().window; } //add
 	static Input& GetInput() { return Instance().input; }
 	static HandleOpenGL& GetHandle() { return Instance().openglHandle; }
-	static SpriteFont& GetSpriteFont(int index) { return Instance().fonts[index]; }
+	static Font& GetFont() { return Instance().font; }
 	static GameStateManager& GetGameStateManager() { return Instance().gameStateManager; }
 	static FileInput& GetFileInput() { return Instance().fileinput; }
 	static TextureManager& GetTextureManager() { return Instance().textureManager; }
 	static SFXManager& GetSFXManager() { return Instance().sfxManager; }
+
+
+	//static Font& GetFont() { return Instance().font; }
 	template<typename T>
 	static T* GetGSComponent() { return GetGameStateManager().GetGSComponent<T>(); }
 
 	void Init(const char* windowTitle, int width, int height, const SDL_Event& e);//add
 	void Shutdown();
 	void Update();
-	void AddSpriteFont(const std::string fileName);
+	//void AddSpriteFont(const std::string fileName);
 	bool HasGameEnded();
 
 private:
@@ -45,6 +48,7 @@ private:
 	HandleOpenGL openglHandle;
 	FileInput fileinput;
 	SFXManager sfxManager;
+	Font font;
 
 	std::chrono::system_clock::time_point lastTick;
 	static constexpr double Target_FPS = 60.0;
@@ -54,7 +58,7 @@ private:
 	double setTimerTime = 5;
 	double dt = 0;
 
-	std::vector<SpriteFont> fonts;
+	
 
 	//GLApp* test; //add
 };

@@ -7,6 +7,7 @@
 #include"../Engine/GameObject.h"
 #include"../Engine/Sprite.h"
 #include"Light.h"
+#include "ItemTypes.h"
 
 class Player : public GameObject
 {
@@ -19,10 +20,88 @@ public:
 	bool CanCollideWith(GameObjectType objectB) override;
 	void ResolveCollision(GameObject* objectB) override;
 
+	bool StartResurrection = false;
+private:
+
+	//GameObject* standingObject;
+	class State_Idle : public State
+	{
+	public:
+		virtual void Enter(GameObject* object) override;
+		virtual void Update(GameObject* object, double dt) override;
+		virtual void TestForExit(GameObject* object) override;
+		std::string GetName() override { return "Idle"; }
+	};
+
+	class State_Running_UP : public State
+	{
+	public:
+		virtual void Enter(GameObject* object) override;
+		virtual void Update(GameObject* object, double dt) override;
+		virtual void TestForExit(GameObject* object) override;
+		std::string GetName() override { return "Running"; }
+	};
+
+	class State_Running_Down : public State
+	{
+	public:
+		virtual void Enter(GameObject* object) override;
+		virtual void Update(GameObject* object, double dt) override;
+		virtual void TestForExit(GameObject* object) override;
+		std::string GetName() override { return "Running"; }
+	};
+
+	class State_Running_Left : public State
+	{
+	public:
+		virtual void Enter(GameObject* object) override;
+		virtual void Update(GameObject* object, double dt) override;
+		virtual void TestForExit(GameObject* object) override;
+		std::string GetName() override { return "Running"; }
+	};
+
+	class State_Running_Right : public State
+	{
+	public:
+		virtual void Enter(GameObject* object) override;
+		virtual void Update(GameObject* object, double dt) override;
+		virtual void TestForExit(GameObject* object) override;
+		std::string GetName() override { return "Running"; }
+	};
+
+	class State_Jumping : public State
+	{
+	public:
+		virtual void Enter(GameObject* object) override;
+		virtual void Update(GameObject* object, double dt) override;
+		virtual void TestForExit(GameObject* object) override;
+		std::string GetName() override { return "Jumping"; }
+	};
+	class State_Die : public State
+	{
+	public:
+		virtual void Enter(GameObject* object) override;
+		virtual void Update(GameObject* object, double dt) override;
+		virtual void TestForExit(GameObject* object) override;
+		std::string GetName() override { return "Die"; }
+	};
+
+	State_Idle stateIdle;
+	State_Running_UP stateRunning_up;
+	State_Running_Down stateRunning_down;
+	State_Running_Left stateRunning_left;
+	State_Running_Right stateRunning_right;
+	State_Jumping stateJumping;
+	State_Die stateDie;
+
+public:
 	void NeonCollisionEvent(double dt);
 	void PlayerControl();
 	void PlayerJumping(double dt);
 
+	float Getplayerfov();
+	float Getplayerviewdistance();
+	void SetViewDistance(float distance) { viewDistance = distance; }
 private:
 	DataType::fvec2 direction{ 0,0 };
 	DataType::fvec2 player_position{ 0,0 };
@@ -38,6 +117,9 @@ private:
 	bool is_up_blocked;
 	bool is_down_blocked;
 
+	bool is_dead;
+
+	double dead_time_;
 
 	DataType::fvec2 scale{ 1.f,1.f };
 	DataType::fvec2 size{ 80.f,80.f };
@@ -53,12 +135,16 @@ private:
 	InputKey moveDownKey;
 	InputKey evadeKey;
 
-	InputKey cheatKey;
+	InputKey itemKey;
 
-	float player_speed = 200.f;
+	//float player_speed = 200.f;		//<--move to GameObject
+
 	float width = 25.0f;
 	float height = 60.0f;
 
+	const float fov = 360.0f;
+	float viewDistance;
+	//ItemType inventory; //<--move to GameObject
 
 
 	DataType::fvec2 goal_grid_position;
@@ -73,7 +159,7 @@ public:
 	Player_light();
 	void Update(double dt) override;
 	void Draw(mat3 cameraMatrix);
-	void Draw2(mat3 cameraMatrix);
+	void Draw2(mat3 cameraMatrix, float viewDistance);
 
 private:
 	Light light;

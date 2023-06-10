@@ -8,7 +8,8 @@ class Texture;
 class TextureManager
 {
 public:
-	Texture* Load(const std::string filePath);
+	Texture* Load(const std::string filePath, bool Use_shader_normal);
+	Texture* Load_collision_texture(const std::string filePath);
 	void Add(std::string RedCollision);
 	void Unload();
 	void PrePareTexture(const std::filesystem::path& filePath);

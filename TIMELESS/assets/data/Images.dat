@@ -1,9 +1,38 @@
-assets/images/player1.png
-assets/images/black_outline.png
-assets/images/Black_wall_edit.png
-assets/images/black_portal_edit.png
-assets/images/Coin1.png
-assets/images/Coin2.png
-assets/images/Coin3.png
-assets/images/neon_yellow.png
-assets/images/new_player.png
+texel assets/images/playerSheet.png
+texel assets/images/spritesheet_1.png
+n assets/images/black_outline.png
+n assets/images/white_outline_2.png
+n assets/images/black_outline_choose_option.png
+n assets/images/Black_wall_edit.png
+n assets/images/Red_wall.png
+n assets/images/black_portal_edit.png
+n assets/images/Coin1.png
+n assets/images/Coin2.png
+n assets/images/Coin3.png
+n assets/images/neon_yellow.png
+n assets/images/blue_bright.png
+n assets/images/green_neon.png
+n assets/images/pink_neon.png
+n assets/images/red_neon.png
+texel assets/images/shield1.png
+n assets/images/bomb.png
+n assets/images/invincible.png
+n assets/images/speed_up.png
+n assets/images/warning_particle.png
+n assets/images/OVER.png
+n assets/images/TestUI.png
+n assets/images/Ring2.png
+n assets/images/Ring3.png
+texel assets/images/Inventory_Sheet.png
+n assets/images/Inventory_Sheet.png
+n assets/images/arrow.png
+n assets/images/empty_itemBox.png
+n assets/images/NeonBarricade.png
+n assets/images/NeonBarricade.png
+n assets/images/Dust_p.png
+n assets/images/satellite.png
+n assets/images/EnergyCharge.png
+n assets/images/scoreBackground.png
+n assets/images/scoreBackground.png
+n assets/images/randombox_1.png
+n assets/images/itemUse_Effect.png

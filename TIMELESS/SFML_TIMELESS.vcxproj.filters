@@ -2,7 +2,7 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Game\Coin.cpp">
+    <ClCompile Include="Game\Item.cpp">
       <Filter>Game\Source</Filter>
     </ClCompile>
     <ClCompile Include="Engine\Camera.cpp">
@@ -18,9 +18,6 @@
       <Filter>Engine\Source</Filter>
     </ClCompile>
     <ClCompile Include="Engine\FIleIO.cpp">
-      <Filter>Engine\Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Font.cpp">
       <Filter>Engine\Source</Filter>
     </ClCompile>
     <ClCompile Include="Engine\GameObject.cpp">
@@ -83,9 +80,6 @@
     <ClCompile Include="Engine\ShowCollision.cpp">
       <Filter>Engine\Source</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\SpriteFont.cpp">
-      <Filter>Engine\Source</Filter>
-    </ClCompile>
     <ClCompile Include="Engine\TextureManager.cpp">
       <Filter>Engine\Source</Filter>
     </ClCompile>
@@ -101,7 +95,7 @@
     <ClCompile Include="Game\LoadingScreen.cpp">
       <Filter>Game\Source</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Font_Opengl.cpp">
+    <ClCompile Include="Engine\Font.cpp">
       <Filter>Engine\Source</Filter>
     </ClCompile>
     <ClCompile Include="Game\MainMenu.cpp">
@@ -119,9 +113,39 @@
     <ClCompile Include="Game\Particle.cpp">
       <Filter>Game\Source</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\Animation.cpp">
+      <Filter>Engine\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\DebugMode.cpp">
+      <Filter>Engine\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\UI.cpp">
+      <Filter>Game\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Coin.cpp">
+      <Filter>Game\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\EndingScreen.cpp">
+      <Filter>Game\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\HP_UI.cpp">
+      <Filter>Game\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\ScoreScene.cpp">
+      <Filter>Game\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\ItemBox.cpp">
+      <Filter>Game\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Inventory.cpp">
+      <Filter>Game\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\EndingStory.cpp">
+      <Filter>Game\Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Game\Coin.h">
+    <ClInclude Include="Game\Item.h">
       <Filter>Game\include</Filter>
     </ClInclude>
     <ClInclude Include="Engine\angles.h">
@@ -149,9 +173,6 @@
       <Filter>Engine\include</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Fonts.h">
-      <Filter>Engine\include</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Font.h">
       <Filter>Engine\include</Filter>
     </ClInclude>
     <ClInclude Include="Engine\GameObject.h">
@@ -220,9 +241,6 @@
     <ClInclude Include="Engine\ShowCollision.h">
       <Filter>Engine\include</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\SpriteFont.h">
-      <Filter>Engine\include</Filter>
-    </ClInclude>
     <ClInclude Include="Engine\TextureManager.h">
       <Filter>Engine\include</Filter>
     </ClInclude>
@@ -247,7 +265,7 @@
     <ClInclude Include="Game\LoadingScreen.h">
       <Filter>Game\include</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Font_Opengl.h">
+    <ClInclude Include="Engine\Font.h">
       <Filter>Engine\include</Filter>
     </ClInclude>
     <ClInclude Include="Game\MainMenu.h">
@@ -263,6 +281,45 @@
       <Filter>Game\include</Filter>
     </ClInclude>
     <ClInclude Include="Game\Particle.h">
+      <Filter>Game\include</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Animation.h">
+      <Filter>Engine\include</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\player_Anims.h">
+      <Filter>Game\include</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\ItemTypes.h">
+      <Filter>Game\include</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Inventory_Anims.h">
+      <Filter>Game\include</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\DebugMode.h">
+      <Filter>Engine\include</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\UI.h">
+      <Filter>Game\include</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Inventory.h">
+      <Filter>Game\include</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\ItemBox.h">
+      <Filter>Game\include</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Coin.h">
+      <Filter>Game\include</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\EndingScreen.h">
+      <Filter>Game\include</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\HP_UI.h">
+      <Filter>Game\include</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\ScoreScene.h">
+      <Filter>Game\include</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\EndingStory.h">
       <Filter>Game\include</Filter>
     </ClInclude>
   </ItemGroup>

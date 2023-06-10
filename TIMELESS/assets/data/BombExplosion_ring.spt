@@ -1,0 +1,8 @@
+assets/images/explode1.png
+FrameSize 500 580
+Frame 0 0
+Frame 500 0
+Frame 1000 0 
+Frame 1500 0
+Frame 2000 0
+Anim assets/data/bombExplosion_ring.anm

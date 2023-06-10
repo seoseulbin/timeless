@@ -22,7 +22,11 @@ mat3 mat3::build_rotation(float angle_in_radians) noexcept
         cos_angle = 0.0f;
     }
     return {
-        {cos_angle, sin_angle, 0}, 
-        {negative_sin_angle, cos_angle, 0}, 
-        {0, 0, 1}};
+        //{cos_angle, sin_angle, 0}, 
+        //{negative_sin_angle, cos_angle, 0}, 
+        //{0, 0, 1
+         {cos_angle, negative_sin_angle, 0},
+        {sin_angle, cos_angle, 0},
+        {0, 0, 1}
+    };
 }

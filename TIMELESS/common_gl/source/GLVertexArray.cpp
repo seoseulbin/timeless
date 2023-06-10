@@ -8,7 +8,7 @@ GLVertexArray::GLVertexArray(GLPrimitive::Type the_primitive_pattern) : primitiv
 
 GLVertexArray::~GLVertexArray()
 {
-	glCheck(glDeleteVertexArrays(1, &vertex_array_handle));
+	glDeleteVertexArrays(1, &vertex_array_handle);
 }
 
 GLVertexArray::GLVertexArray(GLVertexArray&& temp) noexcept

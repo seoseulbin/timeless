@@ -6,20 +6,20 @@
 
 void RectCollision::Load()
 {
-	
+
 }
 
 void RectCollision::Draw(mat3 objectMatrix)
 {
-	test_rect = Engine::GetTextureManager().Load("RedCollisionRect");
+	collision_box = Engine::GetTextureManager().Load_collision_texture("RedCollisionRect");
 	DataType::frect2 displayRect = GetWorldCoorRect();
-	test_rect->Draw(objectMatrix, displayRect);
+	collision_box->Draw_Collision_box(objectMatrix, displayRect);
 }
 
 
 DataType::frect2 RectCollision::GetWorldCoorRect()
 {
-	return { objectPtr->GetMatrix() * static_cast<DataType::fvec2>(rect.point1), 
+	return { objectPtr->GetMatrix() * static_cast<DataType::fvec2>(rect.point1),
 		objectPtr->GetMatrix() * static_cast<DataType::fvec2>(rect.point2) };
 }
 
@@ -53,7 +53,7 @@ bool RectCollision::DoesCollideWith(DataType::fvec2 point)
 }
 
 
-void CircleCollision::Draw([[maybe_unused]]mat3 objectMatrix)
+void CircleCollision::Draw([[maybe_unused]] mat3 objectMatrix)
 {
 
 }
@@ -63,7 +63,7 @@ float CircleCollision::GetRadius()
 	return (DataType::ScaleMatrix(objectPtr->GetScale()) * DataType::fvec2{ radius,0 }).x;
 }
 
-bool CircleCollision::DoesCollideWith([[maybe_unused]]GameObject* objectB)
+bool CircleCollision::DoesCollideWith([[maybe_unused]] GameObject* objectB)
 {
 	Collision* collideAgains = objectB->GetGOComponent<Collision>();
 	if (collideAgains == nullptr)

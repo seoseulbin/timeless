@@ -15,7 +15,7 @@ GLTexture::~GLTexture() noexcept
 
 void GLTexture::delete_texture() noexcept
 {
-	glCheck(glDeleteTextures(1, &texture_handle));
+	glDeleteTextures(1, &texture_handle);
 	//glDeleteTextures(1, &texture_handle);
 	texture_handle = 0;
 	width = 0;
