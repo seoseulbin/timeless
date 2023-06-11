@@ -186,7 +186,7 @@ void Player::ResolveCollision(GameObject* objectB)
 				
 			}
 
-			if (Stage1::stage_level == 10) {	//change this to last stage level
+			if (Stage1::stage_level == 3) {	//change this to last stage level
 				Stage1::stage_level += 1;
 				Engine::GetGameStateManager().SetNextState("Ending");	//go to ending
 			}
