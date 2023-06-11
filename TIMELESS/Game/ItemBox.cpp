@@ -172,7 +172,7 @@ ItemBox::ItemBox(DataType::fvec2 startPos, ItemType type) : cost(0)		//change it
 		}
 		else if (FileInput::CheatMode)
 		{
-			cost = -900;
+			cost = 0;
 		}
 		
 		AddGOComponent(new Sprite("assets/data/Item_atk.spt", this));
