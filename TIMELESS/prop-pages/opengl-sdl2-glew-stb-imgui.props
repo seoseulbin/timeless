@@ -25,9 +25,9 @@
       <SubSystem>Windows</SubSystem>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy /y /d "$(SolutionDir)external\opengl\bin\*.dll" "$(TargetDir)"
-xcopy /y /d "$(SolutionDir)external\sfml\bin\*.dll" "$(TargetDir)"
-xcopy /y /d "$(SolutionDir)external\freetype\bin\*.dll" "$(TargetDir)"
+      <Command>xcopy /y /d "$(SolutionDir)external\opengl\bin\*.dll" "$(TargetDir)extra\"
+xcopy /y /d "$(SolutionDir)external\sfml\bin\*.dll" "$(TargetDir)extra\"
+xcopy /y /d "$(SolutionDir)external\freetype\bin\*.dll" "$(TargetDir)extra\"
 xcopy /y /d /e /i "$(SolutionDir)assets\" "$(TargetDir)assets\"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
