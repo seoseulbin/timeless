@@ -1,6 +1,5 @@
 #pragma once
 #include "../Engine/GameState.h"
-#include <SFML/Graphics.hpp>
 #include "../Engine/Input.h"
 #include "../Engine/Vec2.h"
 #include "../Engine/Matrix.h"

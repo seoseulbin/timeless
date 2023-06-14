@@ -7,9 +7,7 @@ Splash_TeamName::Splash_TeamName() : next_stage_key(InputKey::Keyboard::Enter)
 
 void Splash_TeamName::Load()
 {
-	// string texturePath = "assets/images/splash2.png";
 	string texturePath = "assets/images/TeamTIMELESS.png";
-	// texture.Load(texturePath);
 
 	T = chrono::system_clock::now();
 

@@ -313,14 +313,6 @@ void Player::NeonCollisionEvent(double dt)
 			}
 			else
 			{
-				// Stage1::player_life = 3;
-				// Stage1::stage_level = 1;
-				// Stage1::player_inventory[0] = ItemType::Empty;
-				// Stage1::player_inventory[1] = ItemType::Empty;
-				// Stage1::player_coin = 0;
-				// Stage1::coinsEarnedInThisStage = 0;
-				// Stage1::totalGameTimer = 0;
-				/*Engine::GetGameStateManager().SetNextState("Menu");*/
 				Engine::GetGameStateManager().SetNextState("ScoreScene");
 				Audio *audioPtr = Engine::GetSFXManager().Load("assets/sounds/Score_show.wav");
 				audioPtr->Play();
@@ -335,7 +327,7 @@ void Player::PlayerControl()
 	{
 		direction = {0, 0};
 	}
-	// player->PlayerJumping(dt);
+
 	if (moveLeftKey.IsKeyDown() && isMoving == false && is_left_blocked == false)
 	{
 		direction += {-1, 0};

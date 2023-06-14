@@ -42,7 +42,6 @@ public:
 	static bool isStoreStage;
 	static bool hasResurrection;
 
-	// static DataType::fvec2 CamShakeOffset;
 	static int CamShakePower;
 
 	static bool isGamePause;

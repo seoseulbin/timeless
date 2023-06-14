@@ -1,5 +1,4 @@
 #pragma once
-#include <SFML/Graphics.hpp>
 #include "../Engine/Vec2.h"
 #include "../Engine/Texture.h"
 #include "../Engine/Matrix.h"

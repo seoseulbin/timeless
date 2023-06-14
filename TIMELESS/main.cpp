@@ -6,7 +6,6 @@
 #include"Game/Splash_TeamName.h"
 #include "Game/Stage1.h"
 #include "Game/MainMenu.h"
-#include"Game/MainScreen.h"
 #include<iostream>
 #include"Engine/SFXManager.h"
 #include "Game/Special.h"
