@@ -71,14 +71,6 @@ void Stage1::Load()
 	AddGSComponent(new NeonParticles());
 	AddGSComponent(new PlayerDieParticles());
 
-	AddGSComponent(new PlayerExplodeParticle_1());
-	AddGSComponent(new PlayerExplodeParticle_2());
-	AddGSComponent(new PlayerExplodeParticle_3());
-
-	AddGSComponent(new TempHPParticle_0());
-	AddGSComponent(new TempHPParticle_1());
-	AddGSComponent(new TempHPParticle_2());
-
 	AddGSComponent(new GAME_Particle());
 	AddGSComponent(new OVER_Particle());
 
