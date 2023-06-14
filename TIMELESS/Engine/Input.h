@@ -1,20 +1,57 @@
 #pragma once
-#include<vector>
+#include <vector>
 
-class InputKey {
+class InputKey
+{
 public:
-	enum class Keyboard {
-		None, Enter, Escape, Space, Left, Up, Right, Down,
-		A, B, C, D, E, F, G, H, I, J,
-		K, L, M, N, O, P, Q, R, S, T,
-		U, V, W, X, Y, Z, Tilde, F5,
-		F1,F2,F3,
+	enum class Keyboard
+	{
+		None,
+		Enter,
+		Escape,
+		Space,
+		Left,
+		Up,
+		Right,
+		Down,
+		A,
+		B,
+		C,
+		D,
+		E,
+		F,
+		G,
+		H,
+		I,
+		J,
+		K,
+		L,
+		M,
+		N,
+		O,
+		P,
+		Q,
+		R,
+		S,
+		T,
+		U,
+		V,
+		W,
+		X,
+		Y,
+		Z,
+		Tilde,
+		F5,
+		F1,
+		F2,
+		F3,
 		Count
 	};
 
 	InputKey(Keyboard button);
 	bool IsKeyDown() const;
 	bool IsKeyReleased() const;
+
 private:
 	Keyboard button;
 };
@@ -22,8 +59,12 @@ private:
 class InputMouse
 {
 public:
-	enum class Mouse {
-		None, Left, Right, Middle,
+	enum class Mouse
+	{
+		None,
+		Left,
+		Right,
+		Middle,
 		Count
 	};
 
@@ -35,7 +76,8 @@ private:
 	Mouse button;
 };
 
-class Input {
+class Input
+{
 public:
 	Input();
 	bool IsKeyDown(InputKey::Keyboard key) const;
@@ -45,6 +87,7 @@ public:
 	void SetKeyDown(InputKey::Keyboard key, bool value);
 	void SetButtonDown(InputMouse::Mouse button, bool value);
 	void Update();
+
 private:
 	std::vector<bool> keyDown;
 	std::vector<bool> wasKeyDown;

@@ -1,6 +1,6 @@
 #pragma once
-#include"Input.h"
-#include"Component.h"
+#include "Input.h"
+#include "Component.h"
 
 class DebugModeTakeAllVision : public Component
 {
@@ -14,7 +14,6 @@ private:
 	InputKey F1_key;
 };
 
-
 class DebugModePlayerCheat : public Component
 {
 public:
@@ -26,7 +25,6 @@ private:
 	bool enabled;
 	InputKey F2_key;
 };
-
 
 class PauseGame : public Component
 {

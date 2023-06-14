@@ -4,14 +4,14 @@
 #include "../Engine/Input.h"
 #include "../Engine/Input.h"
 #include "../Engine/Input.h"
-#include"..\Engine\Engine.h"
+#include "..\Engine\Engine.h"
 
 int Option::neon_color = 2;
 string Option::neon_file_path = "assets/data/neon_yellow.spt";
 string Option::neon_warning_file_path = "assets/data/neon_warning.spt";
 
 Option::Option() : exit(InputKey::Keyboard::Escape), adjustVol(0.f), selectKey(InputKey::Keyboard::Enter),
-RightKey(InputKey::Keyboard::Right), leftKey(InputKey::Keyboard::Left), upKey(InputKey::Keyboard::Up), downKey(InputKey::Keyboard::Down)
+				   RightKey(InputKey::Keyboard::Right), leftKey(InputKey::Keyboard::Left), upKey(InputKey::Keyboard::Up), downKey(InputKey::Keyboard::Down)
 {
 	selected_bgm = 2;
 	selected_sfx = 2;
@@ -79,8 +79,8 @@ void Option::Update(double)
 	if (exit.IsKeyReleased())
 	{
 		Engine::GetGameStateManager().SetNextState("Menu");
-		//Audio* audioPtr = Engine::GetSFXManager().Load("assets/sounds/Esc_key_select.wav");
-		//audioPtr->Play();
+		// Audio* audioPtr = Engine::GetSFXManager().Load("assets/sounds/Esc_key_select.wav");
+		// audioPtr->Play();
 		Engine::GetSFXManager().Load("assets/sounds/Esc_key_select.wav")->Play();
 		neon_color = selected_neon + 1;
 		switch (neon_color)
@@ -150,7 +150,7 @@ void Option::Update(double)
 			{
 				selected_bgm++;
 			}
-			Engine::GetSFXManager().BGMController((selected_bgm) * 11.f, true);
+			Engine::GetSFXManager().BGMController((selected_bgm)*11.f, true);
 		}
 
 		else if (selected_menu_item == 1)
@@ -163,7 +163,7 @@ void Option::Update(double)
 			{
 				selected_sfx++;
 			}
-			Engine::GetSFXManager().SEController((selected_sfx) * 11.f, false);
+			Engine::GetSFXManager().SEController((selected_sfx)*11.f, false);
 		}
 
 		else if (selected_menu_item == 2)
@@ -192,7 +192,7 @@ void Option::Update(double)
 			{
 				selected_bgm--;
 			}
-			Engine::GetSFXManager().BGMController((selected_bgm) * 11.f, true);
+			Engine::GetSFXManager().BGMController((selected_bgm)*11.f, true);
 		}
 
 		else if (selected_menu_item == 1)
@@ -205,7 +205,7 @@ void Option::Update(double)
 			{
 				selected_sfx--;
 			}
-			Engine::GetSFXManager().SEController((selected_sfx) * 11.f, false);
+			Engine::GetSFXManager().SEController((selected_sfx)*11.f, false);
 		}
 
 		else if (selected_menu_item == 2)
@@ -221,7 +221,6 @@ void Option::Update(double)
 		}
 		Engine::GetSFXManager().Load("assets/sounds/Menu_Select_effect.wav")->Play();
 	}
-
 }
 
 void Option::Unload()
@@ -232,179 +231,163 @@ void Option::Unload()
 
 void Option::Draw()
 {
-	background.Draw(mat3::build_translation({ 0, 0 }), true, 0.5f);
-	Tittle.Draw(mat3::build_translation({ 0, 0.6f }), true, 1.f);
+	background.Draw(mat3::build_translation({0, 0}), true, 0.5f);
+	Tittle.Draw(mat3::build_translation({0, 0.6f}), true, 1.f);
 
-	BGM.Draw(mat3::build_translation({ -0.7f, 0.2f }), true, 1.f);
-	sound1.Draw(mat3::build_translation({ -0.43f, 0.2f }), true, 1.f);
+	BGM.Draw(mat3::build_translation({-0.7f, 0.2f}), true, 1.f);
+	sound1.Draw(mat3::build_translation({-0.43f, 0.2f}), true, 1.f);
 
 	if (selected_bgm == static_cast<int>(Sound_BGM::level1))
 	{
-		Selected1.Draw(mat3::build_translation({ -0.25f, 0.2f }), true, 1.f);
-		option_select_item.Draw(mat3::build_translation({ -0.25f,0.2f }), true, 1.f);
+		Selected1.Draw(mat3::build_translation({-0.25f, 0.2f}), true, 1.f);
+		option_select_item.Draw(mat3::build_translation({-0.25f, 0.2f}), true, 1.f);
 	}
 	else
-		NotSelected.Draw(mat3::build_translation({ -0.25f, 0.2f }), true, 1.f);
+		NotSelected.Draw(mat3::build_translation({-0.25f, 0.2f}), true, 1.f);
 
 	if (selected_bgm == static_cast<int>(Sound_BGM::level2))
 	{
-		Selected1.Draw(mat3::build_translation({ -0.05f, 0.2f }), true, 1.f);
-		option_select_item.Draw(mat3::build_translation({ -0.05f, 0.2f }), true, 1.f);
+		Selected1.Draw(mat3::build_translation({-0.05f, 0.2f}), true, 1.f);
+		option_select_item.Draw(mat3::build_translation({-0.05f, 0.2f}), true, 1.f);
 	}
 	else
-		NotSelected.Draw(mat3::build_translation({ -0.05f, 0.2f }), true, 1.f);
+		NotSelected.Draw(mat3::build_translation({-0.05f, 0.2f}), true, 1.f);
 
 	if (selected_bgm == static_cast<int>(Sound_BGM::level3))
 	{
-		Selected1.Draw(mat3::build_translation({ 0.15f, 0.2f }), true, 1.f);
-		option_select_item.Draw(mat3::build_translation({ 0.15f,0.2f }), true, 1.f);
+		Selected1.Draw(mat3::build_translation({0.15f, 0.2f}), true, 1.f);
+		option_select_item.Draw(mat3::build_translation({0.15f, 0.2f}), true, 1.f);
 	}
 	else
-		NotSelected.Draw(mat3::build_translation({ 0.15f, 0.2f }), true, 1.f);
-
+		NotSelected.Draw(mat3::build_translation({0.15f, 0.2f}), true, 1.f);
 
 	if (selected_bgm == static_cast<int>(Sound_BGM::level4))
 	{
-		Selected1.Draw(mat3::build_translation({ 0.35f, 0.2f }), true, 1.f);
-		option_select_item.Draw(mat3::build_translation({ 0.35f,0.2f }), true, 1.f);
+		Selected1.Draw(mat3::build_translation({0.35f, 0.2f}), true, 1.f);
+		option_select_item.Draw(mat3::build_translation({0.35f, 0.2f}), true, 1.f);
 	}
 	else
-		NotSelected.Draw(mat3::build_translation({ 0.35f, 0.2f }), true, 1.f);
-
+		NotSelected.Draw(mat3::build_translation({0.35f, 0.2f}), true, 1.f);
 
 	if (selected_bgm == static_cast<int>(Sound_BGM::level5))
 	{
-		Selected1.Draw(mat3::build_translation({ 0.55f, 0.2f }), true, 1.f);
-		option_select_item.Draw(mat3::build_translation({ 0.55f,0.2f }), true, 1.f);
+		Selected1.Draw(mat3::build_translation({0.55f, 0.2f}), true, 1.f);
+		option_select_item.Draw(mat3::build_translation({0.55f, 0.2f}), true, 1.f);
 	}
 	else
-		NotSelected.Draw(mat3::build_translation({ 0.55f, 0.2f }), true, 1.f);
+		NotSelected.Draw(mat3::build_translation({0.55f, 0.2f}), true, 1.f);
 
-
-	SFX.Draw(mat3::build_translation({ -0.7f, -0.2f }), true, 1.f);
-	sound2.Draw(mat3::build_translation({ -0.43f, -0.2f }), true, 1.f);
-
+	SFX.Draw(mat3::build_translation({-0.7f, -0.2f}), true, 1.f);
+	sound2.Draw(mat3::build_translation({-0.43f, -0.2f}), true, 1.f);
 
 	if (selected_sfx == static_cast<int>(Sound_SFX::level1))
 	{
-		Selected2.Draw(mat3::build_translation({ -0.25f, -0.2f }), true, 1.f);
-		option_select_item.Draw(mat3::build_translation({ -0.25f,-0.2f }), true, 1.f);
+		Selected2.Draw(mat3::build_translation({-0.25f, -0.2f}), true, 1.f);
+		option_select_item.Draw(mat3::build_translation({-0.25f, -0.2f}), true, 1.f);
 	}
 	else
-		NotSelected.Draw(mat3::build_translation({ -0.25f, -0.2f }), true, 1.f);
-
+		NotSelected.Draw(mat3::build_translation({-0.25f, -0.2f}), true, 1.f);
 
 	if (selected_sfx == static_cast<int>(Sound_SFX::level2))
 	{
-		Selected2.Draw(mat3::build_translation({ -0.05f, -0.2f }), true, 1.f);
-		option_select_item.Draw(mat3::build_translation({ -0.05f,-0.2f }), true, 1.f);
+		Selected2.Draw(mat3::build_translation({-0.05f, -0.2f}), true, 1.f);
+		option_select_item.Draw(mat3::build_translation({-0.05f, -0.2f}), true, 1.f);
 	}
 	else
-		NotSelected.Draw(mat3::build_translation({ -0.05f, -0.2f }), true, 1.f);
-
+		NotSelected.Draw(mat3::build_translation({-0.05f, -0.2f}), true, 1.f);
 
 	if (selected_sfx == static_cast<int>(Sound_SFX::level3))
 	{
-		Selected2.Draw(mat3::build_translation({ 0.15f, -0.2f }), true, 1.f);
-		option_select_item.Draw(mat3::build_translation({ 0.15f,-0.2f }), true, 1.f);
+		Selected2.Draw(mat3::build_translation({0.15f, -0.2f}), true, 1.f);
+		option_select_item.Draw(mat3::build_translation({0.15f, -0.2f}), true, 1.f);
 	}
 	else
-		NotSelected.Draw(mat3::build_translation({ 0.15f, -0.2f }), true, 1.f);
-
+		NotSelected.Draw(mat3::build_translation({0.15f, -0.2f}), true, 1.f);
 
 	if (selected_sfx == static_cast<int>(Sound_SFX::level4))
 	{
-		Selected2.Draw(mat3::build_translation({ 0.35f, -0.2f }), true, 1.f);
-		option_select_item.Draw(mat3::build_translation({ 0.35f,-0.2f }), true, 1.f);
+		Selected2.Draw(mat3::build_translation({0.35f, -0.2f}), true, 1.f);
+		option_select_item.Draw(mat3::build_translation({0.35f, -0.2f}), true, 1.f);
 	}
 
 	else
-		NotSelected.Draw(mat3::build_translation({ 0.35f, -0.2f }), true, 1.f);
-
+		NotSelected.Draw(mat3::build_translation({0.35f, -0.2f}), true, 1.f);
 
 	if (selected_sfx == static_cast<int>(Sound_SFX::level5))
 	{
-		Selected2.Draw(mat3::build_translation({ 0.55f, -0.2f }), true, 1.f);
-		option_select_item.Draw(mat3::build_translation({ 0.55f,-0.2f }), true, 1.f);
+		Selected2.Draw(mat3::build_translation({0.55f, -0.2f}), true, 1.f);
+		option_select_item.Draw(mat3::build_translation({0.55f, -0.2f}), true, 1.f);
 	}
 
 	else
-		NotSelected.Draw(mat3::build_translation({ 0.55f, -0.2f }), true, 1.f);
+		NotSelected.Draw(mat3::build_translation({0.55f, -0.2f}), true, 1.f);
 
-
-
-	NEON_COLOR.Draw(mat3::build_translation({ -0.6f, -0.6f }), true, 1.f);
-
+	NEON_COLOR.Draw(mat3::build_translation({-0.6f, -0.6f}), true, 1.f);
 
 	if (selected_neon == static_cast<int>(Neon_Color::red))
 	{
-		Red.Draw(mat3::build_translation({ -0.25f, -0.6f }), true, 1.f);
-		option_select_item.Draw(mat3::build_translation({ -0.25f,-0.6f }), true, 1.f);
+		Red.Draw(mat3::build_translation({-0.25f, -0.6f}), true, 1.f);
+		option_select_item.Draw(mat3::build_translation({-0.25f, -0.6f}), true, 1.f);
 	}
 
 	else
-		NotSelected.Draw(mat3::build_translation({ -0.25f, -0.6f }), true, 1.f);
-
+		NotSelected.Draw(mat3::build_translation({-0.25f, -0.6f}), true, 1.f);
 
 	if (selected_neon == static_cast<int>(Neon_Color::yellow))
 	{
-		Yellow.Draw(mat3::build_translation({ -0.05f, -0.6f }), true, 1.f);
-		option_select_item.Draw(mat3::build_translation({ -0.05f,-0.6f }), true, 1.f);
+		Yellow.Draw(mat3::build_translation({-0.05f, -0.6f}), true, 1.f);
+		option_select_item.Draw(mat3::build_translation({-0.05f, -0.6f}), true, 1.f);
 	}
 
 	else
-		NotSelected.Draw(mat3::build_translation({ -0.05f, -0.6f }), true, 1.f);
-
+		NotSelected.Draw(mat3::build_translation({-0.05f, -0.6f}), true, 1.f);
 
 	if (selected_neon == static_cast<int>(Neon_Color::green))
 	{
-		Green.Draw(mat3::build_translation({ 0.15f, -0.6f }), true, 1.f);
-		option_select_item.Draw(mat3::build_translation({ 0.15f,-0.6f }), true, 1.f);
+		Green.Draw(mat3::build_translation({0.15f, -0.6f}), true, 1.f);
+		option_select_item.Draw(mat3::build_translation({0.15f, -0.6f}), true, 1.f);
 	}
 
 	else
-		NotSelected.Draw(mat3::build_translation({ 0.15f, -0.6f }), true, 1.f);
-
+		NotSelected.Draw(mat3::build_translation({0.15f, -0.6f}), true, 1.f);
 
 	if (selected_neon == static_cast<int>(Neon_Color::blue))
 	{
-		Blue.Draw(mat3::build_translation({ 0.35f, -0.6f }), true, 1.f);
-		option_select_item.Draw(mat3::build_translation({ 0.35f,-0.6f }), true, 1.f);
+		Blue.Draw(mat3::build_translation({0.35f, -0.6f}), true, 1.f);
+		option_select_item.Draw(mat3::build_translation({0.35f, -0.6f}), true, 1.f);
 	}
 
 	else
-		NotSelected.Draw(mat3::build_translation({ 0.35f, -0.6f }), true, 1.f);
-
+		NotSelected.Draw(mat3::build_translation({0.35f, -0.6f}), true, 1.f);
 
 	if (selected_neon == static_cast<int>(Neon_Color::pink))
 	{
-		Pink.Draw(mat3::build_translation({ 0.55f, -0.6f }), true, 1.f);
-		option_select_item.Draw(mat3::build_translation({ 0.55f,-0.6f }), true, 1.f);
+		Pink.Draw(mat3::build_translation({0.55f, -0.6f}), true, 1.f);
+		option_select_item.Draw(mat3::build_translation({0.55f, -0.6f}), true, 1.f);
 	}
 
 	else
-		NotSelected.Draw(mat3::build_translation({ 0.55f, -0.6f }), true, 1.f);
+		NotSelected.Draw(mat3::build_translation({0.55f, -0.6f}), true, 1.f);
 
 	std::string exitText = "Press ESC to go to the main menu!";
 	Engine::GetFont().SetText(exitText.c_str(), 25);
 	font = Texture(Engine::GetFont().GetTexture());
-	font.Draw(mat3::build_translation({ 0.0f,-0.9f }), "", 1.0f);
+	font.Draw(mat3::build_translation({0.0f, -0.9f}), "", 1.0f);
 
-	DataType::fvec2 select_pos{ 0,0 };
+	DataType::fvec2 select_pos{0, 0};
 	switch (selected_menu_item)
 	{
 	case 0:
-		select_pos = { 0.f, 0.2f };
+		select_pos = {0.f, 0.2f};
 		break;
 	case 1:
-		select_pos = { -0.f, -0.2f };
+		select_pos = {-0.f, -0.2f};
 		break;
 	case 2:
-		select_pos = { -0.f, -0.6f };
+		select_pos = {-0.f, -0.6f};
 		break;
 	default:
 		break;
 	}
-	selection.Draw(mat3::build_translation({ select_pos.x, select_pos.y }), true, 1.f);
-
+	selection.Draw(mat3::build_translation({select_pos.x, select_pos.y}), true, 1.f);
 }

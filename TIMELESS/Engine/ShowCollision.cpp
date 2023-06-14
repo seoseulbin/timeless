@@ -1,4 +1,4 @@
-#include"ShowCollision.h"
+#include "ShowCollision.h"
 
 ShowCollision::ShowCollision() : tildeKey(InputKey::Keyboard::Tilde)
 {

@@ -1,17 +1,15 @@
 #pragma once
-#include"../Engine/GameState.h"
-#include"GLShader.h"
-#include"GLVertexArray.h"
-#include"GLTexture.h"
-#include"../Engine/Texture.h"
-#include"../Engine/Input.h"
-#include"../Engine/GameObjectManager.h"
-#include"Player.h"
-#include"CameraView.h"
-
+#include "../Engine/GameState.h"
+#include "GLShader.h"
+#include "GLVertexArray.h"
+#include "GLTexture.h"
+#include "../Engine/Texture.h"
+#include "../Engine/Input.h"
+#include "../Engine/GameObjectManager.h"
+#include "Player.h"
+#include "CameraView.h"
 
 class Player;
-
 
 class LoadingScreen : public GameState
 {
@@ -27,9 +25,7 @@ public:
 		return "LoadingScreen";
 	}
 
-
 private:
-
 	Texture background_up;
 	Texture background_down;
 
@@ -39,5 +35,4 @@ private:
 
 	InputKey next_stage_key;
 	InputKey esc_key;
-
 };

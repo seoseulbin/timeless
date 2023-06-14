@@ -1,27 +1,27 @@
-#include"GameObject.h"
-#include"GameObjectManager.h"
-#include"DebugMode.h"
-#include"../Game/GameObjectTypes.h"
-#include"Matrix.h"
-#include"Engine.h"
+#include "GameObject.h"
+#include "GameObjectManager.h"
+#include "DebugMode.h"
+#include "../Game/GameObjectTypes.h"
+#include "Matrix.h"
+#include "Engine.h"
 #include "../Game/Neon.h"
 
 GameObjectManager::~GameObjectManager()
 {
-	for (GameObject* obj : gameObjects)
+	for (GameObject *obj : gameObjects)
 	{
 		delete obj;
 	}
-	//for (GameObject* neon : neonObjects)
+	// for (GameObject* neon : neonObjects)
 	//{
 	//	delete neon;
-	//}
+	// }
 	gameObjects.clear();
-	//delete playerObject;
-	//neonObjects.clear();
+	// delete playerObject;
+	// neonObjects.clear();
 }
 
-void GameObjectManager::Add(GameObject* object)
+void GameObjectManager::Add(GameObject *object)
 {
 	gameObjects.push_back(object);
 	if (object->GetObjectType() == GameObjectType::Player)
@@ -31,7 +31,7 @@ void GameObjectManager::Add(GameObject* object)
 	else if (object->GetObjectType() == GameObjectType::Neon)
 	{
 		neonObjects.push_back(object);
-		//neonObjects.push_back(std::shared_ptr<GameObject>(object));
+		// neonObjects.push_back(std::shared_ptr<GameObject>(object));
 	}
 	else if (object->GetObjectType() == GameObjectType::UnderParticle)
 	{
@@ -46,40 +46,37 @@ void GameObjectManager::Add(GameObject* object)
 		normalObjects.push_back(object);
 	}
 
-
-	//else
+	// else
 	//{
 	//	gameObjects.push_back(object);
-	//}
+	// }
 
+	// playerObject = object;
 
-	//playerObject = object;
-
-	//if (object->GetObjectTypeName() == "Neon")
+	// if (object->GetObjectTypeName() == "Neon")
 	//{
 	//	neonObjects.push_back(object);
-	//}
-
+	// }
 }
 
-//void GameObjectManager::Unload()
+// void GameObjectManager::Unload()
 //{
 //	for (GameObject* obj : gameObjects)
 //	{
 //		delete obj;
 //	}
 //	gameObjects.clear();
-//}
+// }
 
 void GameObjectManager::Update(double dt)
 {
-	std::list<GameObject*> destoryList;
-	std::list<GameObject*> neondestoryList;
-	std::list<GameObject*> underParticledestoryList;
-	std::list<GameObject*> ParticledestoryList;
-	std::list<GameObject*> normaldestoryList;
-	//playerObject->Update(dt);
-	for (GameObject* obj : gameObjects)
+	std::list<GameObject *> destoryList;
+	std::list<GameObject *> neondestoryList;
+	std::list<GameObject *> underParticledestoryList;
+	std::list<GameObject *> ParticledestoryList;
+	std::list<GameObject *> normaldestoryList;
+	// playerObject->Update(dt);
+	for (GameObject *obj : gameObjects)
 	{
 		obj->Update(dt);
 		if (obj->ShouldDestory() == true)
@@ -103,7 +100,7 @@ void GameObjectManager::Update(double dt)
 			}
 		}
 	}
-	for (GameObject* obj : destoryList)
+	for (GameObject *obj : destoryList)
 	{
 		gameObjects.remove(obj);
 		if (obj->GetObjectType() == GameObjectType::Neon)
@@ -130,13 +127,11 @@ void GameObjectManager::Update(double dt)
 	}
 }
 
-
-
-void GameObjectManager::Draw_all(mat3& cameraMatrix)
+void GameObjectManager::Draw_all(mat3 &cameraMatrix)
 {
-	for (GameObject* obj : normalObjects)
+	for (GameObject *obj : normalObjects)
 	{
-		//obj->Draw(cameraMatrix);
+		// obj->Draw(cameraMatrix);
 		if (IsInPlayerViewAngle(obj))
 		{
 			obj->Draw(cameraMatrix);
@@ -148,107 +143,105 @@ void GameObjectManager::Draw_all(mat3& cameraMatrix)
 		}
 	}
 
-//	for (GameObject* obj : gameObjects)
-//	{
-//		if (obj->GetObjectType() == GameObjectType::UnderParticle)
-//		{
-//			obj->Draw(cameraMatrix);
-//		}
-//		else if (obj->GetObjectType() == GameObjectType::Particle)
-//		{
-//			obj->Draw(cameraMatrix);
-//		}
-//		else if (obj->GetObjectType() == GameObjectType::UI)
-//		{
-//			obj->Draw(cameraMatrix);
-//		}
-//		//if (obj->GetObjectType() == GameObjectType::Particle ||
-//		//	obj->GetObjectType() == GameObjectType::UnderParticle||
-//		//	obj->GetObjectType() == GameObjectType::UI)
-//		//{
-//
-//		//}
-//		else
-//		{
-//#ifdef _DEBUG
-//			if (obj->GetObjectType() != GameObjectType::Neon)
-//			{
-//				if (Engine::GetGSComponent<DebugModeTakeAllVision>()->IsEnabled())
-//				{
-//					obj->Draw(cameraMatrix);
-//				}
-//				else
-//				{
-//					//IsInNeonView(obj);
-//					if (IsInPlayerViewAngle(obj))
-//					{
-//						obj->Draw(cameraMatrix);
-//					}
-//					else
-//					{
-//						IsInNeonView(obj);
-//						obj->Draw(cameraMatrix);
-//					}
-//
-//
-//				}
-//			}
-//			
-//			
-//			//obj->Draw(cameraMatrix);
-//#else
-//			if (IsInPlayerViewAngle(obj))
-//			{
-//				obj->Draw(cameraMatrix);
-//			}
-//			else
-//			{
-//				IsInNeonView(obj);
-//				obj->Draw(cameraMatrix);
-//			}
-//#endif // _DEBUG
-//
-//		}
-//
-//	}
+	//	for (GameObject* obj : gameObjects)
+	//	{
+	//		if (obj->GetObjectType() == GameObjectType::UnderParticle)
+	//		{
+	//			obj->Draw(cameraMatrix);
+	//		}
+	//		else if (obj->GetObjectType() == GameObjectType::Particle)
+	//		{
+	//			obj->Draw(cameraMatrix);
+	//		}
+	//		else if (obj->GetObjectType() == GameObjectType::UI)
+	//		{
+	//			obj->Draw(cameraMatrix);
+	//		}
+	//		//if (obj->GetObjectType() == GameObjectType::Particle ||
+	//		//	obj->GetObjectType() == GameObjectType::UnderParticle||
+	//		//	obj->GetObjectType() == GameObjectType::UI)
+	//		//{
+	//
+	//		//}
+	//		else
+	//		{
+	// #ifdef _DEBUG
+	//			if (obj->GetObjectType() != GameObjectType::Neon)
+	//			{
+	//				if (Engine::GetGSComponent<DebugModeTakeAllVision>()->IsEnabled())
+	//				{
+	//					obj->Draw(cameraMatrix);
+	//				}
+	//				else
+	//				{
+	//					//IsInNeonView(obj);
+	//					if (IsInPlayerViewAngle(obj))
+	//					{
+	//						obj->Draw(cameraMatrix);
+	//					}
+	//					else
+	//					{
+	//						IsInNeonView(obj);
+	//						obj->Draw(cameraMatrix);
+	//					}
+	//
+	//
+	//				}
+	//			}
+	//
+	//
+	//			//obj->Draw(cameraMatrix);
+	// #else
+	//			if (IsInPlayerViewAngle(obj))
+	//			{
+	//				obj->Draw(cameraMatrix);
+	//			}
+	//			else
+	//			{
+	//				IsInNeonView(obj);
+	//				obj->Draw(cameraMatrix);
+	//			}
+	// #endif // _DEBUG
+	//
+	//		}
+	//
+	//	}
 }
 
-void GameObjectManager::Draw_wall(mat3& cameraMatrix)
+void GameObjectManager::Draw_wall(mat3 &cameraMatrix)
 {
-	for (GameObject* obj : gameObjects)
+	for (GameObject *obj : gameObjects)
 	{
 		if (obj->GetObjectType() == GameObjectType::WallGrid || obj->GetObjectType() == GameObjectType::PortalGrid)
 		{
 			obj->Draw(cameraMatrix);
 		}
-
 	}
 }
 
-void GameObjectManager::Draw_player(mat3& cameraMatrix)
+void GameObjectManager::Draw_player(mat3 &cameraMatrix)
 {
 	playerObject->Draw(cameraMatrix);
 }
 
-
-void GameObjectManager::Draw_neon(mat3& cameraMatrix)
+void GameObjectManager::Draw_neon(mat3 &cameraMatrix)
 {
-	for (GameObject* obj : neonObjects)
+	for (GameObject *obj : neonObjects)
 	{
 		obj->Draw(cameraMatrix);
 	}
-	//for (GameObject* obj : gameObjects)
+	// for (GameObject* obj : gameObjects)
 	//{
 	//	if (obj->GetObjectType() == GameObjectType::Neon)
 	//	{
 	//		obj->Draw(cameraMatrix);
 	//	}
-	//}
+	// }
 }
 
-void GameObjectManager::Draw_item(mat3& cameraMatrix)
+void GameObjectManager::Draw_item(mat3 &cameraMatrix)
 {
-	for (GameObject* obj : gameObjects)
+	for (GameObject *obj : gameObjects)
 	{
 		if (obj->GetObjectType() == GameObjectType::Item)
 		{
@@ -257,18 +250,17 @@ void GameObjectManager::Draw_item(mat3& cameraMatrix)
 				obj->Draw(cameraMatrix);
 			}
 		}
-
 	}
 }
 
-void GameObjectManager::Draw_particle(mat3& cameraMatrix)
+void GameObjectManager::Draw_particle(mat3 &cameraMatrix)
 {
-	for (GameObject* obj : ParticleObjects)
+	for (GameObject *obj : ParticleObjects)
 	{
 		obj->Draw(cameraMatrix);
 	}
 
-	//for (GameObject* obj : gameObjects)
+	// for (GameObject* obj : gameObjects)
 	//{
 	//	if (obj->GetObjectType() == GameObjectType::Particle)
 	//	{
@@ -278,17 +270,17 @@ void GameObjectManager::Draw_particle(mat3& cameraMatrix)
 	//}
 }
 
-void GameObjectManager::Draw_underParticle(mat3& cameraMatrix)
+void GameObjectManager::Draw_underParticle(mat3 &cameraMatrix)
 {
-	for (GameObject* obj : underParticleObjects)
+	for (GameObject *obj : underParticleObjects)
 	{
 		obj->Draw(cameraMatrix);
 	}
 }
 void GameObjectManager::Draw_UI()
 {
-	mat3 dummy; 
-	for (GameObject* obj : gameObjects)
+	mat3 dummy;
+	for (GameObject *obj : gameObjects)
 	{
 		if (obj->GetObjectType() == GameObjectType::UI)
 		{
@@ -297,9 +289,9 @@ void GameObjectManager::Draw_UI()
 	}
 }
 
-void GameObjectManager::Draw_UI_for_ending([[maybe_unused]]float scroll)
+void GameObjectManager::Draw_UI_for_ending([[maybe_unused]] float scroll)
 {
-	for (GameObject* obj : gameObjects)
+	for (GameObject *obj : gameObjects)
 	{
 		if (obj->GetObjectType() == GameObjectType::UI)
 		{
@@ -308,13 +300,12 @@ void GameObjectManager::Draw_UI_for_ending([[maybe_unused]]float scroll)
 	}
 }
 
-
-void GameObjectManager::IsInNeonView(GameObject* otherObject)
+void GameObjectManager::IsInNeonView(GameObject *otherObject)
 {
-	for (GameObject* neonObject : neonObjects)
+	for (GameObject *neonObject : neonObjects)
 	{
 		DataType::fvec2 neonPos = neonObject->GetPosition();
-		//DataType::fvec2 neonPos = DataType::fvec2{ neonObject->GetMatrix_mat3().column2.x, neonObject->GetMatrix_mat3().column2.y };
+		// DataType::fvec2 neonPos = DataType::fvec2{ neonObject->GetMatrix_mat3().column2.x, neonObject->GetMatrix_mat3().column2.y };
 		DataType::fvec2 otherObjPos = otherObject->GetPosition();
 		float dx = otherObjPos.x - neonPos.x;
 		float dy = otherObjPos.y - neonPos.y;
@@ -334,28 +325,27 @@ void GameObjectManager::IsInNeonView(GameObject* otherObject)
 			}*/
 			break;
 		}
-		else {
+		else
+		{
 			otherObject->SetOpacity(0.0f);
 		}
 	}
 }
 
-bool GameObjectManager::IsInPlayerViewAngle([[maybe_unused]] GameObject* object)
+bool GameObjectManager::IsInPlayerViewAngle([[maybe_unused]] GameObject *object)
 {
 	DataType::fvec2 playerPos = playerObject->GetPosition();
 	DataType::fvec2 objPos = object->GetPosition();
-	
-	//float dx = objPos.x - playerPos.x;
+
+	// float dx = objPos.x - playerPos.x;
 	float dx = playerPos.x - objPos.x;
-	//float dy = objPos.y - playerPos.y;
+	// float dy = objPos.y - playerPos.y;
 	float dy = playerPos.y - objPos.y;
 	float distance = std::sqrt(dx * dx + dy * dy);
 
-	
-
 	if (distance <= playerObject->GetPlayerViewDistance())
 	{
-		float opacityFactor = 1.0f - (distance-20.0f) / playerObject->GetPlayerViewDistance();
+		float opacityFactor = 1.0f - (distance - 20.0f) / playerObject->GetPlayerViewDistance();
 		object->SetOpacity(std::max(0.0f, std::min(1.0f, opacityFactor)));
 		return true;
 		/*float angle = std::atan2(dy, dx) * 180.0f / static_cast<float>(M_PI);
@@ -365,11 +355,10 @@ bool GameObjectManager::IsInPlayerViewAngle([[maybe_unused]] GameObject* object)
 			object->SetOpacity(std::max(0.0f, std::min(1.0f, 1.0f - transparency)));
 			return true;
 		}*/
-		//else
+		// else
 		//{
 		//	return false;
-		//}
-		
+		// }
 	}
 	else
 	{
@@ -382,11 +371,11 @@ void GameObjectManager::CollideTest()
 {
 	if (Engine::GetGameStateManager().GetGSComponent<GameObjectManager>() != nullptr)
 	{
-		//std::set<std::pair<GameObjectType, GameObjectType>> currentFrameCollisions;
+		// std::set<std::pair<GameObjectType, GameObjectType>> currentFrameCollisions;
 		std::set<GameObjectType> currentFrameCollidedObjects;
-		for (GameObject* objectA : gameObjects)
+		for (GameObject *objectA : gameObjects)
 		{
-			for (GameObject* objectB : gameObjects)
+			for (GameObject *objectB : gameObjects)
 			{
 				if (objectA != objectB)
 				{
@@ -396,7 +385,7 @@ void GameObjectManager::CollideTest()
 						{
 							Engine::GetLogger().LogEvent("Collision Detected : " + objectA->GetObjectTypeName() + " and " + objectB->GetObjectTypeName());
 							objectA->ResolveCollision(objectB);
-							//currentFrameCollisions.insert(std::make_pair(objectA->GetObjectType(), objectB->GetObjectType()));
+							// currentFrameCollisions.insert(std::make_pair(objectA->GetObjectType(), objectB->GetObjectType()));
 							currentFrameCollidedObjects.insert(objectB->GetObjectType());
 						}
 					}
@@ -411,9 +400,8 @@ void GameObjectManager::CollideTest()
 			}
 			prevFrameCollidedObjects = std::move(currentFrameCollidedObjects);
 		}
-		
 
-		//for (const auto& collisionPari : prevFrameCollisions)
+		// for (const auto& collisionPari : prevFrameCollisions)
 		//{
 		//	if (currentFrameCollisions.find(collisionPari) == currentFrameCollisions.end())
 		//	{
@@ -425,8 +413,8 @@ void GameObjectManager::CollideTest()
 		//			}
 		//		}
 		//	}
-		//}
+		// }
 
-		//prevFrameCollisions = std::move(currentFrameCollisions);
+		// prevFrameCollisions = std::move(currentFrameCollisions);
 	}
 }

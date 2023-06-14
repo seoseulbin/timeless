@@ -1,17 +1,17 @@
 #pragma once
-#include"..\Engine\GameState.h"
-#include"../Engine/GameObjectManager.h"
-#include"..\Engine\Input.h"
-#include"..\Engine\Font.h"
-#include"..\Engine\Engine.h"
+#include "..\Engine\GameState.h"
+#include "../Engine/GameObjectManager.h"
+#include "..\Engine\Input.h"
+#include "..\Engine\Font.h"
+#include "..\Engine\Engine.h"
 #include "Coin.h"
 #include "HP_UI.h"
 #include "Neon.h"
 #include "Particle.h"
 #include "../Engine/Camera.h"
-#include"../Engine/GameObject.h"
-#include"CameraView.h"
-#include<chrono>
+#include "../Engine/GameObject.h"
+#include "CameraView.h"
+#include <chrono>
 
 class EndingCredit : public GameState
 {
@@ -22,7 +22,6 @@ public:
 	void Update(double dt) override;
 	void Unload() override;
 	void Draw() override;
-
 
 	void Draw_credit();
 
@@ -37,7 +36,7 @@ private:
 	InputKey esc_key;
 	InputKey space_bar_key;
 
-	struct 
+	struct
 	{
 		Texture Thank_you_for_playing;
 		Texture Game_Name;
@@ -65,8 +64,8 @@ private:
 
 		int BasicTextSize;
 		int CategorySize;
-		
-	}endingText;
+
+	} endingText;
 
 	struct
 	{
@@ -84,9 +83,8 @@ private:
 		Texture feetype;
 		Texture stbimage;
 		int basictextsize;
-	}Tools;
+	} Tools;
 
-	
 	Texture digipen_dragons_texture;
 	Texture digipen_copyright;
 
@@ -106,7 +104,6 @@ private:
 	mat3 world_to_cam;
 	mat3 cam_to_ndc;
 
-
 	bool locked_enter_key;
 	bool start_;
 	bool locked_space_key;
@@ -114,5 +111,4 @@ private:
 
 	float alpha = 0;
 	std::chrono::system_clock::time_point T;
-
 };

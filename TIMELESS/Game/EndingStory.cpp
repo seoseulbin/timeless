@@ -7,7 +7,7 @@ EndingStory::EndingStory()
 
 void EndingStory::Load()
 {
-	GameObjectManager* gameObjectManager = new GameObjectManager();
+	GameObjectManager *gameObjectManager = new GameObjectManager();
 	AddGSComponent(gameObjectManager);
 	Story = new EStory();
 
@@ -21,13 +21,12 @@ void EndingStory::Load()
 
 	T = chrono::system_clock::now();
 
-
 #ifdef _DEBUG
-	ShowCollision* showCollision = new ShowCollision();
+	ShowCollision *showCollision = new ShowCollision();
 	AddGSComponent(showCollision);
-	DebugModeTakeAllVision* debugModeTakeAllvision = new DebugModeTakeAllVision();
+	DebugModeTakeAllVision *debugModeTakeAllvision = new DebugModeTakeAllVision();
 	AddGSComponent(debugModeTakeAllvision);
-	DebugModePlayerCheat* debugModePlayerCheat = new DebugModePlayerCheat();
+	DebugModePlayerCheat *debugModePlayerCheat = new DebugModePlayerCheat();
 	AddGSComponent(debugModePlayerCheat);
 #endif // DEBUG
 }
@@ -46,7 +45,6 @@ void EndingStory::Update(double dt)
 	{
 		alpha += 0.2f;
 	}
-	 
 
 #ifdef _DEBUG
 	if (esc_key.IsKeyReleased())
@@ -65,18 +63,15 @@ void EndingStory::Draw()
 {
 	Engine::GetWindow().ClearBackground(0.f, 0.f, 0.f, 1.f);
 	GetGSComponent<GameObjectManager>()->Draw_UI();
-	Success.Draw(mat3::build_translation({ 0.05f, 0.5f }), "", alpha);
-	go_Menu.Draw(mat3::build_translation({ 0.0f,-0.95f }), "", alpha);
+	Success.Draw(mat3::build_translation({0.05f, 0.5f}), "", alpha);
+	go_Menu.Draw(mat3::build_translation({0.0f, -0.95f}), "", alpha);
 }
 
-
-
 //------------------------------------------------------------------------------------------------------------------------
-
 
 EStory::EStory()
 {
 	AddGOComponent(new Sprite("assets/data/EndingStory.spt", this));
-	SetPosition({650,400});
+	SetPosition({650, 400});
 	this->GetGOComponent<Sprite>()->PlayAnimation(0);
 }

@@ -1,13 +1,13 @@
-//#pragma once
+// #pragma once
 //
-//#include"../Engine/GameState.h"
-//#include<SFML/Graphics.hpp>
-//#include"../Engine/Input.h"
-//#include"../Engine/Texture.h"
-//#include"../Engine/Font.h"
-//class MainScreen : public GameState
+// #include"../Engine/GameState.h"
+// #include<SFML/Graphics.hpp>
+// #include"../Engine/Input.h"
+// #include"../Engine/Texture.h"
+// #include"../Engine/Font.h"
+// class MainScreen : public GameState
 //{
-//public:
+// public:
 //	enum class Options {
 //		Play,
 //		Special,
@@ -26,7 +26,7 @@
 //	{
 //		return "MainScreen";
 //	}
-//private:
+// private:
 //	struct OptionData
 //	{
 //		std::string text;
@@ -44,5 +44,5 @@
 //	InputKey selectKey;
 //	Texture texture;
 //	Texture Neon_title;
-//};
+// };
 //

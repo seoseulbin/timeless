@@ -1,9 +1,9 @@
 #pragma once
 #include "UI.h"
 #include "GameObjectTypes.h"
-#include"..\Engine\Texture.h"
+#include "..\Engine\Texture.h"
 #include "..\Engine\GameObject.h"
-#include"../Engine/Font.h"
+#include "../Engine/Font.h"
 
 class Coin : public UI
 {
@@ -35,7 +35,7 @@ private:
 class LevelInfo : public UI
 {
 public:
-    LevelInfo(DataType::fvec2 pos,double timer,std::string text);
+    LevelInfo(DataType::fvec2 pos, double timer, std::string text);
 
     void Update(double dt) override;
     void Draw(mat3 NDCmatrix) override;

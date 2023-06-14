@@ -1,6 +1,6 @@
 #pragma once
-#include<string>
-#include"ComponentManager.h"
+#include <string>
+#include "ComponentManager.h"
 
 using namespace std;
 
@@ -16,14 +16,14 @@ public:
 	virtual void Draw() = 0;
 	virtual string GetName() = 0;
 
-	template<typename T>
-	T* GetGSComponent()
+	template <typename T>
+	T *GetGSComponent()
 	{
 		return components.GetComponent<T>();
 	}
 
 protected:
-	void AddGSComponent(Component* component)
+	void AddGSComponent(Component *component)
 	{
 		components.AddGomponent(component);
 	}
@@ -32,7 +32,7 @@ protected:
 		components.UpdateAll(dt);
 	}
 
-	template<typename T>
+	template <typename T>
 	void RemoveGSComponent()
 	{
 		components.RemoveComponent<T>();
@@ -42,7 +42,7 @@ protected:
 	{
 		components.Clear();
 	}
-private:
 
+private:
 	ComponentManager components;
 };

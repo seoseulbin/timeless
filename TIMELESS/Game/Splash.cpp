@@ -1,18 +1,15 @@
-#include"../Engine/Engine.h"
-#include"Splash.h"
-
+#include "../Engine/Engine.h"
+#include "Splash.h"
 
 Splash::Splash() : next_stage_key(InputKey::Keyboard::Enter)
-{}
+{
+}
 
 void Splash::Load()
 {
 	string texturePath = "assets/images/DigiPen_BLACK_750px.png";
 	T = chrono::system_clock::now();
-	background = Texture{ texturePath };
-	//Engine::GetFont().InitFont();
-	//Engine::GetFont().LoadFontSetting("assets/fonts/CascadiaCode.ttf");
-	//Engine::GetFont().Load();
+	background = Texture{texturePath};
 }
 
 void Splash::Update(double)
@@ -35,28 +32,22 @@ void Splash::Update(double)
 	}
 	if (dt > 4.3)
 	{
-		//Engine::GetGameStateManager().SetNextState(static_cast<int>(Screens::Splash_TeamName));
+		// Engine::GetGameStateManager().SetNextState(static_cast<int>(Screens::Splash_TeamName));
 		Engine::GetGameStateManager().SetNextState("Splash_TeamName Screen");
 	}
-
-
 
 	if (next_stage_key.IsKeyReleased())
 	{
-		//Engine::GetGameStateManager().SetNextState(static_cast<int>(Screens::Splash_TeamName));
+		// Engine::GetGameStateManager().SetNextState(static_cast<int>(Screens::Splash_TeamName));
 		Engine::GetGameStateManager().SetNextState("Splash_TeamName Screen");
 	}
-
 }
 void Splash::Draw()
 {
 	Engine::GetWindow().ClearBackground(255.f, 255.f, 255.f, 255.f);
 	background.Draw(mat3::build_translation(0, 0), true, Alaha / 255);
-
 }
 
 void Splash::Unload()
 {
-
 }
-

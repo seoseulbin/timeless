@@ -1,17 +1,17 @@
 #pragma once
-#include"../Engine/GameState.h"
-#include"GLShader.h"
-#include"GLVertexArray.h"
-#include"GLTexture.h"
-#include"..\Engine\Texture.h"
-#include"../Engine/Input.h"
-#include"../Engine/GameObjectManager.h"
-#include"Player.h"
-#include"CameraView.h"
-#include"../Engine/Font.h"
+#include "../Engine/GameState.h"
+#include "GLShader.h"
+#include "GLVertexArray.h"
+#include "GLTexture.h"
+#include "..\Engine\Texture.h"
+#include "../Engine/Input.h"
+#include "../Engine/GameObjectManager.h"
+#include "Player.h"
+#include "CameraView.h"
+#include "../Engine/Font.h"
 #include "Coin.h"
 #include "HP_UI.h"
-#include"..\Engine\Font.h"
+#include "..\Engine\Font.h"
 
 class ScoreScene : public GameState
 {
@@ -26,7 +26,6 @@ public:
 	{
 		return "ScoreScene";
 	}
-
 
 private:
 	Texture background;

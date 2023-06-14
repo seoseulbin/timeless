@@ -3,7 +3,7 @@
 class Component
 {
 public:
-	virtual ~Component() {};
-	virtual void Update(double) {};
-	virtual void Load() {};
+	virtual ~Component(){};
+	virtual void Update(double){};
+	virtual void Load(){};
 };

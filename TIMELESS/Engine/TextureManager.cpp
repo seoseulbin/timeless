@@ -1,13 +1,13 @@
-#include"Texture.h"
-#include"TextureManager.h"
-#include"Engine.h"
+#include "Texture.h"
+#include "TextureManager.h"
+#include "Engine.h"
 
 void TextureManager::Add(std::string RedCollision)
 {
 	pathToTexture[RedCollision] = new Texture(true);
 }
 
-void TextureManager::PrePareTexture(const std::filesystem::path& filePath)
+void TextureManager::PrePareTexture(const std::filesystem::path &filePath)
 {
 	if (filePath.extension() != ".dat")
 	{
@@ -41,8 +41,8 @@ void TextureManager::PrePareTexture(const std::filesystem::path& filePath)
 				pathToTexture[real_filePath] = new Texture(real_filePath, false);
 			}
 		}
-		//std::string real_filePath;
-		//getline(inFile, real_filePath);
+		// std::string real_filePath;
+		// getline(inFile, real_filePath);
 		/*if (pathToTexture.find(real_filePath) == pathToTexture.end())
 		{
 			pathToTexture[real_filePath] = new Texture(real_filePath);
@@ -51,7 +51,7 @@ void TextureManager::PrePareTexture(const std::filesystem::path& filePath)
 	inFile.close();
 }
 
-Texture* TextureManager::Load_collision_texture(const std::string filePath)
+Texture *TextureManager::Load_collision_texture(const std::string filePath)
 {
 	if (pathToTexture.find(filePath) == pathToTexture.end())
 	{
@@ -60,7 +60,7 @@ Texture* TextureManager::Load_collision_texture(const std::string filePath)
 	return pathToTexture[filePath];
 }
 
-Texture* TextureManager::Load(const std::string filePath, [[maybe_unused]] bool test )
+Texture *TextureManager::Load(const std::string filePath, [[maybe_unused]] bool test)
 {
 	if (pathToTexture.find(filePath) == pathToTexture.end())
 	{
@@ -73,7 +73,7 @@ void TextureManager::Unload()
 
 {
 	Engine::GetLogger().LogEvent("Clear All Textures!");
-	for (std::pair<std::string, Texture*> texture : pathToTexture)
+	for (std::pair<std::string, Texture *> texture : pathToTexture)
 	{
 		delete texture.second;
 	}

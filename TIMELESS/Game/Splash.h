@@ -1,12 +1,12 @@
 #pragma once
-#include"../Engine/GameState.h"
-#include"../Engine/Texture.h"
-#include<string>
-#include<chrono>
-#include"../Engine/Input.h"
+#include "../Engine/GameState.h"
+#include "../Engine/Texture.h"
+#include <string>
+#include <chrono>
+#include "../Engine/Input.h"
 
-
-class Splash : public GameState {
+class Splash : public GameState
+{
 public:
 	Splash();
 	void Load() override;
@@ -19,10 +19,10 @@ public:
 	{
 		return "Splash Screen";
 	}
+
 private:
 	float Alaha = 0;
 	std::chrono::system_clock::time_point T;
 	Texture background;
 	InputKey next_stage_key;
-
 };

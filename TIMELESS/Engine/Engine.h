@@ -1,40 +1,43 @@
 #pragma once
-#include<string>
-#include<chrono>
-#include"Logger.h"
-#include"Input.h"
-#include"HandleOpenGL.h"
-#include"GameStateManager.h"
-#include"FileIO.h"
-#include"Font.h"
-#include"Window.h"//add
-//#include"GLApp.h"//add
-#include"TextureManager.h" // add
-#include"SFXManager.h"
+#include <string>
+#include <chrono>
+#include "Logger.h"
+#include "Input.h"
+#include "HandleOpenGL.h"
+#include "GameStateManager.h"
+#include "FileIO.h"
+#include "Font.h"
+#include "Window.h" //add
+// #include"GLApp.h"//add
+#include "TextureManager.h" // add
+#include "SFXManager.h"
 
 class Engine
 {
 public:
-	static Engine& Instance() { static Engine Instance; return Instance; }
-	static Logger& GetLogger() { return Instance().logger; }
-	static Window& GetWindow() { return Instance().window; } //add
-	static Input& GetInput() { return Instance().input; }
-	static HandleOpenGL& GetHandle() { return Instance().openglHandle; }
-	static Font& GetFont() { return Instance().font; }
-	static GameStateManager& GetGameStateManager() { return Instance().gameStateManager; }
-	static FileInput& GetFileInput() { return Instance().fileinput; }
-	static TextureManager& GetTextureManager() { return Instance().textureManager; }
-	static SFXManager& GetSFXManager() { return Instance().sfxManager; }
+	static Engine &Instance()
+	{
+		static Engine Instance;
+		return Instance;
+	}
+	static Logger &GetLogger() { return Instance().logger; }
+	static Window &GetWindow() { return Instance().window; } // add
+	static Input &GetInput() { return Instance().input; }
+	static HandleOpenGL &GetHandle() { return Instance().openglHandle; }
+	static Font &GetFont() { return Instance().font; }
+	static GameStateManager &GetGameStateManager() { return Instance().gameStateManager; }
+	static FileInput &GetFileInput() { return Instance().fileinput; }
+	static TextureManager &GetTextureManager() { return Instance().textureManager; }
+	static SFXManager &GetSFXManager() { return Instance().sfxManager; }
 
+	// static Font& GetFont() { return Instance().font; }
+	template <typename T>
+	static T *GetGSComponent() { return GetGameStateManager().GetGSComponent<T>(); }
 
-	//static Font& GetFont() { return Instance().font; }
-	template<typename T>
-	static T* GetGSComponent() { return GetGameStateManager().GetGSComponent<T>(); }
-
-	void Init(const char* windowTitle, int width, int height, const SDL_Event& e);//add
+	void Init(const char *windowTitle, int width, int height, const SDL_Event &e); // add
 	void Shutdown();
 	void Update();
-	//void AddSpriteFont(const std::string fileName);
+	// void AddSpriteFont(const std::string fileName);
 	bool HasGameEnded();
 
 private:
@@ -58,8 +61,5 @@ private:
 	double setTimerTime = 5;
 	double dt = 0;
 
-	
-
-	//GLApp* test; //add
+	// GLApp* test; //add
 };
-

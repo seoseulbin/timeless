@@ -1,18 +1,17 @@
-#include<glCheck.h>
-#include"Font.h"
-#include"Engine.h"
+#include <glCheck.h>
+#include "Font.h"
+#include "Engine.h"
 namespace FontUtil
 {
-	std::span<const float, 3 * 3> to_span(const mat3& m)
+	std::span<const float, 3 * 3> to_span(const mat3 &m)
 	{
 		return std::span<const float, 3 * 3>(&m.elements[0][0], 9);
 	}
 
-
-	//std::span<const float, 3> to_span(const color3& c)
+	// std::span<const float, 3> to_span(const color3& c)
 	//{
-	//    return std::span<const float, 3>(&c.elements[0], 3);
-	//}
+	//     return std::span<const float, 3>(&c.elements[0], 3);
+	// }
 }
 Font::Font()
 {
@@ -29,10 +28,10 @@ void Font::InitFont()
 	TTF_Init();
 }
 
-void Font::LoadFontSetting(const char* Path) // link to filePath
+void Font::LoadFontSetting(const char *Path) // link to filePath
 {
 	filePath = Path;
-	color = { 255,255,255,255 };
+	color = {255, 255, 255, 255};
 	fontSize = 30;
 }
 
@@ -42,7 +41,7 @@ void Font::Prepare_font() // open font and link to font ptr
 	if (!font)
 	{
 		Engine::GetLogger().LogError("Failed to OpenFont");
-	}	
+	}
 }
 
 void Font::Load()
@@ -52,14 +51,14 @@ void Font::Load()
 	textTexture = createTextTexture(Text, font, color);
 }
 
-void Font::SetText(const char* test)
+void Font::SetText(const char *test)
 {
 	Text = test;
 	fontSize = 30;
 	Load();
 }
 
-void Font::SetText(const char* text, int size)
+void Font::SetText(const char *text, int size)
 {
 	Text = text;
 	fontSize = size;
@@ -80,17 +79,17 @@ void Font::SetFontSize(int FontSize) // set newfontsize and reload new font ptr
 	}
 }
 
-void Font::Setting(const char* text, int size, int r, int g, int b, int alpha)
+void Font::Setting(const char *text, int size, int r, int g, int b, int alpha)
 {
-    color.r = static_cast<Uint8>(r);
-    color.g = static_cast<Uint8>(g);
-    color.b = static_cast<Uint8>(b);
-    color.a = static_cast<Uint8>(alpha);
-    Text = text;
+	color.r = static_cast<Uint8>(r);
+	color.g = static_cast<Uint8>(g);
+	color.b = static_cast<Uint8>(b);
+	color.a = static_cast<Uint8>(alpha);
+	Text = text;
 	fontSize = size;
 }
 
-//void Font::Draw([[maybe_unused]] mat3 displayMatrix, float alpha)
+// void Font::Draw([[maybe_unused]] mat3 displayMatrix, float alpha)
 //{
 //	displayMatrix.column0.x = 1.f;
 //	displayMatrix.column1.y = 1.f;
@@ -107,45 +106,43 @@ void Font::Setting(const char* text, int size, int r, int g, int b, int alpha)
 //	GLDrawIndexed(vao);
 //	vao.Use(false);
 //	shader.Use(false);
-//}
+// }
 
 SDL_Color Font::GetColor()
 {
-    return color;
+	return color;
 }
 
-
-GLTexture Font::createTextTexture(const char* text, TTF_Font* font_, SDL_Color color_)
+GLTexture Font::createTextTexture(const char *text, TTF_Font *font_, SDL_Color color_)
 {
-    SDL_Surface* textSurface = TTF_RenderText_Blended(font_, text, color_);
-    if (!textSurface)
-    {
-        Engine::GetLogger().LogError("Failed to render text surface");
-    }
+	SDL_Surface *textSurface = TTF_RenderText_Blended(font_, text, color_);
+	if (!textSurface)
+	{
+		Engine::GetLogger().LogError("Failed to render text surface");
+	}
 
-    // Convert the SDL_Surface to the desired pixel format (RGBA32)
-    SDL_PixelFormat* desiredFormat = SDL_AllocFormat(SDL_PIXELFORMAT_RGBA32);
-    SDL_Surface* convertedSurface = SDL_ConvertSurface(textSurface, desiredFormat, 0);
-    if (!convertedSurface)
-    {
-        Engine::GetLogger().LogError("Failed to convert text surface to the desired pixel format");
-        SDL_FreeSurface(textSurface);
-        //throw std::runtime_error{ "Failed to convert the text surface to the desired pixel format" };
-    }
+	// Convert the SDL_Surface to the desired pixel format (RGBA32)
+	SDL_PixelFormat *desiredFormat = SDL_AllocFormat(SDL_PIXELFORMAT_RGBA32);
+	SDL_Surface *convertedSurface = SDL_ConvertSurface(textSurface, desiredFormat, 0);
+	if (!convertedSurface)
+	{
+		Engine::GetLogger().LogError("Failed to convert text surface to the desired pixel format");
+		SDL_FreeSurface(textSurface);
+		// throw std::runtime_error{ "Failed to convert the text surface to the desired pixel format" };
+	}
 
-    GLTexture texture;
-    if (const bool loaded = texture.LoadFromMemory(convertedSurface->w, convertedSurface->h, reinterpret_cast<GLTexture::RGBA*>(convertedSurface->pixels)); !loaded)
-    {
-        throw std::runtime_error{ "Failed to load the texture font image" };
-    }
+	GLTexture texture;
+	if (const bool loaded = texture.LoadFromMemory(convertedSurface->w, convertedSurface->h, reinterpret_cast<GLTexture::RGBA *>(convertedSurface->pixels)); !loaded)
+	{
+		throw std::runtime_error{"Failed to load the texture font image"};
+	}
 
-    // Free the surfaces
-    SDL_FreeSurface(convertedSurface);
-    SDL_FreeSurface(textSurface);
+	// Free the surfaces
+	SDL_FreeSurface(convertedSurface);
+	SDL_FreeSurface(textSurface);
 
-    return texture;
+	return texture;
 }
-
 
 GLTexture Font::GetTexture()
 {
@@ -154,9 +151,7 @@ GLTexture Font::GetTexture()
 	return texture;
 }
 
-
-
-//void Font::CreateFontscreenQuad()
+// void Font::CreateFontscreenQuad()
 //{
 //	constexpr std::array positions =
 //	{
@@ -192,4 +187,4 @@ GLTexture Font::GetTexture()
 //	vao.SetPrimitivePattern(GLPrimitive::TriangleStrip);
 //	GLIndexBuffer index_buffer(indices);
 //	vao.SetIndexBuffer(std::move(index_buffer));
-//}
+// }

@@ -19,23 +19,22 @@ void LoadingScreen::Update(double)
 {
 	Engine::GetWindow().Clear();
 
-	if(Blinking == true)
+	if (Blinking == true)
 	{
 		alphaVal += 0.015f;
-		if(alphaVal > 1.f)
+		if (alphaVal > 1.f)
 		{
 			Blinking = false;
-		}  
+		}
 	}
-	if(Blinking == false)
+	if (Blinking == false)
 	{
 		alphaVal -= 0.015f;
 		if (alphaVal < 0.3f)
-		{  
+		{
 			Blinking = true;
 		}
 	}
-	
 
 	if (esc_key.IsKeyReleased())
 	{
@@ -55,8 +54,7 @@ void LoadingScreen::Unload()
 void LoadingScreen::Draw()
 {
 	Engine::GetWindow().ClearBackground(0.4f, 0.4f, 0.4f, 255.f);
-	background_down.Draw(mat3::build_translation({ 0, 0 }), true, 1.f);
+	background_down.Draw(mat3::build_translation({0, 0}), true, 1.f);
 
-	background_up.Draw(mat3::build_translation({ 0, 0 }), true, alphaVal);
-
+	background_up.Draw(mat3::build_translation({0, 0}), true, alphaVal);
 }

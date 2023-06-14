@@ -1,11 +1,12 @@
 #pragma once
-#include"../Engine/GameState.h"
-#include"../Engine/Texture.h"
-#include<string>
-#include<chrono>
-#include"../Engine/Input.h"
+#include "../Engine/GameState.h"
+#include "../Engine/Texture.h"
+#include <string>
+#include <chrono>
+#include "../Engine/Input.h"
 
-class Splash_TeamName : public GameState {
+class Splash_TeamName : public GameState
+{
 public:
 	Splash_TeamName();
 	void Load() override;
@@ -17,6 +18,7 @@ public:
 	{
 		return "Splash_TeamName Screen";
 	}
+
 private:
 	Texture background;
 	float Alaha = 0;

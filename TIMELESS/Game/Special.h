@@ -1,8 +1,8 @@
 #pragma once
 
-#include"../Engine/GameState.h"
-#include"../Engine/Texture.h"
-#include"../Engine/Input.h"
+#include "../Engine/GameState.h"
+#include "../Engine/Texture.h"
+#include "../Engine/Input.h"
 
 class Spcial_Game : public GameState
 {
@@ -17,6 +17,7 @@ public:
 	{
 		return "Spcial_Game";
 	}
+
 private:
 	InputKey exit;
 };

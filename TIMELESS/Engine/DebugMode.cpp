@@ -1,4 +1,4 @@
-#include"DebugMode.h"
+#include "DebugMode.h"
 
 DebugModeTakeAllVision::DebugModeTakeAllVision() : F1_key(InputKey::Keyboard::F1)
 {
@@ -9,7 +9,7 @@ void DebugModeTakeAllVision::Update(double)
 {
 	if (F1_key.IsKeyReleased())
 	{
-		enabled = !enabled;	
+		enabled = !enabled;
 	}
 }
 
@@ -17,7 +17,6 @@ bool DebugModeTakeAllVision::IsEnabled()
 {
 	return enabled;
 }
-
 
 DebugModePlayerCheat::DebugModePlayerCheat() : F2_key(InputKey::Keyboard::F2)
 {
@@ -36,7 +35,6 @@ bool DebugModePlayerCheat::IsEnabled()
 {
 	return enabled;
 }
-
 
 PauseGame::PauseGame() : F3_key(InputKey::Keyboard::F3)
 {

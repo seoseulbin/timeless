@@ -1,39 +1,37 @@
 #pragma once
-//#include <SFML/Graphics/Glsl.hpp>
-//#include <SFML/Graphics/RectangleShape.hpp>
-//#include <SFML/Graphics/Vertex.hpp>
-//#include <SFML/Graphics/VertexArray.hpp>
-#include<SFML/Graphics.hpp>
+// #include <SFML/Graphics/Glsl.hpp>
+// #include <SFML/Graphics/RectangleShape.hpp>
+// #include <SFML/Graphics/Vertex.hpp>
+// #include <SFML/Graphics/VertexArray.hpp>
+#include <SFML/Graphics.hpp>
 
 class BloomNeon
 {
 public:
-
 	struct NeonObj
 	{
-		sf::Vector2f position = { 0, 0 };
-		sf::Vector2f scale = { 1.0f, 1.0f };
+		sf::Vector2f position = {0, 0};
+		sf::Vector2f scale = {1.0f, 1.0f};
 		sf::Color color = sf::Color::White;
-		sf::Vector2f NeonOrigin = { 0, 0 };
-		//sf::Vector3f color = { 0, 0, 0 };
-		//sf::Vector2f texCoords = { 0, 0 };
+		sf::Vector2f NeonOrigin = {0, 0};
+		// sf::Vector3f color = { 0, 0, 0 };
+		// sf::Vector2f texCoords = { 0, 0 };
 	};
 
-	//struct BloomObj
+	// struct BloomObj
 	//{
 	//	sf::Vector2f position = { 0, 0 };
 	//	sf::Vector2f scale = { 1.0f, 1.0f };
 	//	//sf::Color color = sf::Color::White;
 	//	sf::Vector2f NeonOrigin = { 0, 0 };
 	//	//sf::Vector2f texCoords = { 0, 0 };
-	//};
+	// };
 
 	sf::RectangleShape R_neon;
 
-	//NeonObj N_Obj;
-	//BloomObj B_Obj;
-	//sf::VertexArray NeonBox;
-
+	// NeonObj N_Obj;
+	// BloomObj B_Obj;
+	// sf::VertexArray NeonBox;
 
 private:
 	void OneColor_NeonBoxes(sf::Vector2f neonPosition, sf::Vector2f neonScale, sf::Color neonColor);
@@ -44,4 +42,3 @@ private:
 	float NeonOrigin_x = 0.0f;
 	float NeonOrigin_y = 0.0f;
 };
-

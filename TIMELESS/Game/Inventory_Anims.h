@@ -13,5 +13,3 @@ enum class Inventory_Anims
 	SpeedUp_Anim,
 	Random_Anim
 };
-
- 

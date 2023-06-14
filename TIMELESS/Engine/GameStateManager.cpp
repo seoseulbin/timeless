@@ -1,13 +1,14 @@
-#include"Engine.h"
-#include"GameStateManager.h"
-#include"GameObjectManager.h"
+#include "Engine.h"
+#include "GameStateManager.h"
+#include "GameObjectManager.h"
 
 GameStateManager::GameStateManager() : currGameState(nullptr), nextGameState(nullptr), state(State::Start)
-{}
-
-void GameStateManager::AddGameState(GameState& gamestate)
 {
-	//gameStates.push_back(&gamestate);
+}
+
+void GameStateManager::AddGameState(GameState &gamestate)
+{
+	// gameStates.push_back(&gamestate);
 	gameStates[gamestate.GetName()] = &gamestate;
 }
 
@@ -46,7 +47,7 @@ void GameStateManager::Update(double dt)
 		Engine::GetLogger().LogEvent("Load Complete");
 		currGameState->Update(dt);
 		state = State::Update;
-		//Engine::GetLogger().LogEvent("Load Complete");
+		// Engine::GetLogger().LogEvent("Load Complete");
 		break;
 	case State::Update:
 
@@ -59,7 +60,7 @@ void GameStateManager::Update(double dt)
 			Engine::GetLogger().LogVerbose("Update" + currGameState->GetName());
 			currGameState->Update(dt);
 			Engine::GetGameStateManager().GetGSComponent<GameObjectManager>()->CollideTest();
-			//Engine::GetGameStateManager().GetGSComponent<GameObjectManager>()->IsInNenoView();
+			// Engine::GetGameStateManager().GetGSComponent<GameObjectManager>()->IsInNenoView();
 			currGameState->Draw();
 		}
 		break;
@@ -67,7 +68,7 @@ void GameStateManager::Update(double dt)
 	case State::Unload:
 		currGameState->Unload();
 		Engine::GetLogger().LogEvent("Unload " + currGameState->GetName());
-		//Engine::GetTextureManager().Unload();
+		// Engine::GetTextureManager().Unload();
 
 		if (nextGameState == nullptr)
 		{

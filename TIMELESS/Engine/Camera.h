@@ -1,9 +1,9 @@
 #pragma once
-#include"Vec2.h"
-#include"Matrix.h"
-#include"Component.h"
-#include"mat3.h"
-#include"vec2.h"
+#include "Vec2.h"
+#include "Matrix.h"
+#include "Component.h"
+#include "mat3.h"
+#include "vec2.h"
 
 class [[nodiscard]] Camera : public Component
 {
@@ -27,9 +27,8 @@ public:
 		return orientation;
 	}
 
-	void SetUp(DataType::fvec2 camera_up = { 0,1 }) noexcept;
+	void SetUp(DataType::fvec2 camera_up = {0, 1}) noexcept;
 	void SetOrientation(float angle_radians) noexcept;
-
 
 	void Update(DataType::fvec2 position) noexcept;
 	void MoveUp(float distance) noexcept;
@@ -38,15 +37,15 @@ public:
 	void Rotate(float) noexcept;
 
 	DataType::TransformMatrix BuildCameraToWorld() const noexcept;
-	
+
 	DataType::TransformMatrix BuildWorldToCamera() const noexcept;
 	DataType::TransformMatrix GetMatrix() const noexcept;
 
-
 	mat3 BuildCameraToWorld_mat3() const noexcept;
 	mat3 BuildWorldToCamera_mat3() const noexcept;
+
 private:
-	DataType::fvec2 up{ 0,1 };
-	DataType::fvec2 right{ 1,0 };
-	float orientation{ 0 };
+	DataType::fvec2 up{0, 1};
+	DataType::fvec2 right{1, 0};
+	float orientation{0};
 };

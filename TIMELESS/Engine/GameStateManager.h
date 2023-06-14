@@ -1,17 +1,17 @@
 #pragma once
-#include<map>
-#include"GameState.h"
+#include <map>
+#include "GameState.h"
 
 using namespace std;
 
-//class GameState;
+// class GameState;
 
 class GameStateManager
 {
 public:
 	GameStateManager();
 
-	void AddGameState(GameState& gameState);
+	void AddGameState(GameState &gameState);
 	void Update(double dt);
 	void SetNextState(std::string stateName);
 	void Shutdown();
@@ -22,14 +22,15 @@ public:
 		return state == State::Exit;
 	}
 
-	template<typename T>
-	T* GetGSComponent()
+	template <typename T>
+	T *GetGSComponent()
 	{
 		return currGameState->GetGSComponent<T>();
 	}
 
 private:
-	enum class State {
+	enum class State
+	{
 		Start,
 		Load,
 		Update,
@@ -37,9 +38,8 @@ private:
 		Shutdown,
 		Exit,
 	};
-	map<std::string, GameState*> gameStates;
+	map<std::string, GameState *> gameStates;
 	State state;
-	GameState* currGameState;
-	GameState* nextGameState;
-
+	GameState *currGameState;
+	GameState *nextGameState;
 };

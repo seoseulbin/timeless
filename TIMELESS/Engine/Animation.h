@@ -6,12 +6,13 @@ class Animation
 {
 public:
 	Animation();
-	Animation(const std::filesystem::path& anmFile);
+	Animation(const std::filesystem::path &anmFile);
 	~Animation();
 	void Update(double dt);
 	int GetDisplayFrame();
 	void ResetAnimation();
 	bool IsAnimationDone();
+
 private:
 	enum class Command
 	{
@@ -19,7 +20,8 @@ private:
 		Loop,
 		End,
 	};
-	class CommandData {
+	class CommandData
+	{
 	public:
 		virtual ~CommandData() {}
 		virtual Command GetType() = 0;
@@ -45,6 +47,7 @@ private:
 		Loop(int loopToIndex);
 		virtual Command GetType() override { return Command::Loop; }
 		int GetLoopToIndex();
+
 	private:
 		int loopToIndex;
 	};
@@ -52,11 +55,12 @@ private:
 	{
 	public:
 		virtual Command GetType() override { return Command::End; }
+
 	private:
 	};
 
 	bool isAnimationDone;
 	int animSequenceIndex;
-	PlayFrame* currPlayFrameData;
-	std::vector<CommandData*> animation;
+	PlayFrame *currPlayFrameData;
+	std::vector<CommandData *> animation;
 };

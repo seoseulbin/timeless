@@ -1,7 +1,6 @@
-﻿#include"Engine.h"
-#include"SpriteFont.h"
-#include"Matrix.h"
-
+﻿#include "Engine.h"
+#include "SpriteFont.h"
+#include "Matrix.h"
 
 SpriteFont::SpriteFont(const std::string filePath) : font(filePath)
 {
@@ -35,13 +34,13 @@ void SpriteFont::SetupCharRects()
 
 		previousColor = nextColor;
 
-		charTexels[i].point2 = { xPos + width - 1, 1 };
-		charTexels[i].point1 = { xPos, charTexels[i].point2.y + height - 1 };
+		charTexels[i].point2 = {xPos + width - 1, 1};
+		charTexels[i].point1 = {xPos, charTexels[i].point2.y + height - 1};
 		xPos += width;
 	}
 }
 
-DataType::irect2& SpriteFont::GetCharRect(char c)
+DataType::irect2 &SpriteFont::GetCharRect(char c)
 {
 	if (c >= ' ' && c <= 'z')
 	{
@@ -56,7 +55,7 @@ DataType::irect2& SpriteFont::GetCharRect(char c)
 
 DataType::ivec2 SpriteFont::MeasureText(std::string text)
 {
-	DataType::ivec2 size = { 0,0 };
+	DataType::ivec2 size = {0, 0};
 	for (char c : text)
 	{
 		size += GetCharRect(c).Size();
@@ -81,7 +80,7 @@ sf::Texture SpriteFont::DrawTextToTexture(std::string text)
 
 void SpriteFont::DrawChar(char c)
 {
-	DataType::irect2& displayRect = GetCharRect(c);
-	DataType::ivec2 topLeftTexel = { displayRect.point1.x,displayRect.point2.y };
+	DataType::irect2 &displayRect = GetCharRect(c);
+	DataType::ivec2 topLeftTexel = {displayRect.point1.x, displayRect.point2.y};
 	font.Draw(topLeftTexel, displayRect.Size());
 }

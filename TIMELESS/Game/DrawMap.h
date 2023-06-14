@@ -1,23 +1,19 @@
 #pragma once
-#include<SFML/Graphics.hpp>
-#include"../Engine/Vec2.h"
-#include"../Engine/Texture.h"
-#include"../Engine/Matrix.h"
-#include"../Engine/GameObject.h"
-#include"../Engine/Sprite.h"
-#include"mat3.h"
+#include <SFML/Graphics.hpp>
+#include "../Engine/Vec2.h"
+#include "../Engine/Texture.h"
+#include "../Engine/Matrix.h"
+#include "../Engine/GameObject.h"
+#include "../Engine/Sprite.h"
+#include "mat3.h"
 class DrawMap : public Component
 {
 public:
 	DrawMap(int level);
 	void Update(double dt) override;
 	void Draw(mat3 cameraMatrix);
-	
-
 
 private:
-
-
 	class WallGrid : public GameObject
 	{
 	public:
@@ -26,6 +22,7 @@ private:
 		GameObjectType GetObjectType() override;
 		std::string GetObjectTypeName() override;
 		bool CanCollideWith(GameObjectType objectB) override;
+
 	private:
 		Texture wallGrid;
 	};
@@ -38,16 +35,13 @@ private:
 		GameObjectType GetObjectType() override;
 		std::string GetObjectTypeName() override;
 		bool CanCollideWith(GameObjectType objectB) override;
+
 	private:
 		Texture portalGrid;
 	};
 
 	std::vector<char> map_data;
 
-
-	
 	Texture normal_grid;
 	Sprite normal_grid_sprite;
-
 };
-

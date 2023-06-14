@@ -1,6 +1,6 @@
 #pragma once
-#include"Input.h"
-#include"Component.h"
+#include "Input.h"
+#include "Component.h"
 
 class ShowCollision : public Component
 {

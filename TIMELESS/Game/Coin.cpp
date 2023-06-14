@@ -7,17 +7,11 @@ Coin::Coin(DataType::fvec2 pos) : UI()
 {
 	AddGOComponent(new Sprite("assets/data/Coin1.spt", this));
 
-	//coin----
 	Engine::GetFont().SetText(std::to_string(Stage1::player_coin).c_str());
-	//Engine::GetFont().Setting("test", 10, 255, 255, 255, 255);
 	testFont = Texture(Engine::GetFont().GetTexture());
 
-	////timer-----
-	//Engine::GetFont().SetText(std::to_string(Stage1::totalGameTimer).c_str());
-	//timerFont = Texture(Engine::GetFont().GetTexture());
-
 	SetPosition(pos);
-	//SetScale({ 0.6f,0.6f });
+
 }
 
 void Coin::Update(double /*dt*/)
@@ -41,17 +35,6 @@ void Coin::Draw(mat3 NDCmatrix)
 	testFont.Draw(NDCmatrix, "Test", 1.0f);
 	UI::Draw(NDCmatrix);
 
-	////timer---------------------
-	//text_pos = { GetPosition().x+100.f , GetPosition().y + 50.f };
-	//NDCmatrix = UI::ToNDC(text_pos);
-
-	//std::ostringstream oss;
-	//oss << std::fixed << std::setprecision(2) << Stage1::totalGameTimer;
-	//std::string timer_str = oss.str();
-
-	//Engine::GetFont().SetText(timer_str.c_str());
-	//timerFont = Texture(Engine::GetFont().GetTexture());
-	//timerFont.Draw(NDCmatrix, "Test", 1.0f);
 }
 
 void Coin::Draw(float scroll)
@@ -68,12 +51,11 @@ void Coin::Draw(float scroll)
 Timer::Timer(DataType::fvec2 pos) : UI()
 {
 
-	//timer-----
 	Engine::GetFont().SetText(std::to_string(Stage1::totalGameTimer).c_str());
 	timerFont = Texture(Engine::GetFont().GetTexture());
 
 	SetPosition(pos);
-	//SetScale({ 0.6f,0.6f });
+
 }
 
 void Timer::Update(double /*dt*/)
@@ -85,8 +67,6 @@ void Timer::Draw(mat3 NDCmatrix)
 {
 	DataType::fvec2 text_pos{ GetPosition().x + 100.f, GetPosition().y };
 
-	//timer---------------------
-//	text_pos = { GetPosition().x + 100.f , GetPosition().y + 50.f };
 	NDCmatrix = UI::ToNDC(text_pos);
 
 	std::ostringstream oss;
@@ -120,12 +100,11 @@ void Timer::Draw(float scroll)
 LevelInfo::LevelInfo(DataType::fvec2 pos, double timer, std::string text) : UI() , visible_timer(timer), str(text)
 {
 
-	//timer-----
 	Engine::GetFont().SetText(std::to_string(Stage1::totalGameTimer).c_str());
 	levelFont = Texture(Engine::GetFont().GetTexture());
 
 	SetPosition(pos);
-	//SetScale({ 0.6f,0.6f });
+
 }
 
 void LevelInfo::Update(double dt)

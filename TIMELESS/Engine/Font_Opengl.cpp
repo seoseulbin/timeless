@@ -1,5 +1,5 @@
-#include"Font_Opengl.h"
-#include"Engine.h"
+#include "Font_Opengl.h"
+#include "Engine.h"
 
 Font_Opengl::Font_Opengl(const std::string filePath)
 {

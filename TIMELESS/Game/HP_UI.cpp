@@ -3,12 +3,11 @@
 #include "../Engine/Engine.h"
 #include "Stage1.h"
 
-
-HealthBar::HealthBar( DataType::fvec2 pos) : UI()
+HealthBar::HealthBar(DataType::fvec2 pos) : UI()
 {
 
-	AddGOComponent(new Sprite("assets/data/life.spt", this)); //hp spritesheet로 변경
-	switch (Stage1::player_life)	
+	AddGOComponent(new Sprite("assets/data/life.spt", this));
+	switch (Stage1::player_life)
 	{
 	case 0:
 		this->GetGOComponent<Sprite>()->PlayAnimation(0);
@@ -26,7 +25,6 @@ HealthBar::HealthBar( DataType::fvec2 pos) : UI()
 	default:
 		break;
 	}
-
 
 	SetPosition(pos);
 }
@@ -34,7 +32,7 @@ HealthBar::HealthBar( DataType::fvec2 pos) : UI()
 void HealthBar::Update(double /*dt*/)
 {
 
-	switch (Stage1::player_life)	//spt 편집후 주석들 풀기
+	switch (Stage1::player_life)
 	{
 	case 0:
 		this->GetGOComponent<Sprite>()->PlayAnimation(0);
@@ -52,6 +50,4 @@ void HealthBar::Update(double /*dt*/)
 	default:
 		break;
 	}
-
-
 }

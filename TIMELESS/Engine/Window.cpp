@@ -1,11 +1,11 @@
-#include<glCheck.h>
-//#include<ImGuiHelper.h>
-#include<SDL2/SDL.h>
-#include<GL/glew.h>
-#include<imgui.h>
-#include"Window.h"
-#include"Engine.h"
-#include"mat3.h"
+#include <glCheck.h>
+// #include<ImGuiHelper.h>
+#include <SDL2/SDL.h>
+#include <GL/glew.h>
+#include <imgui.h>
+#include "Window.h"
+#include "Engine.h"
+#include "mat3.h"
 
 namespace
 {
@@ -17,16 +17,16 @@ namespace
 		}
 	}
 
-	template <typename... Messages> [[noreturn]] void throw_error_message(Messages&&... more_messages)
+	template <typename... Messages>
+	[[noreturn]] void throw_error_message(Messages &&...more_messages)
 	{
 		std::ostringstream sout;
 		(sout << ... << more_messages);
-		throw std::runtime_error{ sout.str() };
+		throw std::runtime_error{sout.str()};
 	}
 }
 
-
-void Window::Init(const char* windowtitle, int width, int height, const SDL_Event& e)
+void Window::Init(const char *windowtitle, int width, int height, const SDL_Event &e)
 {
 	if (windowtitle == nullptr || windowtitle[0] == '\0')
 		throw_error_message("App title shouldn't be empty");
@@ -75,12 +75,11 @@ void Window::Init(const char* windowtitle, int width, int height, const SDL_Even
 		SDL_GL_SetSwapInterval(VSYNC);
 	}
 
-	//ImGuiHelper::Initialize(Window_ptr, glContext);
+	// ImGuiHelper::Initialize(Window_ptr, glContext);
 
-	//int width = 0, height = 0;
+	// int width = 0, height = 0;
 	SDL_GL_GetDrawableSize(Window_ptr, &windowWidth, &windowHeight);
 	glCheck(glViewport(0, 0, windowWidth, windowHeight));
-
 
 	// anti-aliasing
 	glCheck(glEnable(GL_LINE_SMOOTH));
@@ -92,10 +91,6 @@ void Window::Init(const char* windowtitle, int width, int height, const SDL_Even
 	glCheck(glMatrixMode(GL_PROJECTION));
 
 	window_e = e;
-
-
-
-
 }
 
 void Window::Update()
@@ -114,7 +109,7 @@ void Window::reSize(int newWidth, int newHeight)
 
 DataType::fvec2 Window::GetSize()
 {
-	return { static_cast<float>(windowWidth),static_cast<float>(windowHeight) };
+	return {static_cast<float>(windowWidth), static_cast<float>(windowHeight)};
 }
 
 void Window::Clear()
@@ -127,7 +122,7 @@ void Window::ClearBackground(float r, float g, float b, float a)
 	glCheck(glClearColor(r, g, b, a));
 }
 
-void Window::checkForClose([[maybe_unused]] const SDL_Event& e)
+void Window::checkForClose([[maybe_unused]] const SDL_Event &e)
 {
 	/*  if (e.type == SDL_WINDOWEVENT_CLOSE)
 	  {
@@ -138,7 +133,7 @@ void Window::checkForClose([[maybe_unused]] const SDL_Event& e)
 	SDL_DestroyWindow(Window_ptr);
 }
 
-void Window::pollEvent(SDL_Event& e)
+void Window::pollEvent(SDL_Event &e)
 {
 	while (SDL_PollEvent(&e))
 	{
@@ -153,7 +148,7 @@ void Window::pollEvent(SDL_Event& e)
 	}
 }
 
-util::owner<SDL_Window*> Window::GetWindowPtr()
+util::owner<SDL_Window *> Window::GetWindowPtr()
 {
 	return Window_ptr;
 }
@@ -162,7 +157,7 @@ DataType::fvec2 Window::GetMousePosition()
 {
 	float ndcX = mouse_x / GetSize().x * 2.0f - 1.0f;
 	float ndcY = 1.0f - mouse_y / GetSize().y * 2.0f;
-	//Engine::GetLogger().LogEvent("Mouse position at x: " + std::to_string(ndcX) + " " + ", y: " + std::to_string(ndcY));
+	// Engine::GetLogger().LogEvent("Mouse position at x: " + std::to_string(ndcX) + " " + ", y: " + std::to_string(ndcY));
 
 	return DataType::fvec2(ndcX, ndcY);
 }
@@ -172,4 +167,3 @@ void Window::SetMousePosition(Sint32 x, Sint32 y)
 	mouse_x = static_cast<float>(x);
 	mouse_y = static_cast<float>(y);
 }
-

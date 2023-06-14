@@ -1,20 +1,22 @@
 #pragma once
 
-#include"../Engine/GameState.h"
-#include"../Engine/Texture.h"
-#include"../Engine/Input.h"
+#include "../Engine/GameState.h"
+#include "../Engine/Texture.h"
+#include "../Engine/Input.h"
 #include "../Engine/SFXManager.h"
 
 class Option : public GameState
 {
-	enum class Sound_BGM {
+	enum class Sound_BGM
+	{
 		level1,
 		level2,
 		level3,
 		level4,
 		level5
 	};
-	enum class Sound_SFX {
+	enum class Sound_SFX
+	{
 		level1,
 		level2,
 		level3,
@@ -22,7 +24,8 @@ class Option : public GameState
 		level5
 	};
 
-	enum class Neon_Color {
+	enum class Neon_Color
+	{
 		red,
 		yellow,
 		green,
@@ -45,6 +48,7 @@ public:
 	static int neon_color;
 	static string neon_file_path;
 	static string neon_warning_file_path;
+
 private:
 	Texture background;
 	Texture Tittle;
@@ -81,7 +85,7 @@ private:
 	int selected_sfx;
 	int selected_neon;
 
-	SFXManager* audio;
+	SFXManager *audio;
 	sf::Sound playsound;
 
 	float adjustVol;
@@ -90,5 +94,4 @@ private:
 	float SFXVol = 0;
 
 	Texture font;
-
 };

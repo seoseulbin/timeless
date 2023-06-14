@@ -1,12 +1,12 @@
-#include"SFXManager.h"
-#include"Engine.h"
+#include "SFXManager.h"
+#include "Engine.h"
 
-Audio::Audio(const std::filesystem::path& filePath, bool bgm_se)
+Audio::Audio(const std::filesystem::path &filePath, bool bgm_se)
 {
-	Load(filePath,bgm_se);
+	Load(filePath, bgm_se);
 }
 
-void Audio::Load(const std::filesystem::path& filePath, bool bgm_se)
+void Audio::Load(const std::filesystem::path &filePath, bool bgm_se)
 {
 	playsoundBuffer.loadFromFile(filePath.generic_string());
 	playsound.setBuffer(playsoundBuffer);
@@ -31,16 +31,17 @@ void Audio::Settings(float volume, bool loop)
 	playsound.setVolume(volume);
 	playsound.setLoop(loop);
 }
- 
+
 void Audio::Stop()
 {
 	playsound.stop();
 }
 
 SFXManager::SFXManager()
-{}
+{
+}
 
-void SFXManager::PrePareSFX(const std::filesystem::path& filePath)
+void SFXManager::PrePareSFX(const std::filesystem::path &filePath)
 {
 	if (filePath.extension() != ".sdat")
 	{
@@ -67,23 +68,23 @@ void SFXManager::PrePareSFX(const std::filesystem::path& filePath)
 		{
 			std::string real_filePath;
 			getline(inFile, real_filePath);
-			pathToSFX_SE[real_filePath] = new Audio(real_filePath,false);
+			pathToSFX_SE[real_filePath] = new Audio(real_filePath, false);
 		}
 	}
 }
 
-Audio* SFXManager::Load(const std::string filePath)
+Audio *SFXManager::Load(const std::string filePath)
 {
 	if (pathToSFX_BGM.find(filePath) != pathToSFX_BGM.end())
 	{
 		SFX_BGM = pathToSFX_BGM[filePath];
-		//SFX_BGM->Settings(BGM_volume, true);
+		// SFX_BGM->Settings(BGM_volume, true);
 		return SFX_BGM;
 	}
 	else
 	{
 		SFX_SE = pathToSFX_SE[filePath];
-		//SFX_SE->Settings(SE_volume, false);
+		// SFX_SE->Settings(SE_volume, false);
 		return SFX_SE;
 	}
 }

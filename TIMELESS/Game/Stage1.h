@@ -1,9 +1,9 @@
 #pragma once
-#include"../Engine/GameState.h"
-#include"../Engine/Texture.h"
-#include"../Engine/GameObjectManager.h"
-#include"Player.h"
-#include"CameraView.h"
+#include "../Engine/GameState.h"
+#include "../Engine/Texture.h"
+#include "../Engine/GameObjectManager.h"
+#include "Player.h"
+#include "CameraView.h"
 #include "../Engine/ShowCollision.h"
 #include "../Engine/DebugMode.h"
 #include "../Engine/Camera.h"
@@ -17,17 +17,17 @@
 
 class Player;
 class Score;
-//class Coin;
+// class Coin;
 
 class Stage1 : public GameState
 {
 public:
-	static constexpr float x_pos{ 0 };
-	static constexpr float y_pos{ 0 };
-	static constexpr int row_size{ 15 };
-	static constexpr int column_size{ 9 };
-	static constexpr float grid_width{ 80.f };
-	static constexpr float grid_height{ 80.f };
+	static constexpr float x_pos{0};
+	static constexpr float y_pos{0};
+	static constexpr int row_size{15};
+	static constexpr int column_size{9};
+	static constexpr float grid_width{80.f};
+	static constexpr float grid_height{80.f};
 
 	static DataType::fvec2 portal_position;
 	static int stage_level;
@@ -42,7 +42,7 @@ public:
 	static bool isStoreStage;
 	static bool hasResurrection;
 
-	//static DataType::fvec2 CamShakeOffset;
+	// static DataType::fvec2 CamShakeOffset;
 	static int CamShakePower;
 
 	static bool isGamePause;
@@ -57,7 +57,6 @@ public:
 		return "Stage 1";
 	}
 
-
 private:
 	Texture background;
 	Texture game_background;
@@ -66,10 +65,9 @@ private:
 	InputKey reload_key;
 	InputKey item_eff_key;
 
-	Player* playerPtr;
-	ItemBox* _infoChecker_Ptr;
-	Inventory* inventory_eff_Ptr;
-
+	Player *playerPtr;
+	ItemBox *_infoChecker_Ptr;
+	Inventory *inventory_eff_Ptr;
 
 	CameraView camera_view;
 	mat3 world_to_ndc;
@@ -83,11 +81,6 @@ private:
 
 	bool isBeforeStage;
 
-
 	int this_stage_level;
-	//Coin* coin;
+	// Coin* coin;
 };
-
-
-
-

@@ -1,14 +1,13 @@
 #include "HandleOpenGL.h"
-#include"Engine.h"
-#include<iostream>
-#include"Input_OpenGL.h"
+#include "Engine.h"
+#include <iostream>
+#include "Input_OpenGL.h"
 
 HandleOpenGL::HandleOpenGL()
 {
-
 }
 
-void HandleOpenGL::Init(const SDL_Event& e)
+void HandleOpenGL::Init(const SDL_Event &e)
 {
 	event_opengl = e;
 }
@@ -29,9 +28,9 @@ void HandleOpenGL::HandleAllOpenGl()
 			break;
 		}
 	case SDL_MOUSEMOTION:
-		//Engine::GetLogger().LogEvent(std::to_string(event_opengl.motion.x));
+		// Engine::GetLogger().LogEvent(std::to_string(event_opengl.motion.x));
 		Engine::GetWindow().SetMousePosition(event_opengl.button.x, event_opengl.button.y);
-		//break;
+		// break;
 	case SDL_MOUSEBUTTONUP:
 		if (event_opengl.button.button == SDL_BUTTON_LEFT)
 		{
@@ -56,7 +55,7 @@ void HandleOpenGL::HandleAllOpenGl()
 	}
 }
 
-void HandleOpenGL::Update(const SDL_Event& e)
+void HandleOpenGL::Update(const SDL_Event &e)
 {
 	event_opengl = e;
 	HandleAllOpenGl();

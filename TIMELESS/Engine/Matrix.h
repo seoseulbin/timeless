@@ -10,12 +10,11 @@ namespace DataType
 		TransformMatrix(
 			float x, float y, float z,
 			float x1, float y1, float z1,
-			float x2, float y2, float z2
-		) noexcept;
-		DataType::fvec2 operator * (DataType::fvec2 rhs) const;
-		const float* operator[](int index) const { return matrix[index]; }
-		TransformMatrix operator * (TransformMatrix rhs) const;
-		TransformMatrix& operator *= (TransformMatrix rhs);
+			float x2, float y2, float z2) noexcept;
+		DataType::fvec2 operator*(DataType::fvec2 rhs) const;
+		const float *operator[](int index) const { return matrix[index]; }
+		TransformMatrix operator*(TransformMatrix rhs) const;
+		TransformMatrix &operator*=(TransformMatrix rhs);
 		void Reset();
 
 	protected:
@@ -45,17 +44,14 @@ namespace DataType
 	};
 }
 
-
-
-
-//#pragma once
-//#include "Vec2.h"
-//#include "Vec3.h"
+// #pragma once
+// #include "Vec2.h"
+// #include "Vec3.h"
 //
-//class Matrix
+// class Matrix
 //{
 //
-//public:
+// public:
 //
 //	float elements[3][3];
 //
@@ -64,19 +60,19 @@ namespace DataType
 //	vec3 column2;
 //
 //
-//public:
+// public:
 //	constexpr Matrix() noexcept; // initializes to identity matrix
 //	constexpr Matrix(vec3 first_column, vec3 second_column, vec3 third_column) noexcept;
 //	constexpr Matrix(double column0_row0, double column0_row1, double column0_row2, double column1_row0, double column1_row1, double column1_row2, double column2_row0, double column2_row1,
 //		double column2_row2) noexcept;
 //
-//public:
+// public:
 //	/*const double* operator[](int index) const { return matrix[index]; }
 //	Matrix operator * (Matrix rhs) const;
 //	DataType::vec2 operator * (DataType::vec2 rhs) const;
 //	Matrix& operator *= (Matrix rhs);
 //	void Reset();*/
-//public:
+// public:
 //	static constexpr Matrix transpose(const Matrix& m) noexcept;
 //	static constexpr Matrix build_scale(double scale) noexcept;
 //	static constexpr Matrix build_scale(double scale_x, double scale_y) noexcept;
@@ -84,15 +80,15 @@ namespace DataType
 //	static Matrix           build_rotation(double angle_in_radians) noexcept;
 //	static constexpr Matrix build_translation(double translate_x, double translate_y) noexcept;
 //	static constexpr Matrix build_translation(const DataType::vec2& translation) noexcept;
-//protected:
+// protected:
 //	//double matrix[3][3];
-//};
+// };
 //
 ////static_assert(sizeof(Matrix) == sizeof(double) * 3 * 3, "mat3 should be 3x3 floats");
 //
-//constexpr Matrix operator*(const Matrix& m1, const Matrix& m2) noexcept;
-//constexpr void operator*=(Matrix& m1, const Matrix& m2) noexcept;
+// constexpr Matrix operator*(const Matrix& m1, const Matrix& m2) noexcept;
+// constexpr void operator*=(Matrix& m1, const Matrix& m2) noexcept;
 //
-//constexpr vec3 operator*(const Matrix& m, vec3 v) noexcept;
+// constexpr vec3 operator*(const Matrix& m, vec3 v) noexcept;
 //
 //

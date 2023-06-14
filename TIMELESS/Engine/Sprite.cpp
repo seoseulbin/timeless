@@ -1,26 +1,24 @@
-#include"Sprite.h"
-#include"Texture.h"
-#include"Collision.h"
-#include"GameObject.h"
+#include "Sprite.h"
+#include "Texture.h"
+#include "Collision.h"
+#include "GameObject.h"
 #include "../Game/GameObjectTypes.h"
 
-
-
-Sprite::Sprite(const std::filesystem::path& spriteFile, GameObject* object)
+Sprite::Sprite(const std::filesystem::path &spriteFile, GameObject *object)
 {
 	Load(spriteFile, object);
 }
 
 Sprite::~Sprite()
 {
-	for (Animation* anim : animations)
+	for (Animation *anim : animations)
 	{
 		delete anim;
 	}
 	animations.clear();
 }
 
-void Sprite::Load_noObject(const std::filesystem::path& spriteFile)
+void Sprite::Load_noObject(const std::filesystem::path &spriteFile)
 {
 	if (spriteFile.extension() != ".spt")
 	{
@@ -37,7 +35,7 @@ void Sprite::Load_noObject(const std::filesystem::path& spriteFile)
 	frameSize = texturePtr->GetSize();
 }
 
-void Sprite::Load(const std::filesystem::path& spriteFile, [[maybe_unused]] GameObject* object)
+void Sprite::Load(const std::filesystem::path &spriteFile, [[maybe_unused]] GameObject *object)
 {
 	frameTexel.clear();
 	if (spriteFile.extension() != ".spt")
@@ -62,7 +60,7 @@ void Sprite::Load(const std::filesystem::path& spriteFile, [[maybe_unused]] Game
 	{
 		texturePtr = Engine::GetTextureManager().Load(text, true);
 	}
-	
+
 	frameSize = texturePtr->GetSize();
 	inFile >> text;
 	while (!inFile.eof())
@@ -76,8 +74,9 @@ void Sprite::Load(const std::filesystem::path& spriteFile, [[maybe_unused]] Game
 		{
 			int numFrames;
 			inFile >> numFrames;
-			for (int i = 0; i < numFrames; i++) {
-				frameTexel.push_back({ static_cast<int>(frameSize.x) * i, 0 });
+			for (int i = 0; i < numFrames; i++)
+			{
+				frameTexel.push_back({static_cast<int>(frameSize.x) * i, 0});
 			}
 		}
 		if (text == "Frame")
@@ -85,7 +84,7 @@ void Sprite::Load(const std::filesystem::path& spriteFile, [[maybe_unused]] Game
 			int frameLocationX, frameLocationY;
 			inFile >> frameLocationX;
 			inFile >> frameLocationY;
-			frameTexel.push_back({ frameLocationX, frameLocationY });
+			frameTexel.push_back({frameLocationX, frameLocationY});
 		}
 		if (text == "Anim")
 		{
@@ -110,7 +109,7 @@ void Sprite::Load(const std::filesystem::path& spriteFile, [[maybe_unused]] Game
 	}
 	if (frameTexel.empty() == true)
 	{
-		frameTexel.push_back({ 0,0 });
+		frameTexel.push_back({0, 0});
 	}
 
 	if (animations.empty())
@@ -118,7 +117,6 @@ void Sprite::Load(const std::filesystem::path& spriteFile, [[maybe_unused]] Game
 		animations.push_back(new Animation{});
 		PlayAnimation(0);
 	}
-	
 }
 
 void Sprite::Update([[maybe_unused]] double dt)
@@ -127,10 +125,6 @@ void Sprite::Update([[maybe_unused]] double dt)
 		animations[currAnim]->Update(dt);
 }
 
-
-
-
-
 void Sprite::PlayAnimation(int anim)
 {
 	if (anim < 0 || anim > animations.size() - 1)
@@ -138,7 +132,8 @@ void Sprite::PlayAnimation(int anim)
 		Engine::GetLogger().LogError("Animation" + std::to_string(anim));
 		currAnim = 0;
 	}
-	else {
+	else
+	{
 		currAnim = anim;
 		animations[currAnim]->ResetAnimation();
 	}
@@ -154,7 +149,6 @@ bool Sprite::IsAnimationDone()
 	return animations[currAnim]->IsAnimationDone();
 }
 
-
 vec2 Sprite::GetFrameSize() const
 {
 	return frameSize;
@@ -165,7 +159,7 @@ DataType::ivec2 Sprite::GetFrameTexel(int frameNum) const
 	if (frameNum < 0 || frameNum >= frameTexel.size())
 	{
 		Engine::GetLogger().LogError("Bad frame request" + std::to_string(frameNum));
-		return DataType::ivec2{ 0, 0 };
+		return DataType::ivec2{0, 0};
 	}
 	return frameTexel[frameNum];
 }
@@ -177,20 +171,18 @@ void Sprite::Draw(mat3 displayMatrix)
 	texturePtr->Draw(displayMatrix);
 }
 
-
 void Sprite::Draw_None_Animation_object(mat3 displayMatrix, [[maybe_unused]] float Opacity)
 {
-	//test1-----------------------------------------------------------------------------------------------
+	// test1-----------------------------------------------------------------------------------------------
 	texturePtr->Draw_None_Animation_object(displayMatrix, Opacity);
 
-	///test2----------------------------------------------------------------------------------------------
-	//displayMatrix.column0.x = 1;
-	//displayMatrix.column1.y = 1;
-	//texturePtr->Draw_Animation_object(displayMatrix, GetFrameTexel(animations[currAnim]->GetDisplayFrame()), GetFrameSize());
+	/// test2----------------------------------------------------------------------------------------------
+	// displayMatrix.column0.x = 1;
+	// displayMatrix.column1.y = 1;
+	// texturePtr->Draw_Animation_object(displayMatrix, GetFrameTexel(animations[currAnim]->GetDisplayFrame()), GetFrameSize());
 }
 
-
-void Sprite::Draw_Animation_object(mat3 displayMatrix, vec2 scale,float rotate, float Opacity)
+void Sprite::Draw_Animation_object(mat3 displayMatrix, vec2 scale, float rotate, float Opacity)
 {
 	displayMatrix.column0.x = 1;
 	displayMatrix.column1.y = 1;
@@ -200,7 +192,7 @@ void Sprite::Draw_Animation_object(mat3 displayMatrix, vec2 scale,float rotate, 
 	texturePtr->Draw_Animation_object(displayMatrix, GetFrameTexel(animations[currAnim]->GetDisplayFrame()), GetFrameSize(), Opacity);
 }
 
-void Sprite::Draw_particle_effect(mat3 displayMatrix, float  alpha)
+void Sprite::Draw_particle_effect(mat3 displayMatrix, float alpha)
 {
 	texturePtr->Draw_particle_effect(displayMatrix, alpha);
 }

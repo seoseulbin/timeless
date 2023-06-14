@@ -1,15 +1,15 @@
-//#include "MainScreen.h"
-//#include"../Engine/Engine.h"
-//#include"Screens.h"
-//#include"../Engine/Fonts.h"
-//#include<SFML/Graphics.hpp>
+// #include "MainScreen.h"
+// #include"../Engine/Engine.h"
+// #include"Screens.h"
+// #include"../Engine/Fonts.h"
+// #include<SFML/Graphics.hpp>
 //
 //
 //
-//MainScreen::MainScreen() : esckey(InputKey::Keyboard::Escape), upKey(InputKey::Keyboard::Up), downKey(InputKey::Keyboard::Down), selectKey(InputKey::Keyboard::Enter)
+// MainScreen::MainScreen() : esckey(InputKey::Keyboard::Escape), upKey(InputKey::Keyboard::Up), downKey(InputKey::Keyboard::Down), selectKey(InputKey::Keyboard::Enter)
 //, selectedIndex(static_cast<int>(Options::Play)) {}
 //
-//void MainScreen::Load()
+// void MainScreen::Load()
 //{
 //	std::string texturePath = "assets/main.png";
 //	texture.Load(texturePath);
@@ -25,9 +25,9 @@
 //		Render(data);
 //	}
 //	Neon_title.Load(Engine::GetSpriteFont(static_cast<int>(Fonts::Font1)).DrawTextToTexture("Neon Timeless"));
-//}
+// }
 //
-//void MainScreen::Update(double)
+// void MainScreen::Update(double)
 //{
 //	if (esckey.IsKeyDown() == true)
 //	{
@@ -78,14 +78,14 @@
 //		}
 //	}
 //
-//}
+// }
 //
-//void MainScreen::Unload()
+// void MainScreen::Unload()
 //{
 //
-//}
+// }
 //
-//void MainScreen::Draw()
+// void MainScreen::Draw()
 //{
 //	DataType::fvec2 winSize = Engine::GetWindow().GetSize();
 //	texture.Draw(DataType::TranslateMatrix(winSize / 2));
@@ -104,17 +104,17 @@
 //	// 드로우 함수 섀도우 적용 버전과 하이라이트 적용버전 두개 만들어둠
 //	// isHighlighted = true 일시 화이트로 표시, false 일시 회색으로 표시
 //	// drawShadow = true 일시 그림자 표시, false 일시 붉은색으로 표시(인자 두개인 버전만 붉은색)
-//}
+// }
 //
-//void MainScreen::Render(OptionData& data)
+// void MainScreen::Render(OptionData& data)
 //{
 //	data.texture.Load(Engine::GetSpriteFont(static_cast<int>(Fonts::Font1)).DrawTextToTexture(data.text));
-//}
+// }
 //
-//MainScreen::OptionData MainScreen::optionData[static_cast<int>(MainScreen::Options::Count)] =
+// MainScreen::OptionData MainScreen::optionData[static_cast<int>(MainScreen::Options::Count)] =
 //{
 //	{"Play",  {}, true},
 //	{"Special",  {}, false},
 //	{"Tutorial",  {}, false},
 //	{"Option",  {}, false},
-//};
+// };

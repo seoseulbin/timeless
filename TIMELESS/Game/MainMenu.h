@@ -1,22 +1,21 @@
 #pragma once
-#include"../Engine/GameState.h"
-#include"GLShader.h"
-#include"GLVertexArray.h"
-#include"GLTexture.h"
-#include"..\Engine\Texture.h"
-#include"../Engine/Input.h"
-#include"../Engine/GameObjectManager.h"
-#include"Player.h"
-#include"CameraView.h"
-#include"../Engine/Font.h"
+#include "../Engine/GameState.h"
+#include "GLShader.h"
+#include "GLVertexArray.h"
+#include "GLTexture.h"
+#include "..\Engine\Texture.h"
+#include "../Engine/Input.h"
+#include "../Engine/GameObjectManager.h"
+#include "Player.h"
+#include "CameraView.h"
+#include "../Engine/Font.h"
 
-
-//class Player;
-
+// class Player;
 
 class Menu : public GameState
 {
-	enum class Options {
+	enum class Options
+	{
 		Play,
 		Tutorial,
 		Option,
@@ -35,7 +34,6 @@ public:
 		return "Menu";
 	}
 
-
 private:
 	Texture test_font;
 	Texture test_font2;
@@ -50,7 +48,7 @@ private:
 	Texture ButtonOption_2;
 
 	int selectedIndex;
-	//InputKey next_stage_key;
+	// InputKey next_stage_key;
 	InputKey esc_key;
 	InputKey reload_key;
 	InputKey upKey;

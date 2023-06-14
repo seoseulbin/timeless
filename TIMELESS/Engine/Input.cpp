@@ -1,14 +1,12 @@
-#include"Input.h"
-#include"Engine.h"
-
+#include "Input.h"
+#include "Engine.h"
 
 InputKey::InputKey(Keyboard _button) : button(_button) {}
-
 
 bool InputKey::IsKeyDown() const
 {
 	return Engine::GetInput().IsKeyDown(InputKey::button);
-	//return Engine::GetInput().IsKeyDown(InputKey::button_2);
+	// return Engine::GetInput().IsKeyDown(InputKey::button_2);
 }
 
 bool InputKey::IsKeyReleased() const
@@ -16,7 +14,7 @@ bool InputKey::IsKeyReleased() const
 	return Engine::GetInput().IsKeyReleased(InputKey::button);
 }
 
-InputMouse::InputMouse(Mouse _button) : button(_button){}
+InputMouse::InputMouse(Mouse _button) : button(_button) {}
 
 bool InputMouse::IsButtonDown() const
 {
@@ -52,12 +50,10 @@ bool Input::IsButtonDown(InputMouse::Mouse button) const
 	return buttonDown[static_cast<int>(button)];
 }
 
-
 bool Input::IsKeyReleased(InputKey::Keyboard key) const
 {
 	return wasKeyDown[static_cast<int>(key)] == true && keyDown[static_cast<int>(key)] == false;
 }
-
 
 bool Input::IsButtonReleased(InputMouse::Mouse button) const
 {
