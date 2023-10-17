@@ -9,7 +9,7 @@
 - Team member List + Roles
 	- Producer 			: MinSeok Kim
 	- Technical Lead 	: HyoJoon Kim
-	- Art Lead 			: SeulBin Seok
+	- Art Lead 			: SeulBin Seo
 	- Level Designer 	: JunSeong Park
 
 
